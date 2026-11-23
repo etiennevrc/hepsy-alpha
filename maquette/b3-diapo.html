@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hepsy · Proposition B3 · Diapositive d’histoire</title>
+<script>var t="auto";try{t=localStorage.getItem("hepsy3-theme")||"auto";}catch(e){}if(t==="clair"||t==="sombre")document.documentElement.dataset.theme=t;</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --fond: #FFFFFF; --fond-2: #F3F4F6; --fond-3: #E7E9ED; --trait: #D5D9E0;
+  --texte: #16181D; --texte-2: #474C56; --texte-3: #6A707B;
+  --hist: #8A1C3B; --hist-clair: #F6E8EC;
+  --surligneur: #FFE45C; --sur-texte: #16181D; --surl-fond: #FFE45C; --surl-texte: #16181D; --or: #FFE45C; --lecture-c: #16181D; --img-filtre: none; --plein: #16181D; --plein-texte: #FFFFFF; --plein-bord: transparent;
+  --bulle: #16181D; --bulle-texte: #FFFFFF;
+  --ui: "Instrument Sans", "Segoe UI", system-ui, sans-serif; --lecture: "Literata", Georgia, serif;
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --r: 6px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="clair"]) {
+  color-scheme: dark;
+  --fond: #0C0A09; --fond-2: #181512; --fond-3: #2C261F; --trait: #2C261F;
+  --texte: #F5EFE4; --texte-2: #D8D0C3; --texte-3: #A89E90; --lecture-c: #E9E1D3;
+  --hist: #F0A38A; --hist-clair: #2A1A14; --geo: #A9C98F; --geo-clair: #1A2216; --metier: #E6C79C; --metier-clair: #241D14;
+  --ok: #9CC08A; --ok-clair: #18200F; --ko: #EF8A7D; --ko-clair: #2A1512;
+  --or: #F2B04A; --surl-fond: rgba(242, 176, 74, .24); --surl-texte: #FCE9BD;
+  --plein: #241A0E; --plein-texte: #F6C76B; --plein-bord: rgba(242, 176, 74, .6); --ombre: none; --img-filtre: saturate(.92) brightness(.93);
+  --bulle: #181512; --bulle-texte: #F5EFE4;
+} }
+:root[data-theme="sombre"] {
+  color-scheme: dark;
+  --fond: #0C0A09; --fond-2: #181512; --fond-3: #2C261F; --trait: #2C261F;
+  --texte: #F5EFE4; --texte-2: #D8D0C3; --texte-3: #A89E90; --lecture-c: #E9E1D3;
+  --hist: #F0A38A; --hist-clair: #2A1A14; --geo: #A9C98F; --geo-clair: #1A2216; --metier: #E6C79C; --metier-clair: #241D14;
+  --ok: #9CC08A; --ok-clair: #18200F; --ko: #EF8A7D; --ko-clair: #2A1512;
+  --or: #F2B04A; --surl-fond: rgba(242, 176, 74, .24); --surl-texte: #FCE9BD;
+  --plein: #241A0E; --plein-texte: #F6C76B; --plein-bord: rgba(242, 176, 74, .6); --ombre: none; --img-filtre: saturate(.92) brightness(.93);
+  --bulle: #181512; --bulle-texte: #F5EFE4;
+}
+* { box-sizing: border-box; }
+img { filter: var(--img-filtre); }
+html { background: var(--fond); }
+body { margin: 0; background: var(--fond); color: var(--texte); font-family: var(--ui); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+:focus-visible { outline: 3px solid var(--texte); outline-offset: 2px; border-radius: 2px; }
+h1, h2, h3 { margin: 0; line-height: 1.1; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+
+.barre { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--fond) 94%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--trait); }
+.barre-in { display: flex; align-items: center; gap: var(--s4); padding: var(--s3) var(--s5); }
+.ico { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: var(--r); border: 1px solid var(--trait); background: none; color: var(--texte); text-decoration: none; flex: none; cursor: pointer; }
+.ico:hover { background: var(--fond-2); }
+.tt { min-width: 0; }
+.tt .disc { font-size: 13px; font-weight: 600; color: var(--hist); }
+.tt b { display: block; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.niveaux { margin-left: auto; display: grid; grid-template-columns: repeat(5, minmax(56px, 1fr)); gap: var(--s1); width: min(520px, 42vw); flex: none; }
+.niveaux a { display: flex; flex-direction: column; gap: 6px; text-decoration: none; font-size: 12px; color: var(--texte-3); min-height: 44px; justify-content: center; }
+.niveaux a i { height: 5px; border-radius: 3px; background: var(--fond-3); overflow: hidden; position: relative; }
+.niveaux a i b { position: absolute; inset: 0 auto 0 0; background: var(--hist); border-radius: 3px; }
+.niveaux a[aria-current] { color: var(--texte); font-weight: 700; }
+
+.page { display: grid; grid-template-columns: 248px minmax(0, 1fr); gap: var(--s7); max-width: 1380px; margin: 0 auto; padding: var(--s6) var(--s5) 120px; }
+.plan { position: sticky; top: 92px; align-self: start; }
+.plan h2 { font-size: 13px; font-weight: 600; color: var(--texte-3); margin-bottom: var(--s2); }
+.plan ol { list-style: none; margin: 0; padding: 0; counter-reset: d; }
+.plan li a { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: var(--s2); padding: var(--s2); border-radius: var(--r); text-decoration: none; font-size: 14px; line-height: 1.35; color: var(--texte-2); }
+.plan li a::before { counter-increment: d; content: counter(d); color: var(--texte-3); font-size: 13px; }
+.plan li a:hover { background: var(--fond-2); }
+.plan li a[aria-current] { background: var(--hist-clair); color: var(--hist); font-weight: 600; }
+.plan li a[aria-current]::before { color: var(--hist); }
+
+/* Colonne de lecture et sa marge de notes (repris de A) */
+.lect { display: grid; grid-template-columns: minmax(0, 660px) 230px; gap: 0 var(--s6); align-content: start; }
+.lect > * { grid-column: 1; }
+.lect .niv { font-size: 14px; font-weight: 600; color: var(--hist); }
+.lect h1 { font-size: clamp(32px, 3.8vw, 46px); font-weight: 700; letter-spacing: -.035em; margin: var(--s2) 0 var(--s4); line-height: 1.04; }
+.chapo { font-family: var(--lecture); font-size: 20px; line-height: 1.6; color: var(--texte-2); }
+.notion { margin-top: var(--s6); padding-top: var(--s5); border-top: 1px solid var(--trait); }
+/* Nom de la notion en petites capitales de Literata (repris de A) */
+.notion h2 { font-family: var(--lecture); font-variant-caps: small-caps; font-weight: 600; font-size: 23px; letter-spacing: .015em; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s1) var(--s3); }
+.notion h2 small { font-family: var(--ui); font-variant-caps: normal; letter-spacing: 0; font-size: 14px; font-weight: 500; color: var(--texte-3); }
+.notion p { font-family: var(--lecture); font-size: 18px; line-height: 1.7; margin-top: var(--s3); color: var(--lecture-c); }
+.marge { grid-column: 2; margin-top: calc(var(--s6) + var(--s5)); font-size: 14px; line-height: 1.45; color: var(--texte-2); border-left: 2px solid var(--hist); padding-left: var(--s3); align-self: start; }
+.marge b { display: block; font-size: 13px; color: var(--texte); margin-bottom: 2px; }
+.terme { font: inherit; border: 0; padding: 0 .1em; margin: 0 -.1em; color: inherit; cursor: pointer; background: linear-gradient(transparent 60%, var(--surl-fond) 60%, var(--surl-fond) 94%, transparent 94%); }
+.terme:hover, .terme[aria-expanded="true"] { background: linear-gradient(transparent 8%, var(--surl-fond) 8%, var(--surl-fond) 94%, transparent 94%); color: var(--surl-texte); }
+
+/* Frise en échelle graphique de carte (repris de A) */
+.echelle { margin-top: var(--s7); padding-top: var(--s4); border-top: 1px solid var(--texte); }
+.echelle h2 { font-size: 15px; font-weight: 600; margin-bottom: var(--s4); }
+.echelle svg { display: block; width: 100%; height: auto; color: var(--texte); }
+.echelle .seg-p { fill: currentColor; } .echelle .seg-v { fill: var(--fond); }
+.echelle .lbl { fill: var(--texte-3); font: 12px var(--ui); }
+.echelle .ev { fill: var(--hist); font: 600 13px var(--ui); }
+
+.fin { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s4); align-items: center; margin-top: var(--s6); padding: var(--s4) var(--s5); border-radius: 10px; background: var(--fond-2); }
+.fin b { display: block; font-size: 13px; margin-bottom: 2px; }
+.fin p { font-size: 15px; }
+.fin a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s5); border-radius: var(--r); background: var(--plein); color: var(--plein-texte); font-weight: 600; text-decoration: none; white-space: nowrap; }
+
+/* Tiroir de définition : il glisse depuis la droite, comme sur le site actuel ; le texte reste visible à gauche */
+.voile { position: fixed; inset: 0; z-index: 30; background: rgba(10, 11, 14, .32); opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+.voile.on { opacity: 1; pointer-events: auto; }
+.tiroir { position: fixed; top: 0; right: 0; bottom: 0; z-index: 31; width: min(460px, 100vw); background: var(--fond); border-left: 1px solid var(--trait); box-shadow: -12px 0 32px rgba(0, 0, 0, .14); transform: translateX(100%); visibility: hidden; transition: transform .26s cubic-bezier(.2, .8, .2, 1), visibility 0s linear .26s; display: flex; flex-direction: column; }
+.tiroir.on { transform: none; visibility: visible; transition: transform .26s cubic-bezier(.2, .8, .2, 1), visibility 0s; }
+.tiroir-h { display: flex; align-items: center; gap: var(--s3); padding: var(--s3) var(--s4) var(--s3) var(--s5); border-bottom: 1px solid var(--trait); }
+.tiroir-h .disc { font-size: 13px; font-weight: 600; color: var(--hist); }
+.tiroir-h .ico { margin-left: auto; }
+.tiroir-c { padding: var(--s5); overflow-y: auto; display: flex; flex-direction: column; gap: var(--s4); }
+.tiroir-c h2 { font-family: var(--lecture); font-variant-caps: small-caps; font-weight: 600; font-size: 30px; letter-spacing: .01em; line-height: 1.1; }
+.tiroir-c h2 + .sub { margin-top: calc(-1 * var(--s3)); font-size: 14px; color: var(--texte-3); }
+.tiroir-c .def { font-family: var(--lecture); font-size: 18px; line-height: 1.65; color: var(--lecture-c); }
+.tiroir-c .note { border-left: 2px solid var(--hist); padding: var(--s1) 0 var(--s1) var(--s3); font-size: 15px; color: var(--texte-2); }
+.tiroir-c .note b { display: block; font-size: 13px; color: var(--texte); margin-bottom: 2px; }
+.tiroir-c .voir { font-size: 14px; color: var(--texte-2); }
+.tiroir-c .voir button { font: inherit; border: 0; padding: 0 .1em; background: linear-gradient(transparent 60%, var(--surl-fond) 60%, var(--surl-fond) 94%, transparent 94%); color: inherit; cursor: pointer; }
+.tiroir-f { margin-top: auto; padding: var(--s4) var(--s5) calc(var(--s4) + env(safe-area-inset-bottom)); border-top: 1px solid var(--trait); display: flex; gap: var(--s3); }
+.tiroir-f button { min-height: 44px; padding: 0 var(--s4); border-radius: var(--r); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; border: 1px solid var(--trait); background: none; color: var(--texte); }
+.tiroir-f button.plein { background: var(--plein); color: var(--plein-texte); border-color: var(--plein); }
+
+.pager { position: fixed; inset: auto 0 0 0; z-index: 5; background: var(--fond); border-top: 1px solid var(--trait); }
+.pager-in { display: flex; align-items: center; gap: var(--s4); max-width: 1380px; margin: 0 auto; padding: var(--s3) var(--s5) calc(var(--s3) + env(safe-area-inset-bottom)); }
+.pager a { display: flex; align-items: center; gap: var(--s3); min-height: 48px; padding: 0 var(--s4); border-radius: var(--r); border: 1px solid var(--trait); text-decoration: none; min-width: 0; }
+.pager a:hover { background: var(--fond-2); }
+.pager a span { display: flex; flex-direction: column; min-width: 0; }
+.pager a small { font-size: 12px; color: var(--texte-3); }
+.pager a b { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 28ch; }
+.pager .suiv { margin-left: auto; background: var(--plein); color: var(--plein-texte); border-color: var(--plein); }
+.pager .suiv small { color: inherit; opacity: .7; }
+.pager .pos { font-size: 14px; color: var(--texte-3); white-space: nowrap; }
+
+.mprog { display: none; padding: 0 var(--s4) var(--s2); font-size: 12px; color: var(--texte-3); }
+.mprog .seg { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; margin-top: 4px; }
+.mprog .seg i { height: 4px; border-radius: 2px; background: var(--fond-3); }
+.mprog .seg i.f { background: var(--hist); }
+.mprog .seg i.p { background: linear-gradient(90deg, var(--hist) 30%, var(--fond-3) 30%); }
+
+/* La marge de notes ne tient qu'au-delà de 1 240 px ; en dessous, les notes reviennent sous leur notion */
+@media (max-width: 1240px) {
+  .lect { grid-template-columns: minmax(0, 680px); }
+  .marge { grid-column: 1; margin-top: var(--s4); border-left-width: 3px; background: var(--fond-2); padding: var(--s3) var(--s4); border-radius: 0 var(--r) var(--r) 0; }
+}
+@media (max-width: 860px) {
+  .page { grid-template-columns: minmax(0, 1fr); padding: var(--s5) var(--s4) 120px; gap: var(--s5); }
+  .plan, .niveaux { display: none; }
+  .barre-in { padding: var(--s2) var(--s4); gap: var(--s3); }
+  .mprog { display: block; }
+  .rch-btn { margin-left: auto; }
+  .chapo { font-size: 18px; }
+  .notion p { font-size: 17px; }
+  .fin { grid-template-columns: minmax(0, 1fr); }
+  .pager-in { padding: var(--s2) var(--s4) calc(var(--s2) + env(safe-area-inset-bottom)); gap: var(--s2); }
+  .pager a { padding: 0 var(--s3); }
+  .pager a b { max-width: 15ch; }
+  .pager .prec span, .pager .pos { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+/* contour miel des actions principales en sombre */
+.btn.plein, .reprise .go, .fin a, .pager .suiv, .menu a[aria-current], .tiroir-f button.plein { box-shadow: inset 0 0 0 1px var(--plein-bord); }
+
+/* lien vers le questionnaire (version publiée pour les collègues) */
+.retour-avis { position: fixed; z-index: 30; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(88px + env(safe-area-inset-bottom, 0px)); display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 99px; background: var(--plein); color: var(--plein-texte); font: 600 14px var(--ui); text-decoration: none; box-shadow: inset 0 0 0 1px var(--plein-bord, transparent), 0 8px 24px rgba(0,0,0,.25); }
+@media (max-width: 760px) { .retour-avis { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); } }
+</style>
+</head>
+<body>
+<header class="barre">
+  <div class="barre-in">
+    <a class="ico" href="b3-accueil.html" aria-label="Retour aux thèmes"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M11 3L5 9l6 6"/></svg></a>
+    <div class="tt"><span class="disc">Histoire 4</span><b>Société, Église et pouvoir politique dans l’Occident médiéval</b></div>
+    <nav class="niveaux" aria-label="Niveaux du thème">
+      <a href="#"><i><b style="width:100%"></b></i>1 Cadrage</a>
+      <a href="#" aria-current="step"><i><b style="width:30%"></b></i>2 Notions</a>
+      <a href="#"><i></i>3 Repères</a>
+      <a href="#"><i></i>4 Débats</a>
+      <a href="#"><i></i>5 S’entraîner</a>
+    </nav>
+    <button class="ico rch-btn" type="button" aria-label="Rechercher"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg></button>
+    <button class="ico" type="button" id="tb" aria-label="Changer de fond"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5a5.8 5.8 0 1 0 7.1 7.1z"/></svg></button>
+  </div>
+  <div class="mprog">Niveau 2 sur 5 : notions<div class="seg" aria-hidden="true"><i class="f"></i><i class="p"></i><i></i><i></i><i></i></div></div>
+</header>
+
+<div class="page">
+  <nav class="plan" aria-label="Diapositives du niveau 2">
+    <h2>Niveau 2 : notions</h2>
+    <ol>
+      <li><a href="#">Cadrer la question : Moyen Âge, chrétienté, ordres</a></li>
+      <li><a href="#">Seigneurie, féodalité et noblesse</a></li>
+      <li><a href="#" aria-current="page">Réforme de l’Église et monarchie pontificale</a></li>
+      <li><a href="#">Encadrer les fidèles</a></li>
+      <li><a href="#">Ordonner et exclure : hérésies et minorités</a></li>
+      <li><a href="#">Villes, communautés et échanges</a></li>
+      <li><a href="#">Savoirs, écoles et universités</a></li>
+      <li><a href="#">Le roi : légitimité et sacralité</a></li>
+      <li><a href="#">Gouverner : la genèse de l’État</a></li>
+      <li><a href="#">Assemblées, conseils et représentation</a></li>
+    </ol>
+  </nav>
+
+  <article class="lect">
+    <span class="niv">Notions, 3 sur 10</span>
+    <h1>Réforme de l’Église et monarchie pontificale</h1>
+    <p class="chapo">Entre le milieu du XI<sup>e</sup> siècle et Latran IV, l’Église latine se sépare des laïcs, discipline son clergé et se donne une tête : le pape.</p>
+
+    <section class="notion">
+      <h2>Réforme grégorienne <small>milieu XI<sup>e</sup> – début XII<sup>e</sup> siècle</small></h2>
+      <p>Mouvement nommé d’après Grégoire VII (1073-1085), qui vise à libérer l’Église de l’emprise des laïcs (<i>libertas Ecclesiae</i>) et à purifier le clergé par la lutte contre la <button class="terme" type="button" aria-expanded="false" data-t="Simonie">simonie</button> et le <button class="terme" type="button" aria-expanded="false" data-t="Nicolaïsme">nicolaïsme</button>. Il sépare nettement clercs et laïcs.</p>
+    </section>
+    <aside class="marge"><b>Nuance</b>Elle commence avant Grégoire VII, dans les monastères (Cluny) et chez des papes réformateurs comme Léon IX (1049-1054) ; elle aboutit à Latran IV (1215).</aside>
+
+    <section class="notion">
+      <h2>Querelle des Investitures <small>1075-1122</small></h2>
+      <p>Conflit entre la papauté et l’empereur sur la nomination des évêques, symbolisée par la remise de la crosse et de l’anneau. Grégoire VII excommunie Henri IV, qui s’humilie à Canossa (1077). Le concordat de Worms (1122) distingue investiture spirituelle et investiture temporelle.</p>
+    </section>
+    <aside class="marge"><b>Comparer</b>En France et en Angleterre, des accords comparables sont trouvés en 1107, sans guerre ouverte.</aside>
+
+    <section class="notion">
+      <h2><i>Dictatus papae</i> <small>1075</small></h2>
+      <p>Série de 27 propositions rédigées dans l’entourage de Grégoire VII : seul le pape est universel, il peut déposer les empereurs, nul ne peut le juger, l’Église romaine ne s’est jamais trompée.</p>
+    </section>
+    <aside class="marge"><b>En composition</b>À citer comme affirmation de la toute-puissance pontificale, non comme description de la pratique.</aside>
+
+    <section class="echelle" aria-labelledby="t-ech">
+      <h2 id="t-ech">Échelle des temps, 1049-1215</h2>
+      <svg viewBox="-20 0 680 96" role="img" aria-label="Frise de 1049 à 1215 : Léon IX, Dictatus papae, Canossa, concordat de Worms, Latran I, Latran IV">
+        <rect x="0" y="42" width="640" height="8" class="seg-v" stroke="currentColor"/>
+        <g class="seg-p"><rect x="0" y="42" width="64" height="8"/><rect x="128" y="42" width="64" height="8"/><rect x="256" y="42" width="64" height="8"/><rect x="384" y="42" width="64" height="8"/><rect x="512" y="42" width="64" height="8"/></g>
+        <g class="lbl" text-anchor="middle"><text x="0" y="66">1049</text><text x="128" y="66">1082</text><text x="256" y="66">1116</text><text x="384" y="66">1149</text><text x="512" y="66">1182</text><text x="640" y="66">1215</text></g>
+        <g class="ev" fill="currentColor">
+          <circle cx="0" cy="36" r="3.5"/><text x="0" y="26">Léon IX</text>
+          <circle cx="100" cy="36" r="3.5"/><text x="70" y="12">Dictatus papae</text>
+          <circle cx="108" cy="56" r="3.5"/><text x="94" y="88">Canossa</text>
+          <circle cx="281" cy="36" r="3.5"/><text x="254" y="26">Worms</text>
+          <circle cx="285" cy="56" r="3.5"/><text x="268" y="88">Latran I</text>
+          <circle cx="640" cy="36" r="3.5"/><text x="574" y="26">Latran IV</text>
+        </g>
+      </svg>
+    </section>
+
+    <div class="fin">
+      <div><b>À retenir</b><p>La réforme place les clercs au-dessus des laïcs et fait du pape le juge suprême de la chrétienté.</p></div>
+      <a href="b3-entrainement.html">S’entraîner sur ces notions</a>
+    </div>
+  </article>
+</div>
+
+<nav class="pager" aria-label="Diapositives">
+  <div class="pager-in">
+    <a class="prec" href="#" aria-label="Diapositive précédente : Seigneurie, féodalité et noblesse"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg><span><small>Précédente</small><b>Seigneurie, féodalité et noblesse</b></span></a>
+    <span class="pos">Diapositive 8 sur 39</span>
+    <a class="suiv" href="#" aria-label="Diapositive suivante : Encadrer les fidèles"><span><small>Suivante</small><b>Encadrer les fidèles</b></span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a>
+  </div>
+</nav>
+
+<div class="voile" id="voile"></div>
+<aside class="tiroir" id="tiroir" role="dialog" aria-modal="true" aria-labelledby="tr-t" aria-hidden="true">
+  <div class="tiroir-h"><span class="disc">Histoire 4, notion</span><button class="ico" type="button" id="tr-x" aria-label="Fermer la définition"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+  <div class="tiroir-c" id="tr-c"></div>
+  <div class="tiroir-f"><button type="button" class="plein">Ajouter aux cartes à revoir</button><button type="button" id="tr-f">Fermer</button></div>
+</aside>
+<script>
+/* Contenu réel de la fiche H4 : définition (d), nuance (x) et notions liées */
+var D = {
+  "Simonie": { sub: "Réforme de l’Église et monarchie pontificale", d: "Achat ou vente de biens spirituels : sacrements, charges ecclésiastiques (évêchés, cures). Le nom vient de Simon le Magicien, qui voulut acheter aux apôtres le pouvoir de l’Esprit (Actes 8).", x: "Les réformateurs y rangent toute nomination d’un évêque par un laïc contre services ou argent.", voir: ["Nicolaïsme"] },
+  "Nicolaïsme": { sub: "Réforme de l’Église et monarchie pontificale", d: "Désigne le mariage ou le concubinage des prêtres, combattu par la réforme : le célibat des clercs majeurs, exigé depuis longtemps, est imposé définitivement (Latran I, 1123 ; Latran II, 1139).", x: "Ce célibat est propre à l’Église latine : les prêtres orthodoxes peuvent être mariés.", voir: ["Simonie"] }
+};
+var tr = document.getElementById("tiroir"), voile = document.getElementById("voile"), cur = null;
+function remplir(nomT) {
+  var n = D[nomT];
+  document.getElementById("tr-c").innerHTML = '<h2 id="tr-t">' + nomT + '</h2><p class="sub">' + n.sub + '</p><p class="def">' + n.d + '</p>' +
+    '<div class="note"><b>Nuance</b>' + n.x + '</div>' +
+    '<p class="voir">Voir aussi : ' + n.voir.map(function (v) { return '<button type="button" data-v="' + v + '">' + v.toLowerCase() + '</button>'; }).join(", ") + '</p>';
+  document.querySelectorAll("#tr-c [data-v]").forEach(function (v) { v.onclick = function () { remplir(v.dataset.v); }; });
+}
+function ouvrir(t) {
+  if (cur && cur !== t) cur.setAttribute("aria-expanded", "false");
+  cur = t; t.setAttribute("aria-expanded", "true"); remplir(t.dataset.t);
+  tr.classList.add("on"); voile.classList.add("on"); tr.setAttribute("aria-hidden", "false");
+  document.getElementById("tr-x").focus();
+}
+function fermer() {
+  tr.classList.remove("on"); voile.classList.remove("on"); tr.setAttribute("aria-hidden", "true");
+  if (cur) { cur.setAttribute("aria-expanded", "false"); cur.focus(); cur = null; }
+}
+document.querySelectorAll(".terme").forEach(function (t) { t.addEventListener("click", function () { ouvrir(t); }); });
+document.getElementById("tr-x").onclick = fermer; document.getElementById("tr-f").onclick = fermer; voile.onclick = fermer;
+document.addEventListener("keydown", function (e) {
+  if (!tr.classList.contains("on")) return;
+  if (e.key === "Escape") { fermer(); return; }
+  if (e.key === "Tab") {  /* le focus reste dans le tiroir tant qu'il est ouvert */
+    var f = tr.querySelectorAll("button"), a = f[0], z = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
+    else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+  }
+});
+/* même choix de fond que l'accueil, mémorisé sur l'appareil */
+document.getElementById("tb").onclick = function () {
+  var t = getComputedStyle(document.documentElement).colorScheme === "dark" ? "clair" : "sombre";
+  document.documentElement.dataset.theme = t; try { localStorage.setItem("hepsy3-theme", t); localStorage.setItem("hepsy3-theme-choisi", "1"); } catch (e) {}
+};
+</script>
+<a class="retour-avis" href="./">Donner mon avis</a>
+<script src="b3-recherche.js"></script>
+</body>
+</html>

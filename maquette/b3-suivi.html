@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hepsy · Proposition B3 · Mon suivi</title>
+<script>var t="auto";try{t=localStorage.getItem("hepsy3-theme")||"auto";}catch(e){}if(t==="clair"||t==="sombre")document.documentElement.dataset.theme=t;</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="b3-commun.css">
+<style>
+.bascule { display: inline-flex; gap: 2px; padding: 3px; border-radius: 8px; background: var(--fond-2); border: 1px solid var(--trait); margin-top: var(--s4); }
+.bascule button { border: 0; background: none; min-height: 44px; padding: 0 var(--s3); border-radius: 6px; font-size: 14px; font-weight: 500; color: var(--texte-2); cursor: pointer; }
+.bascule button[aria-pressed="true"] { background: var(--fond); color: var(--texte); box-shadow: 0 0 0 1px var(--trait); }
+.exemple { display: none; margin-top: var(--s3); font-size: 13px; color: var(--texte-3); }
+body.demo .exemple { display: block; }
+
+.bilan { font-family: var(--lecture); font-size: 22px; line-height: 1.45; max-width: 46ch; color: var(--lecture-c); }
+.chiffres { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: var(--s5); border-top: 1px solid var(--trait); border-bottom: 1px solid var(--trait); }
+.chiffres > div { padding: var(--s4) var(--s4) var(--s4) 0; }
+.chiffres > div + div { padding-left: var(--s4); border-left: 1px solid var(--trait); }
+.chiffres span { display: block; font-size: 13px; color: var(--texte-3); }
+.chiffres b { display: block; font-size: 34px; font-weight: 700; letter-spacing: -.03em; line-height: 1.1; margin: 2px 0; }
+.chiffres b small { font-size: 15px; font-weight: 500; color: var(--texte-3); letter-spacing: 0; }
+.chiffres em { font-style: normal; font-size: 13px; color: var(--texte-2); }
+
+.deux { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--s5); }
+.objectif { border-left: 3px solid var(--hist); border-radius: 0 10px 10px 0; }
+.objectif h3 { font-size: 21px; font-weight: 700; letter-spacing: -.02em; margin: var(--s2) 0; line-height: 1.25; }
+.objectif p { color: var(--texte-2); }
+.objectif .act { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s4); }
+.objectif .pourquoi { margin-top: var(--s4); font-size: 13px; color: var(--texte-3); }
+.ensuite { list-style: none; margin: 0; padding: var(--s2) var(--s5); }
+.ensuite li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s3); align-items: center; padding: var(--s3) 0; border-bottom: 1px solid var(--trait); }
+.ensuite li:last-child { border-bottom: 0; }
+.ensuite b { display: block; font-size: 15px; }
+.ensuite span { font-size: 13px; color: var(--texte-3); }
+.ensuite a { font-size: 14px; font-weight: 600; white-space: nowrap; }
+
+/* Semaine : sept jours, hauteur proportionnelle au nombre de réponses */
+.sem { display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--s2); align-items: end; height: 140px; margin-top: var(--s3); }
+.sem div { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%; font-size: 12px; color: var(--texte-3); }
+.sem i { width: 100%; max-width: 40px; border-radius: 4px 4px 2px 2px; background: var(--hist); min-height: 3px; opacity: .85; }
+.sem i.vide { background: var(--fond-3); opacity: 1; }
+.sem small { font-size: 12px; color: var(--texte-2); font-weight: 600; min-height: 14px; }
+.sem .auj { color: var(--texte); font-weight: 700; }
+
+/* Tableau des seize thèmes */
+.filtre-t { display: flex; gap: var(--s1); margin-left: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { text-align: left; font-weight: 600; font-size: 12px; color: var(--texte-3); padding: 0 var(--s3) var(--s2) 0; border-bottom: 1px solid var(--trait); }
+td { padding: var(--s3) var(--s3) var(--s3) 0; border-bottom: 1px solid var(--trait); vertical-align: middle; }
+td.nom a { text-decoration: none; font-weight: 600; }
+td.nom a:hover { text-decoration: underline; }
+td.nom small { display: block; font-weight: 400; color: var(--texte-3); font-size: 12px; }
+.num { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+th.num { text-align: right; }
+.st { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.st::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--fond-3); }
+.st.m::before { background: var(--ok); } .st.c::before { background: var(--or); } .st.e::before { background: var(--geo); } .st.d::before { background: var(--texte-3); }
+.st.n { color: var(--texte-3); font-weight: 500; }
+.jauge { display: inline-block; width: 72px; height: 6px; border-radius: 3px; background: var(--fond-3); vertical-align: middle; margin-right: var(--s2); position: relative; overflow: hidden; }
+.jauge b { position: absolute; inset: 0 auto 0 0; background: var(--ok); border-radius: 3px; }
+.dh { color: var(--hist); font-weight: 700; } .dg { color: var(--geo); font-weight: 700; }
+
+.donnees { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3); }
+.donnees p { flex: 1 1 320px; color: var(--texte-2); font-size: 14px; }
+.btn.danger { color: var(--ko); }
+
+@media (max-width: 1100px) { .chiffres { grid-template-columns: repeat(3, minmax(0, 1fr)); } .chiffres > div:nth-child(4) { border-left: 0; padding-left: 0; } .chiffres > div:nth-child(n+4) { border-top: 1px solid var(--trait); } .deux { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 760px) {
+  .bilan { font-size: 19px; }
+  .chiffres { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .chiffres > div { border-left: 0 !important; padding-left: 0 !important; }
+  .chiffres > div:nth-child(even) { padding-left: var(--s4) !important; border-left: 1px solid var(--trait) !important; }
+  .chiffres > div:nth-child(n+3) { border-top: 1px solid var(--trait); }
+  .chiffres b { font-size: 28px; }
+  .col-cache { display: none; }
+  .filtre-t { margin-left: 0; }
+}
+</style>
+</head>
+<body data-page="suivi" class="demo">
+<div class="app">
+  <div>
+    <main class="main">
+      <header class="tete-p">
+        <p class="sur">Tableau de bord</p>
+        <h1>Mon CAPES</h1>
+        <p class="bilan" id="bilan"></p>
+        <div class="bascule" role="group" aria-label="Données affichées"><button type="button" data-v="demo" aria-pressed="true">Exemple d’un candidat en novembre</button><button type="button" data-v="vide" aria-pressed="false">Ton état actuel</button></div>
+        <p class="exemple">Données fictives, pour montrer la page en cours d’année. Le temps de travail n’est pas mesuré : Hepsy ne chronomètre rien.</p>
+      </header>
+
+      <div class="chiffres" id="chiffres"></div>
+
+      <section class="sec deux">
+        <div class="carte objectif" id="objectif"></div>
+        <div class="carte">
+          <h2 style="font-size:15px;font-weight:600">Les sept derniers jours</h2>
+          <div class="sem" id="sem" role="img"></div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><h2>Ensuite</h2><p>Les trois priorités qui suivent, dans l’ordre</p></div>
+        <ul class="ensuite carte" id="ensuite"></ul>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><h2>Thème par thème</h2><p>Un thème est travaillé à partir de 20 réponses, maîtrisé quand la réussite est répétée, récente et large</p></div>
+        <table>
+          <thead><tr><th>Thème</th><th>État</th><th class="num">Diapositives</th><th class="col-cache">Réussite récente</th><th class="num col-cache">Dernière séance</th></tr></thead>
+          <tbody id="tab"></tbody>
+        </table>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><h2>Tes données</h2></div>
+        <div class="carte donnees"><p>Ta progression reste dans ce navigateur, sur cet appareil. Pour la transférer, exporte-la puis importe-la sur l’autre appareil.</p><button class="btn" type="button">Exporter</button><button class="btn" type="button">Importer</button><button class="btn danger" type="button">Tout effacer</button></div>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="b3-commun.js"></script>
+<script src="b3-recherche.js"></script>
+<script>
+var TH = [
+  ["h1", "La Grèce classique", 38], ["h2", "Rome : République et Empire", 38], ["h3", "Contacts et conflits en Méditerranée", 37], ["h4", "Société, Église et pouvoir politique dans l’Occident médiéval", 39],
+  ["h5", "Première mondialisation, Renaissance, humanisme et réformes", 39], ["h6", "L’Europe du XVIII<sup>e</sup> siècle, Révolution française et Empire", 38], ["h7", "Le XIX<sup>e</sup> siècle français", 38], ["h8", "Le XX<sup>e</sup> siècle", 39],
+  ["g1", "Géographie de la population", 32], ["g2", "Géographie de la mondialisation", 37], ["g3", "Géographie de l’environnement", 41], ["g4", "Géographie de la France", 40],
+  ["g5", "Géographie de l’Union européenne", 31], ["g6", "Géopolitique", 41], ["g7", "Géographie urbaine", 33], ["g8", "Géographie rurale", 32]
+];
+/* profil d'exemple : état (m maîtrisé, c à consolider, e en cours, d découverte, n non commencé), diapositives vues, réussite, dernière séance */
+var DEMO = { h1: ["m", 38, 91, "hier"], h2: ["c", 35, 64, "il y a 3 j"], h3: ["e", 20, 72, "il y a 6 j"], h4: ["e", 26, 58, "aujourd’hui"], h5: ["d", 6, null, "il y a 12 j"], h7: ["c", 38, 61, "il y a 2 j"], h8: ["m", 39, 88, "il y a 4 j"],
+  g1: ["e", 32, 70, "hier"], g2: ["d", 9, null, "il y a 9 j"], g4: ["c", 40, 66, "il y a 5 j"], g5: ["e", 18, 75, "il y a 2 j"], g7: ["d", 4, null, "il y a 15 j"] };
+var VIDE = { h4: ["d", 2, null, "aujourd’hui"], g5: ["d", 1, null, "aujourd’hui"] };
+var ST = { m: "maîtrisé", c: "à consolider", e: "en cours", d: "découverte", n: "non commencé" };
+function rendre(mode) {
+  var P = mode === "demo" ? DEMO : VIDE, nb = { m: 0, c: 0, e: 0, d: 0, n: 0 };
+  TH.forEach(function (t) { nb[(P[t[0]] || ["n"])[0]]++; });
+  document.body.classList.toggle("demo", mode === "demo");
+  document.getElementById("bilan").innerHTML = mode === "demo"
+    ? nb.m + " thèmes maîtrisés, " + nb.c + " à consolider, " + nb.e + " en cours. <span class=\"surl\">" + nb.n + " thèmes</span> n’ont pas encore été ouverts."
+    : "Deux thèmes ouverts, aucun encore travaillé à l’entraînement. Le suivi daté commencera à ta prochaine réponse.";
+  var C = mode === "demo"
+    ? [["Thèmes travaillés", 9, "/ 16", "20 réponses au moins"], ["Thèmes maîtrisés", 2, "/ 16", "réussite répétée et récente"], ["Réponses", 1284, "", "dont 212 cette semaine"], ["Réussite récente", "74", " %", "sur les 200 dernières"], ["Jours actifs", 5, "/ 7", "cette semaine"]]
+    : [["Thèmes travaillés", 0, "/ 16", "20 réponses au moins"], ["Thèmes maîtrisés", 0, "/ 16", "réussite répétée et récente"], ["Réponses", 0, "", "le suivi commence à la première"], ["Réussite récente", "—", "", "disponible dès 40 réponses"], ["Jours actifs", 0, "/ 7", "cette semaine"]];
+  document.getElementById("chiffres").innerHTML = C.map(function (c) { return '<div><span>' + c[0] + '</span><b>' + c[1] + (c[2] ? '<small> ' + c[2] + '</small>' : '') + '</b><em>' + c[3] + '</em></div>'; }).join("");
+  document.getElementById("objectif").innerHTML = mode === "demo"
+    ? '<span class="disc">Prochain objectif</span><h3>Consolider Rome : République et Empire</h3><p>Ta réussite y est retombée à 64 % sur les dernières séries, surtout sur les dates et les personnages. Une série ciblée sur ces deux types de cartes devrait suffire.</p><div class="act"><a class="btn plein" href="b3-entrainement.html">Faire une série ciblée</a><a class="btn" href="#">Revoir la fiche</a></div><p class="pourquoi">Indication fondée sur 186 réponses datées.</p>'
+    : '<span class="disc">Prochain objectif</span><h3>Première série d’entraînement sur l’Occident médiéval</h3><p>Tu as lu 2 diapositives sur 39. Vingt réponses suffisent pour que le thème compte comme travaillé.</p><div class="act"><a class="btn plein" href="b3-entrainement.html">Faire une première série</a><a class="btn" href="b3-diapo.html">Ouvrir la fiche</a></div><p class="pourquoi">Indication fondée sur peu de données : elle se précisera avec l’entraînement.</p>';
+  var J = mode === "demo" ? [34, 0, 58, 41, 0, 27, 52] : [0, 0, 0, 0, 0, 0, 0], jours = ["lun.", "mar.", "mer.", "jeu.", "ven.", "sam.", "dim."], mx = Math.max.apply(null, J.concat([1]));
+  var sem = document.getElementById("sem");
+  sem.innerHTML = J.map(function (v, i) { return '<div' + (i === 6 ? ' class="auj"' : '') + '><small>' + (v || "") + '</small><i class="' + (v ? "" : "vide") + '" style="height:' + (v ? Math.max(6, 100 * v / mx * .78) + '%' : '3px') + '"></i>' + jours[i] + '</div>'; }).join("");
+  sem.setAttribute("aria-label", J.reduce(function (a, b) { return a + b; }, 0) + " réponses sur les sept derniers jours");
+  var E = mode === "demo"
+    ? [["Reprendre l’Occident médiéval", "Thème en cours, 26 diapositives sur 39", "b3-diapo.html", "Continuer"], ["Ouvrir la Géopolitique", "Non commencé, souvent tombé à l’oral", "#", "Ouvrir"], ["Revoir les cartes de la France", "À consolider : localisations à 52 %", "b3-entrainement.html", "S’entraîner"]]
+    : [["Ouvrir la Grèce classique", "Non commencé", "#", "Ouvrir"], ["Continuer l’Union européenne", "Découverte, 1 diapositive sur 31", "#", "Continuer"], ["Faire le tour des seize thèmes", "Une diapositive de cadrage par thème", "b3-accueil.html", "Voir les thèmes"]];
+  document.getElementById("ensuite").innerHTML = E.map(function (e) { return '<li><div><b>' + e[0] + '</b><span>' + e[1] + '</span></div><a href="' + e[2] + '">' + e[3] + '</a></li>'; }).join("");
+  document.getElementById("tab").innerHTML = TH.map(function (t) {
+    var p = P[t[0]] || ["n", 0, null, "—"], h = t[0][0] === "h";
+    return '<tr><td class="nom"><a href="' + (t[0] === "h4" ? "b3-diapo.html" : "#") + '"><span class="' + (h ? "dh" : "dg") + '">' + (h ? "H" : "G") + t[0][1] + '</span> ' + t[1] + '</a></td>' +
+      '<td><span class="st ' + p[0] + '">' + ST[p[0]] + '</span></td><td class="num">' + p[1] + ' / ' + t[2] + '</td>' +
+      '<td class="col-cache">' + (p[2] == null ? '<span style="color:var(--texte-3)">—</span>' : '<span class="jauge"><b style="width:' + p[2] + '%"></b></span>' + p[2] + ' %') + '</td><td class="num col-cache">' + p[3] + '</td></tr>';
+  }).join("");
+}
+document.querySelectorAll(".bascule button").forEach(function (b) { b.onclick = function () { document.querySelectorAll(".bascule button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); rendre(b.dataset.v); }; });
+rendre("demo");
+</script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hepsy · Proposition B3 · Accueil</title>
+<script>/* thème choisi appliqué avant l'affichage, sans flash */var t="auto";try{t=localStorage.getItem("hepsy3-theme")||"auto";}catch(e){}if(t==="clair"||t==="sombre")document.documentElement.dataset.theme=t;</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap" rel="stylesheet">
+<style>
+/* Proposition B3 : B avec deux fonds au choix (clair, sombre, ou celui du système), les images des thèmes et le diaporama d'accueil. */
+:root {
+  color-scheme: light;
+  --fond: #FFFFFF; --fond-2: #F3F4F6; --fond-3: #E7E9ED; --trait: #D5D9E0;
+  --texte: #16181D; --texte-2: #474C56; --texte-3: #6A707B;
+  --hist: #8A1C3B; --hist-clair: #F6E8EC; --geo: #0C6170; --geo-clair: #E3F0F1;
+  --surligneur: #FFE45C; --sur-texte: #16181D; --surl-fond: #FFE45C; --surl-texte: #16181D; --or: #FFE45C; --lecture-c: #16181D; --img-filtre: none;
+  --plein: #16181D; --plein-texte: #FFFFFF; --plein-bord: transparent;
+  --ombre: 0 1px 2px rgba(22, 24, 29, .06);
+  --ui: "Instrument Sans", "Segoe UI", system-ui, sans-serif; --lecture: "Literata", Georgia, serif;
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --r: 6px;
+}
+/* Fond sombre : graphite bleuté, pas un noir teinté ; couleurs disciplinaires éclaircies pour garder le contraste */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="clair"]) {
+  color-scheme: dark;
+  --fond: #0C0A09; --fond-2: #181512; --fond-3: #2C261F; --trait: #2C261F;
+  --texte: #F5EFE4; --texte-2: #D8D0C3; --texte-3: #A89E90; --lecture-c: #E9E1D3;
+  --hist: #F0A38A; --hist-clair: #2A1A14; --geo: #A9C98F; --geo-clair: #1A2216; --metier: #E6C79C; --metier-clair: #241D14;
+  --ok: #9CC08A; --ok-clair: #18200F; --ko: #EF8A7D; --ko-clair: #2A1512;
+  --or: #F2B04A; --surl-fond: rgba(242, 176, 74, .24); --surl-texte: #FCE9BD;
+  --plein: #241A0E; --plein-texte: #F6C76B; --plein-bord: rgba(242, 176, 74, .6); --ombre: none; --img-filtre: saturate(.92) brightness(.93);
+  --bulle: #181512; --bulle-texte: #F5EFE4;
+} }
+:root[data-theme="sombre"] {
+  color-scheme: dark;
+  --fond: #0C0A09; --fond-2: #181512; --fond-3: #2C261F; --trait: #2C261F;
+  --texte: #F5EFE4; --texte-2: #D8D0C3; --texte-3: #A89E90; --lecture-c: #E9E1D3;
+  --hist: #F0A38A; --hist-clair: #2A1A14; --geo: #A9C98F; --geo-clair: #1A2216; --metier: #E6C79C; --metier-clair: #241D14;
+  --ok: #9CC08A; --ok-clair: #18200F; --ko: #EF8A7D; --ko-clair: #2A1512;
+  --or: #F2B04A; --surl-fond: rgba(242, 176, 74, .24); --surl-texte: #FCE9BD;
+  --plein: #241A0E; --plein-texte: #F6C76B; --plein-bord: rgba(242, 176, 74, .6); --ombre: none; --img-filtre: saturate(.92) brightness(.93);
+  --bulle: #181512; --bulle-texte: #F5EFE4;
+}
+* { box-sizing: border-box; }
+img { filter: var(--img-filtre); }
+html { background: var(--fond); }
+body { margin: 0; background: var(--fond); color: var(--texte); font-family: var(--ui); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; font-variant-numeric: tabular-nums; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--texte); outline-offset: 2px; border-radius: 2px; }
+h1, h2, h3 { margin: 0; line-height: 1.1; text-wrap: balance; }
+p { margin: 0; }
+.surl { background: linear-gradient(transparent 8%, var(--surl-fond) 8%, var(--surl-fond) 94%, transparent 94%); color: var(--surl-texte); padding: 0 .12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+.app { display: grid; grid-template-columns: 232px minmax(0, 1fr); min-height: 100vh; }
+.rail { position: sticky; top: 0; height: 100vh; border-right: 1px solid var(--trait); padding: var(--s5) var(--s4); display: flex; flex-direction: column; gap: var(--s5); }
+.logo { display: flex; align-items: center; gap: var(--s2); font-weight: 700; font-size: 24px; letter-spacing: -.03em; text-decoration: none; padding: 0 var(--s2); }
+.logo .chat { width: 34px; height: 29px; flex: none; filter: drop-shadow(0 0 .7px rgba(0, 0, 0, .6)) drop-shadow(0 1px 2px rgba(0, 0, 0, .15)); }
+.q { display: flex; align-items: center; gap: var(--s2); width: 100%; min-height: 40px; padding: 0 var(--s3); border: 1px solid var(--trait); border-radius: var(--r); background: var(--fond-2); color: var(--texte-3); font: inherit; font-size: 14px; cursor: pointer; }
+.q kbd { margin-left: auto; font-family: var(--ui); font-size: 12px; border: 1px solid var(--trait); border-radius: 4px; padding: 0 5px; background: var(--fond); }
+.menu { display: flex; flex-direction: column; gap: 2px; }
+.menu a { display: flex; align-items: center; gap: var(--s3); min-height: 44px; padding: 0 var(--s3); border-radius: var(--r); text-decoration: none; font-weight: 500; color: var(--texte-2); }
+.menu a svg { flex: none; width: 20px; height: 20px; }
+.menu a:hover { background: var(--fond-2); color: var(--texte); }
+.menu a[aria-current] { background: var(--plein); color: var(--plein-texte); }
+.rail .bas { margin-top: auto; display: flex; flex-direction: column; gap: var(--s4); font-size: 13px; color: var(--texte-3); padding: 0 var(--s2); }
+.rail .bas b { display: inline-block; font-weight: 600; color: var(--surl-texte); background: var(--surl-fond); padding: 0 4px; margin-bottom: 2px; }
+
+/* Choix du fond : trois boutons, l'état est annoncé aux lecteurs d'écran */
+.fond-choix { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 3px; border-radius: 8px; background: var(--fond-2); border: 1px solid var(--trait); }
+.fond-choix button { display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 44px; justify-content: center; border: 0; border-radius: 6px; background: none; color: var(--texte-3); font: inherit; font-size: 12px; cursor: pointer; }
+.fond-choix button svg { width: 16px; height: 16px; }
+.fond-choix button[aria-pressed="true"] { background: var(--fond); color: var(--texte); box-shadow: 0 0 0 1px var(--trait); font-weight: 600; }
+.fond-l { font-size: 12px; color: var(--texte-3); margin-bottom: 4px; display: block; }
+
+.main { padding: var(--s7) var(--s7) var(--s8); max-width: 1320px; }
+
+/* Haut de page : la reprise et la semaine à gauche, le diaporama des iconographies à droite */
+.haut { display: grid; grid-template-columns: minmax(0, 1fr) clamp(300px, 30vw, 400px); gap: var(--s6); align-items: start; }
+.salut { font-size: 15px; color: var(--texte-3); }
+.haut h1 { font-size: clamp(30px, 3.4vw, 42px); font-weight: 700; letter-spacing: -.03em; margin: var(--s1) 0 var(--s5); max-width: 22ch; }
+.gauche { display: flex; flex-direction: column; gap: var(--s5); }
+.reprise { display: flex; flex-direction: column; gap: var(--s2); border: 1px solid var(--trait); border-radius: 10px; padding: var(--s5); text-decoration: none; box-shadow: var(--ombre); }
+.disc { display: inline-flex; align-items: center; gap: var(--s2); font-size: 13px; font-weight: 600; color: var(--hist); }
+.disc::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: currentColor; }
+.reprise h2 { font-size: 22px; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; }
+.reprise p { color: var(--texte-2); }
+.barre { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; margin-top: var(--s2); }
+.barre i { height: 6px; border-radius: 3px; background: var(--fond-3); position: relative; overflow: hidden; }
+.barre i b { position: absolute; inset: 0 auto 0 0; background: var(--hist); }
+.barre-l { display: flex; justify-content: space-between; font-size: 12px; color: var(--texte-3); }
+.reprise .go { margin-top: var(--s3); align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s5); border-radius: var(--r); background: var(--plein); color: var(--plein-texte); font-weight: 600; }
+.semaine { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.4fr); gap: var(--s4); align-items: end; border: 1px solid var(--trait); border-radius: 10px; padding: var(--s4) var(--s5); }
+.semaine b { display: block; font-size: 26px; font-weight: 700; letter-spacing: -.02em; }
+.semaine span { font-size: 13px; color: var(--texte-3); line-height: 1.3; display: block; }
+.jours { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.jours i { height: 22px; border-radius: 3px; background: var(--fond-3); }
+.jours i.auj { box-shadow: inset 0 0 0 2px var(--texte-3); }
+
+.diapo { position: relative; margin: 0; aspect-ratio: 4 / 5; border-radius: 10px; overflow: hidden; background: var(--fond-3); }
+.diapo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.1s ease; }
+.diapo img.on { opacity: 1; }
+.diapo figcaption { position: absolute; inset: auto 0 0 0; padding: 56px var(--s4) var(--s4); background: linear-gradient(transparent, rgba(10, 11, 14, .82)); color: #fff; display: flex; align-items: flex-end; gap: var(--s3); }
+.diapo figcaption a { flex: 1; min-width: 0; text-decoration: none; }
+.diapo figcaption .k { display: inline-block; font-size: 12px; font-weight: 600; padding: 1px 6px; border-radius: 4px; background: rgba(255, 255, 255, .16); margin-bottom: 4px; }
+.diapo figcaption b { display: block; font-size: 17px; line-height: 1.25; }
+.diapo figcaption small { display: block; font-size: 12px; opacity: .75; margin-top: 2px; }
+.diapo .ctrl { display: flex; gap: 6px; flex: none; }
+.diapo .ctrl button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .35); background: rgba(10, 11, 14, .35); color: #fff; display: grid; place-items: center; cursor: pointer; }
+.diapo .ctrl button:hover { background: rgba(10, 11, 14, .6); }
+
+/* Les seize thèmes, avec leur image */
+.sec { margin-top: var(--s7); }
+.sec-h { display: flex; align-items: baseline; gap: var(--s4); margin-bottom: var(--s4); flex-wrap: wrap; }
+.sec-h h2 { font-size: 24px; font-weight: 700; letter-spacing: -.02em; }
+.sec-h p { color: var(--texte-3); font-size: 14px; }
+.filtres { margin-left: auto; display: flex; gap: var(--s1); background: var(--fond-2); padding: 3px; border-radius: 8px; }
+.filtres button { border: 0; background: none; font: inherit; font-size: 14px; font-weight: 500; color: var(--texte-2); min-height: 36px; padding: 0 var(--s3); border-radius: 6px; cursor: pointer; }
+.filtres button[aria-pressed="true"] { background: var(--fond); color: var(--texte); box-shadow: 0 0 0 1px var(--trait); }
+.disc-h { display: flex; align-items: baseline; gap: var(--s3); margin: var(--s5) 0 var(--s3); font-size: 18px; font-weight: 700; }
+.disc-h span { font-size: 13px; font-weight: 400; color: var(--texte-3); }
+.disc-h.h { color: var(--hist); } .disc-h.g { color: var(--geo); }
+.grille { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s4); }
+.th { display: flex; flex-direction: column; text-decoration: none; border-radius: 10px; border: 1px solid var(--trait); overflow: hidden; background: var(--fond); box-shadow: var(--ombre); }
+.th:hover { border-color: var(--texte-3); }
+.th .img { position: relative; aspect-ratio: 16 / 10; background: var(--fond-3); overflow: hidden; }
+.th .img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+.th:hover .img img { transform: scale(1.03); }
+.th .img .n { position: absolute; left: var(--s3); bottom: var(--s2); font-size: 30px; font-weight: 700; letter-spacing: -.04em; line-height: 1; color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, .55); }
+.th .img .etat { position: absolute; right: var(--s2); top: var(--s2); font-size: 12px; font-weight: 700; }
+.th .c { padding: var(--s3) var(--s4) var(--s4); display: flex; flex-direction: column; gap: var(--s1); flex: 1; }
+.th .t { font-size: 15px; font-weight: 600; line-height: 1.3; }
+.th .p { font-size: 13px; color: var(--texte-3); }
+.th .mini { margin-top: auto; padding-top: var(--s3); display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; }
+.th .mini i { height: 4px; border-radius: 2px; background: var(--fond-3); }
+.th.h .mini i.f { background: var(--hist); } .th.g .mini i.f { background: var(--geo); }
+.th.h { border-top: 3px solid var(--hist); } .th.g { border-top: 3px solid var(--geo); }
+
+.metier { display: flex; align-items: center; gap: var(--s5); margin-top: var(--s6); padding: var(--s5); border-radius: 10px; background: var(--fond-2); text-decoration: none; }
+.metier b { display: block; font-size: 18px; }
+.metier span { color: var(--texte-2); font-size: 14px; }
+.metier .go { margin-left: auto; font-weight: 600; white-space: nowrap; text-decoration: underline; text-underline-offset: 4px; }
+
+.mtete { display: none; }
+.onglets { display: none; }
+
+@media (max-width: 1180px) {
+  .haut { grid-template-columns: minmax(0, 1fr); }
+  .diapo { aspect-ratio: 16 / 9; order: -1; }
+  .grille { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .app { grid-template-columns: minmax(0, 1fr); }
+  .rail { display: none; }
+  .mtete { display: flex; align-items: center; gap: var(--s2); padding: var(--s3) var(--s4); border-bottom: 1px solid var(--trait); }
+  .mtete .q, .mtete .tb { width: 44px; min-height: 44px; padding: 0; justify-content: center; margin-left: auto; }
+  .mtete .tb { margin-left: 0; display: grid; place-items: center; border: 1px solid var(--trait); border-radius: var(--r); background: var(--fond-2); color: var(--texte-2); cursor: pointer; }
+  .mtete .q .lbl, .mtete .q kbd { display: none; }
+  .main { padding: var(--s4) var(--s4) 96px; }
+  .haut { gap: var(--s4); }
+  .semaine { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .semaine .jours { grid-column: 1 / -1; }
+  .grille { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s3); }
+  .th .img .n { font-size: 24px; }
+  .th .t { font-size: 14px; }
+  .filtres { margin-left: 0; }
+  .metier { flex-wrap: wrap; gap: var(--s3); }
+  .metier .go { margin-left: 0; }
+  .onglets { display: grid; grid-template-columns: repeat(4, 1fr); position: fixed; inset: auto 0 0 0; background: var(--fond); border-top: 1px solid var(--trait); padding: 6px 4px calc(6px + env(safe-area-inset-bottom)); z-index: 10; }
+  .onglets a { display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 52px; justify-content: center; font-size: 12px; font-weight: 500; color: var(--texte-3); text-decoration: none; }
+  .onglets a svg { width: 22px; height: 22px; }
+  .onglets a[aria-current] { color: var(--texte); font-weight: 700; }
+  .onglets a[aria-current] svg { background: var(--surl-fond); color: var(--surl-texte); border-radius: 6px; padding: 1px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+/* contour miel des actions principales en sombre */
+.btn.plein, .reprise .go, .fin a, .pager .suiv, .menu a[aria-current], .tiroir-f button.plein { box-shadow: inset 0 0 0 1px var(--plein-bord); }
+
+/* Présentation (remplace « Reprends là où tu t’es arrêté ») et deux états : premier passage, retour */
+.pres h1 { font-size: clamp(44px, 5.4vw, 72px); font-weight: 700; letter-spacing: -.04em; margin: var(--s1) 0 var(--s3); }
+.accroche { font-size: 18px; line-height: 1.55; color: var(--texte-2); max-width: 52ch; }
+.niv-l { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s2); align-items: baseline; margin-top: var(--s4); font-size: 14px; color: var(--texte-3); }
+.niv-l b { font-weight: 600; color: var(--texte); }
+.niv-l b + b::before { content: "→"; color: var(--or); margin-right: var(--s2); font-weight: 400; }
+.etat-retour { display: flex; flex-direction: column; gap: var(--s5); }
+.etat-nouveau { display: none; }
+body.nouveau .etat-retour { display: none; }
+body.nouveau .etat-nouveau { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
+.pas { display: flex; flex-direction: column; gap: var(--s2); padding: var(--s5); border: 1px solid var(--trait); border-radius: 10px; text-decoration: none; box-shadow: var(--ombre); }
+.pas b { font-size: 20px; letter-spacing: -.02em; }
+.pas > span:not(.disc):not(.go) { color: var(--texte-2); font-size: 15px; }
+.pas .go { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s4); border-radius: var(--r); background: var(--plein); color: var(--plein-texte); font-weight: 600; box-shadow: inset 0 0 0 1px var(--plein-bord); }
+.jours-b { display: flex; flex-direction: column; gap: 6px; }
+.semaine .jl { font-size: 12px; }
+.maq-etat { font-size: 13px; color: var(--texte-3); }
+.maq-etat button { font: inherit; border: 0; background: none; color: var(--texte-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; min-height: 44px; padding: 0 var(--s1); }
+.logo { min-height: 44px; }
+.diapo .ctrl button { width: 44px; height: 44px; }
+/* Question du fond à la première visite */
+.fond-q { position: fixed; z-index: 40; left: 50%; bottom: var(--s5); transform: translateX(-50%); width: min(560px, calc(100vw - 32px)); display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3); padding: var(--s4) var(--s5); border-radius: 12px; background: var(--fond-2); border: 1px solid var(--trait); box-shadow: 0 16px 40px rgba(0, 0, 0, .3); }
+.fond-q[hidden] { display: none; }
+.fond-q p { flex: 1 1 100%; font-size: 15px; color: var(--texte-2); }
+.fond-q p b { display: block; font-size: 16px; color: var(--texte); }
+.fond-q button { min-height: 44px; padding: 0 var(--s4); border-radius: var(--r); border: 1px solid var(--trait); background: var(--fond); color: var(--texte); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+.fond-q button.sombre { background: #0C0A09; color: #F6C76B; border-color: rgba(242, 176, 74, .6); }
+.fond-q button.clair { background: #FFFFFF; color: #16181D; border-color: #D5D9E0; }
+/* Tablette : menu latéral réduit à ses icônes */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .app { grid-template-columns: 76px minmax(0, 1fr); }
+  .rail { padding: var(--s4) var(--s2); align-items: center; }
+  .rail .logo { font-size: 0; padding: 0; justify-content: center; }
+  .rail .q { width: 44px; min-height: 44px; padding: 0; justify-content: center; }
+  .rail .q .lbl, .rail .q kbd, .rail .bas p, .fond-l { display: none; }
+  .menu a { font-size: 0; justify-content: center; padding: 0; width: 52px; }
+  .menu a svg { width: 22px; height: 22px; }
+  .fond-choix { grid-template-columns: 1fr; }
+  .fond-choix button { font-size: 0; }
+  .fond-choix button svg { width: 18px; height: 18px; }
+}
+@media (max-width: 760px) {
+  .haut .diapo { order: 0; }   /* le titre et la reprise d’abord, le diaporama ensuite */
+  body.nouveau .etat-nouveau { grid-template-columns: minmax(0, 1fr); }
+  .pres h1 { font-size: 44px; }
+  .accroche { font-size: 16px; }
+}
+
+/* lien vers le questionnaire (version publiée pour les collègues) */
+.retour-avis { position: fixed; z-index: 30; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 99px; background: var(--plein); color: var(--plein-texte); font: 600 14px var(--ui); text-decoration: none; box-shadow: inset 0 0 0 1px var(--plein-bord, transparent), 0 8px 24px rgba(0,0,0,.25); }
+@media (max-width: 760px) { .retour-avis { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); } }
+</style>
+<link rel="stylesheet" href="b3-intro.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-themes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-metier" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-5 9 5M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20.5h18"/></symbol>
+  <symbol id="i-train" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="13" height="15" rx="2"/><path d="M8 3h11a2 2 0 0 1 2 2v13M8 10l2 2 4-4"/></symbol>
+  <symbol id="i-suivi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M10 20V4M16 20v-7M21 20H3"/></symbol>
+  <symbol id="i-auto" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.5" y="2.5" width="13" height="9" rx="1.5"/><path d="M5 14h6"/></symbol>
+  <symbol id="i-clair" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.6M8 13.4V15M1 8h1.6M13.4 8H15M3 3l1.1 1.1M11.9 11.9 13 13M3 13l1.1-1.1M11.9 4.1 13 3"/></symbol>
+  <symbol id="i-sombre" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5a5.8 5.8 0 1 0 7.1 7.1z"/></symbol>
+</svg>
+<div class="app">
+  <aside class="rail">
+    <a class="logo" href="#"><svg class="chat" viewBox="30 18 200 170" aria-hidden="true"><path d="M52 92 L46 30 L108 62 Z" fill="#2B2A30" stroke="#2B2A30" stroke-width="12" stroke-linejoin="round"/><path d="M208 92 L214 30 L152 62 Z" fill="#E8913A" stroke="#E8913A" stroke-width="12" stroke-linejoin="round"/><ellipse cx="130" cy="122" rx="94" ry="62" fill="#FBF8F2"/><ellipse cx="66" cy="104" rx="34" ry="34" fill="#2B2A30"/><path d="M168 66 C220 62 232 124 196 150 C170 140 160 100 168 66Z" fill="#E8913A"/><ellipse cx="96" cy="126" rx="12" ry="15" fill="#1B1A1F"/><ellipse cx="164" cy="126" rx="12" ry="15" fill="#1B1A1F"/><circle cx="100" cy="120" r="5" fill="#fff"/><circle cx="168" cy="120" r="5" fill="#fff"/><path d="M114 148 Q130 168 146 148 Z" fill="#D9566A"/></svg>Hepsy</a>
+    <button class="q" type="button" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg><span class="lbl">Rechercher</span><kbd>/</kbd></button>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="#" aria-current="page"><svg><use href="#i-themes"/></svg>Thèmes</a>
+      <a href="b3-metier.html"><svg><use href="#i-metier"/></svg>Le métier</a>
+      <a href="b3-entrainement.html"><svg><use href="#i-train"/></svg>S’entraîner</a>
+      <a href="b3-suivi.html"><svg><use href="#i-suivi"/></svg>Mon suivi</a>
+    </nav>
+    <div class="bas">
+      <div><span class="fond-l" id="fond-l">Fond</span>
+        <div class="fond-choix" role="group" aria-labelledby="fond-l">
+          <button type="button" data-t="auto"><svg><use href="#i-auto"/></svg>Système</button>
+          <button type="button" data-t="clair"><svg><use href="#i-clair"/></svg>Clair</button>
+          <button type="button" data-t="sombre"><svg><use href="#i-sombre"/></svg>Sombre</button>
+        </div>
+      </div>
+      <p><b>Version alpha</b><br>Le contenu évolue. Ta progression reste sur cet appareil, sans compte.</p>
+    </div>
+  </aside>
+
+  <div>
+    <header class="mtete">
+      <a class="logo" href="#"><svg class="chat" viewBox="30 18 200 170" aria-hidden="true"><path d="M52 92 L46 30 L108 62 Z" fill="#2B2A30" stroke="#2B2A30" stroke-width="12" stroke-linejoin="round"/><path d="M208 92 L214 30 L152 62 Z" fill="#E8913A" stroke="#E8913A" stroke-width="12" stroke-linejoin="round"/><ellipse cx="130" cy="122" rx="94" ry="62" fill="#FBF8F2"/><ellipse cx="66" cy="104" rx="34" ry="34" fill="#2B2A30"/><path d="M168 66 C220 62 232 124 196 150 C170 140 160 100 168 66Z" fill="#E8913A"/><ellipse cx="96" cy="126" rx="12" ry="15" fill="#1B1A1F"/><ellipse cx="164" cy="126" rx="12" ry="15" fill="#1B1A1F"/><circle cx="100" cy="120" r="5" fill="#fff"/><circle cx="168" cy="120" r="5" fill="#fff"/><path d="M114 148 Q130 168 146 148 Z" fill="#D9566A"/></svg>Hepsy</a>
+      <button class="q" type="button" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg></button>
+      <button class="tb" type="button" id="tb-m" aria-label="Changer de fond"><svg width="18" height="18"><use href="#i-sombre"/></svg></button>
+    </header>
+
+    <main class="main">
+      <div class="haut">
+        <div class="gauche">
+          <div class="pres">
+            <p class="salut">CAPES externe d’histoire-géographie, session 2027</p>
+            <h1>Hepsy</h1>
+            <p class="accroche">Les seize thèmes du programme dans un seul endroit. Ouvre un thème, descends d’un niveau à chaque diapositive, et clique n’importe quelle notion pour sa définition.</p>
+            <p class="niv-l"><span>Chaque thème suit cinq niveaux :</span> <b>Cadrage</b> <b>Notions</b> <b>Repères et exemples</b> <b>Débats et références</b> <b>S’entraîner</b></p>
+          </div>
+          <div class="etat-retour">
+            <a class="reprise" href="b3-diapo.html">
+              <span class="disc">Reprendre : Histoire 4</span>
+              <h2>Société, Église et pouvoir politique dans l’Occident médiéval</h2>
+              <p>Prochaine diapositive : <span class="surl">Réforme de l’Église et monarchie pontificale</span></p>
+              <div class="barre" aria-hidden="true"><i><b style="width:100%"></b></i><i><b style="width:30%"></b></i><i></i><i></i><i></i></div>
+              <div class="barre-l"><span>Cadrage</span><span>Notions</span><span>Repères</span><span>Débats</span><span>S’entraîner</span></div>
+              <span class="go">Continuer</span>
+            </a>
+            <section class="semaine" aria-label="Ta semaine">
+              <div><b>2</b><span>thèmes ouverts sur 16</span></div>
+              <div><b>0</b><span>réponse enregistrée</span></div>
+              <div><b>0</b><span>thème maîtrisé</span></div>
+              <div class="jours-b"><div class="jours" role="img" aria-label="Aucune activité sur les sept derniers jours"><i></i><i></i><i></i><i></i><i></i><i></i><i class="auj"></i></div><span class="jl">7 derniers jours, aujourd’hui encadré</span></div>
+            </section>
+          </div>
+          <div class="etat-nouveau">
+            <a class="pas" href="#t-th"><span class="disc">Commencer</span><b>Découvrir un thème</b><span>Choisis l’un des seize thèmes et lis son cadrage : cinq diapositives pour comprendre le sujet et ce qu’attend le jury.</span><span class="go">Voir les thèmes</span></a>
+            <a class="pas" href="b3-entrainement.html"><span class="disc g">Tester</span><b>Faire une série d’essai</b><span>Huit flashcards pour voir comment fonctionne l’entraînement. Ta progression reste sur cet appareil, sans compte.</span><span class="go">Lancer une série</span></a>
+          </div>
+          <p class="maq-etat">Maquette : <button type="button" id="maq-etat">Voir l’accueil d’un premier passage</button> <button type="button" id="maq-intro">Rejouer l’introduction</button></p>
+        </div>
+        <figure class="diapo" id="diapo" aria-roledescription="diaporama" aria-label="Iconographies des seize thèmes">
+          <figcaption>
+            <a href="#" id="dp-lien"><span class="k" id="dp-k"></span><b id="dp-t"></b><small id="dp-c"></small></a>
+            <span class="ctrl">
+              <button type="button" id="dp-pause" aria-label="Mettre le diaporama en pause"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="3" height="10"/><rect x="8" y="2" width="3" height="10"/></svg></button>
+              <button type="button" id="dp-suiv" aria-label="Image suivante"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 2l5 5-5 5"/></svg></button>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <section class="sec" aria-labelledby="t-th">
+        <div class="sec-h">
+          <h2 id="t-th">Les seize thèmes</h2><p>Cinq niveaux par thème, du cadrage à la composition</p>
+          <div class="filtres" role="group" aria-label="Filtrer"><button aria-pressed="true">Tous</button><button aria-pressed="false">En cours</button><button aria-pressed="false">Non commencés</button></div>
+        </div>
+        <h3 class="disc-h h">Histoire <span>8 thèmes</span></h3>
+        <div class="grille" id="g-h"></div>
+        <h3 class="disc-h g">Géographie <span>8 thèmes</span></h3>
+        <div class="grille" id="g-g"></div>
+        <a class="metier" href="b3-metier.html"><span><b>Le métier de professeur</b><span>Agir en fonctionnaire de l’État : 8 chapitres, 34 études de cas, exercices pour l’entretien</span></span><span class="go">Ouvrir la partie</span></a>
+      </section>
+    </main>
+    <div class="fond-q" id="fond-q" role="dialog" aria-labelledby="fond-q-t" hidden><p><b id="fond-q-t">Fond sombre ou fond clair ?</b>Tu pourras changer à tout moment, en bas du menu.</p><button type="button" class="sombre" data-t="sombre">Sombre</button><button type="button" class="clair" data-t="clair">Clair</button><button type="button" data-t="auto">Comme mon appareil</button></div>
+  </div>
+</div>
+<nav class="onglets" aria-label="Navigation principale">
+  <a href="#" aria-current="page"><svg><use href="#i-themes"/></svg>Thèmes</a>
+  <a href="b3-metier.html"><svg><use href="#i-metier"/></svg>Le métier</a>
+  <a href="b3-entrainement.html"><svg><use href="#i-train"/></svg>S’entraîner</a>
+  <a href="b3-suivi.html"><svg><use href="#i-suivi"/></svg>Mon suivi</a>
+</nav>
+<script>
+var T = [
+  ["h", 1, "La Grèce classique", "499–323 av. J.-C.", "h1.jpg", "Temple de Ségeste (v. 420 av. J.-C.)"],
+  ["h", 2, "Rome : République et Empire", "509 av. J.-C. – 476 apr. J.-C.", "h2.jpg", "Auguste de Prima Porta"],
+  ["h", 3, "Contacts et conflits en Méditerranée", "VI<sup>e</sup>–XIII<sup>e</sup> siècles", "h3.jpg", "Cantigas, Alphonse X (v. 1280)"],
+  ["h", 4, "Société, Église et pouvoir politique dans l’Occident médiéval", "XI<sup>e</sup>–XV<sup>e</sup> siècles", "h4.jpg", "Cathédrale de Chartres", 1],
+  ["h", 5, "Première mondialisation, Renaissance, humanisme et réformes", "XV<sup>e</sup>–XVII<sup>e</sup> siècles", "h5.jpg", "Michel-Ange, Création d’Adam (1511)"],
+  ["h", 6, "L’Europe du XVIII<sup>e</sup> siècle, Révolution française et Empire", "1715–1815", "h6.jpg", "Salon de Mme Geoffrin, Lemonnier (1812)"],
+  ["h", 7, "Le XIX<sup>e</sup> siècle français", "1815–1914", "h7.jpg", "Le Laminoir, A. Menzel (1875)"],
+  ["h", 8, "Le XX<sup>e</sup> siècle", "1914–2012", "h8.jpg", "J. Rosenthal, Iwo Jima (1945)"],
+  ["g", 1, "Géographie de la population", "Démographie, distribution spatiale", "g1.webp", "Syced, CC0"],
+  ["g", 2, "Géographie de la mondialisation", "Acteurs, territoires, flux", "g2.webp", "P. Milošević, CC BY-SA 4.0"],
+  ["g", 3, "Géographie de l’environnement", "Milieux, ressources, risques", "g3.webp", "Y. Sallaz-Damaz, CC BY-SA 3.0"],
+  ["g", 4, "Géographie de la France", "Territoires, aménagement", "g4.webp", "Amaustan, CC BY-SA 4.0"],
+  ["g", 5, "Géographie de l’Union européenne", "Intégration, marges, interfaces", "g5.webp", "Nick-D, CC BY-SA 4.0", 1],
+  ["g", 6, "Géopolitique", "Frontières, conflits", "g6.webp", "U.S. CBP, domaine public"],
+  ["g", 7, "Géographie urbaine", "Populations, dynamiques, activités", "g7.webp", "Simdaperce, CC BY-SA 3.0"],
+  ["g", 8, "Géographie rurale", "Populations, dynamiques, activités", "g8.webp", "Pymouss, CC BY-SA 4.0"]
+];
+var nom = { h: "Histoire", g: "Géographie" };
+["h", "g"].forEach(function (d) {
+  document.getElementById("g-" + d).innerHTML = T.filter(function (x) { return x[0] === d; }).map(function (x) {
+    return '<a class="th ' + d + '" href="' + (x[0] === "h" && x[1] === 4 ? "b3-diapo.html" : x[0] === "g" && x[1] === 5 ? "b3-geo.html" : "#") + '"><span class="img"><img src="img/' + x[4] + '" alt="" loading="lazy"><span class="n">' + x[1] + '</span>' + (x[6] ? '<span class="etat surl">en cours</span>' : '') + '</span>' +
+      '<span class="c"><span class="t">' + x[2] + '</span><span class="p">' + x[3] + '</span><span class="mini" aria-hidden="true"><i' + (x[6] ? ' class="f"' : '') + '></i><i></i><i></i><i></i><i></i></span></span></a>';
+  }).join("");
+});
+
+/* Diaporama : les 87 iconographies de l'accueil du site (content/galerie.json), dans un ordre tiré au hasard ;
+   fondu enchaîné, pause au survol et sur demande, arrêt complet si le mouvement réduit est demandé */
+var G = [{"q": "h1", "src": "galerie/h1-parthenon.webp", "titre": "Le Parthénon, sur l’Acropole d’Athènes", "auteur": "Ictinos et Callicratès, architectes", "date": "447-432 av. J.-C.", "credit": "Photo Gary Todd", "licence": "CC0", "alt": "Le Parthénon en restauration : colonnade dorique de marbre, échafaudages, visiteurs au premier plan.", "pos": "50% 50%"}, {"q": "h1", "src": "galerie/h1-hegeso.webp", "titre": "Stèle funéraire d’Hégéso", "auteur": "Atelier attique", "date": "vers 410-400 av. J.-C.", "credit": "Photo George E. Koronaios", "licence": "CC BY-SA 4.0", "alt": "Relief de marbre : une Athénienne assise choisit un bijou dans le coffret que lui tend une servante debout.", "pos": "50% 40%"}, {"q": "h1", "src": "galerie/h1-ostracon.webp", "titre": "Ostracon au nom de Thémistocle, fils de Néoclès", "auteur": "", "date": "années 480-470 av. J.-C.", "credit": "Photo Marsyas", "licence": "CC BY 4.0", "alt": "Pied de vase à vernis noir, gravé du nom de Thémistocle et de celui de son père : un bulletin de vote d’ostracisme.", "pos": "50% 50%"}, {"q": "h1", "src": "galerie/h1-olympias.webp", "titre": "L’Olympias, reconstitution d’une trière athénienne", "auteur": "Marine hellénique", "date": "lancée en 1987", "credit": "Photo George E. Koronaios", "licence": "CC BY-SA 4.0", "alt": "La trière reconstituée à quai : longue coque de bois, éperon à la proue, pavillon grec à la poupe.", "pos": "50% 55%"}, {"q": "h1", "src": "galerie/h1-hoplites.webp", "titre": "Duel d’hoplites, lécythe attique à figures rouges", "auteur": "Atelier attique", "date": "vers 400-375 av. J.-C.", "credit": "Photo ArchaiOptix", "licence": "CC BY-SA 4.0", "alt": "Petit vase à figures rouges : deux hoplites casqués s’affrontent, bouclier rond et lance en main.", "pos": "50% 50%"}, {"q": "h2", "src": "galerie/h2-auguste.webp", "titre": "Auguste de Prima Porta", "auteur": "", "date": "Ier siècle apr. J.-C.", "credit": "Photo Till Niermann", "licence": "Domaine public", "alt": "Statue de marbre d’Auguste en cuirasse, le bras droit levé, un Amour chevauchant un dauphin à ses pieds.", "pos": "50% 25%"}, {"q": "h2", "src": "galerie/h2-ara-pacis.webp", "titre": "L’Ara Pacis Augustae, autel de la Paix d’Auguste", "auteur": "", "date": "dédié en 9 av. J.-C.", "credit": "Photo Rabax63", "licence": "CC BY-SA 4.0", "alt": "Enclos de marbre sculpté de rinceaux et de reliefs, précédé d’un escalier, dans son musée vitré.", "pos": "50% 50%"}, {"q": "h2", "src": "galerie/h2-pont-du-gard.webp", "titre": "Le pont du Gard, aqueduc de Nîmes", "auteur": "", "date": "Ier siècle apr. J.-C.", "credit": "Photo Benh Lieu Song", "licence": "CC BY-SA 3.0", "alt": "Trois rangs d’arches de pierre franchissent le Gardon entre deux versants boisés.", "pos": "50% 50%"}, {"q": "h2", "src": "galerie/h2-livie.webp", "titre": "Livie, épouse d’Auguste", "auteur": "", "date": "vers 31 av. J.-C.", "credit": "Photo Marie-Lan Nguyen", "licence": "Domaine public", "alt": "Buste de pierre sombre : visage lisse de Livie, cheveux ramenés en nœud au-dessus du front.", "pos": "50% 25%"}, {"q": "h2", "src": "galerie/h2-mort-cesar.webp", "titre": "La Mort de César", "auteur": "Jean-Léon Gérôme", "date": "1859-1867", "credit": "Walters Art Museum", "licence": "Domaine public", "alt": "Dans la curie désertée, le corps de César gît au pied de la statue de Pompée ; au fond, les conjurés s’éloignent, glaives levés.", "pos": "30% 50%"}, {"q": "h2", "src": "galerie/h2-tetrarques.webp", "titre": "Les Tétrarques", "auteur": "", "date": "vers 300", "credit": "Photo Didier Descouens", "licence": "CC BY-SA 4.0", "alt": "Groupe de porphyre rouge : quatre empereurs en armes s’étreignent deux à deux, la main sur l’épée.", "pos": "50% 35%"}, {"q": "h3", "src": "galerie/h3-justinien.webp", "titre": "L’empereur Justinien (détail)", "auteur": "", "date": "vers 547", "credit": "Photo Petar Milošević", "licence": "CC BY-SA 4.0", "alt": "Mosaïque à fond d’or : le visage de Justinien, nimbé, coiffé d’une couronne de perles et de pierreries.", "pos": "50% 30%"}, {"q": "h3", "src": "galerie/h3-theodora.webp", "titre": "L’impératrice Théodora et sa suite", "auteur": "", "date": "vers 547", "credit": "Photo Petar Milošević", "licence": "CC BY-SA 4.0", "alt": "Mosaïque : Théodora, couronnée et nimbée, porte un calice ; des dignitaires et des dames de cour l’entourent.", "pos": "45% 50%"}, {"q": "h3", "src": "galerie/h3-sainte-sophie.webp", "titre": "Sainte-Sophie de Constantinople", "auteur": "Anthémios de Tralles et Isidore de Milet", "date": "532-537", "credit": "Photo Arild Vågen", "licence": "CC BY-SA 3.0", "alt": "La basilique à grande coupole, flanquée de quatre minarets ottomans, vue depuis les jardins.", "pos": "50% 50%"}, {"q": "h3", "src": "galerie/h3-dome-rocher.webp", "titre": "Le Dôme du Rocher", "auteur": "", "date": "691-692", "credit": "Photo Andrew Shiva", "licence": "CC BY-SA 4.0", "alt": "Édifice octogonal couvert de faïences bleues et coiffé d’une coupole dorée.", "pos": "50% 50%"}, {"q": "h3", "src": "galerie/h3-cordoue.webp", "titre": "Salle de prière de la Grande Mosquée de Cordoue", "auteur": "", "date": "à partir de 785-786", "credit": "Photo James Gordon", "licence": "CC BY 2.0", "alt": "Forêt de colonnes portant des arcs superposés aux claveaux alternés, rouges et blancs.", "pos": "50% 50%"}, {"q": "h3", "src": "galerie/h3-feu-gregeois.webp", "titre": "Le feu grégeois, Chronique de Jean Skylitzès", "auteur": "", "date": "manuscrit du XIIe siècle", "credit": "Biblioteca Nacional de España", "licence": "Domaine public", "alt": "Miniature : un navire byzantin projette par un tube un jet de flammes sur un bateau ennemi.", "pos": "50% 50%"}, {"q": "h4", "src": "galerie/h4-saint-louis.webp", "titre": "Saint Louis, statue de Mainneville", "auteur": "", "date": "début du XIVe siècle", "credit": "Photo Cédric Amey", "licence": "CC BY-SA 4.0", "alt": "Statue de pierre polychrome, vue de près : visage jeune du roi, couronné, les cheveux bouclés.", "pos": "50% 20%"}, {"q": "h4", "src": "galerie/h4-antioche.webp", "titre": "Le siège d’Antioche, Les Passages d’outremer de Sébastien Mamerot", "auteur": "Jean Colombe, enlumineur", "date": "vers 1474-1475", "credit": "Bibliothèque nationale de France", "licence": "Domaine public", "alt": "Pleine page enluminée : les croisés en armure assiègent une ville aux hautes murailles.", "pos": "50% 35%"}, {"q": "h4", "src": "galerie/h4-magna-carta.webp", "titre": "Magna Carta, l’un des quatre exemplaires de 1215", "auteur": "", "date": "1215", "credit": "British Library", "licence": "Domaine public", "alt": "Feuille de parchemin couverte d’une écriture latine serrée, sans décor.", "pos": "50% 50%"}, {"q": "h4", "src": "galerie/h4-kings-bench.webp", "titre": "La cour du Banc du roi (Court of King’s Bench)", "auteur": "", "date": "vers 1460", "credit": "Inner Temple Library", "licence": "Domaine public", "alt": "Miniature : cinq juges en robe rouge siègent ; en bas, des prisonniers enchaînés attendent à la barre.", "pos": "50% 35%"}, {"q": "h4", "src": "galerie/h4-christine.webp", "titre": "Christine de Pizan offre son livre à Isabeau de Bavière", "auteur": "Maître de la Cité des dames", "date": "vers 1410-1414", "credit": "British Library", "licence": "Domaine public", "alt": "Miniature : dans une chambre tendue de fleurs de lis, Christine, agenouillée, présente un livre à la reine entourée de ses dames.", "pos": "50% 40%"}, {"q": "h4", "src": "galerie/h4-jeanne.webp", "titre": "Jeanne d’Arc, dessin en marge du registre du Parlement de Paris", "auteur": "Clément de Fauquembergue, greffier", "date": "10 mai 1429", "credit": "Archives nationales", "licence": "Domaine public", "alt": "Croquis à la plume en marge d’un registre : une femme de profil, en robe, tient une bannière et une épée.", "pos": "22% 30%"}, {"q": "h5", "src": "galerie/h5-magellan.webp", "titre": "Fernand de Magellan", "auteur": "Anonyme", "date": "XVIe ou XVIIe siècle", "credit": "The Mariners’ Museum", "licence": "Domaine public", "alt": "Portrait en buste d’un homme barbu, coiffé d’un chapeau noir, sous une inscription latine.", "pos": "50% 30%"}, {"q": "h5", "src": "galerie/h5-luther.webp", "titre": "Martin Luther", "auteur": "Atelier de Lucas Cranach l’Ancien", "date": "1529", "credit": "Hessisches Landesmuseum Darmstadt", "licence": "Domaine public", "alt": "Portrait en buste de Luther, de trois quarts, en habit et bonnet noirs sur fond bleu-vert.", "pos": "50% 30%"}, {"q": "h5", "src": "galerie/h5-theses.webp", "titre": "Les 95 thèses (Disputatio pro declaratione virtutis indulgentiarum)", "auteur": "Martin Luther", "date": "placard imprimé en 1517", "credit": "Staatsbibliothek zu Berlin", "licence": "Domaine public", "alt": "Placard imprimé : un texte latin en deux colonnes, composé en caractères gothiques.", "pos": "50% 20%"}, {"q": "h5", "src": "galerie/h5-elisabeth.webp", "titre": "Élisabeth Ire, portrait dit de l’Armada", "auteur": "Anonyme anglais", "date": "vers 1588", "credit": "Wikimedia Commons", "licence": "Domaine public", "alt": "La reine en robe couverte de perles, la main sur un globe ; derrière elle, deux vues de la flotte espagnole.", "pos": "50% 40%"}, {"q": "h5", "src": "galerie/h5-marguerite.webp", "titre": "Marguerite d’Angoulême, reine de Navarre", "auteur": "Attribué à Jean Clouet", "date": "vers 1527", "credit": "Walker Art Gallery", "licence": "Domaine public", "alt": "Portrait à mi-corps d’une femme en robe sombre et coiffe noire, un perroquet vert posé sur la main.", "pos": "50% 30%"}, {"q": "h5", "src": "galerie/h5-saint-barthelemy.webp", "titre": "Le Massacre de la Saint-Barthélemy", "auteur": "François Dubois", "date": "vers 1572-1584", "credit": "Musée cantonal des Beaux-Arts de Lausanne", "licence": "Domaine public", "alt": "Vue de Paris couverte de scènes de tuerie : corps jetés par les fenêtres, traînés dans les rues et dans la Seine.", "pos": "50% 50%"}, {"q": "h6", "src": "galerie/h6-geoffrin.webp", "titre": "Lecture de la tragédie L’Orphelin de la Chine dans le salon de madame Geoffrin", "auteur": "Anicet Charles Gabriel Lemonnier", "date": "1812", "credit": "Web Gallery of Art", "licence": "Domaine public", "alt": "Une cinquantaine d’invités en habit écoutent une lecture sous un buste de Voltaire, dans un salon tendu de tableaux.", "pos": "50% 50%"}, {"q": "h6", "src": "galerie/h6-du-chatelet.webp", "titre": "Émilie du Châtelet", "auteur": "Marianne Loir", "date": "vers 1748", "credit": "Musée des Beaux-Arts de Bordeaux", "licence": "Domaine public", "alt": "Portrait à mi-corps : la marquise, en robe de velours bleu, tient un compas ; derrière elle, une sphère armillaire.", "pos": "50% 30%"}, {"q": "h6", "src": "galerie/h6-jeu-de-paume.webp", "titre": "Le Serment du Jeu de paume, 20 juin 1789", "auteur": "Jacques-Louis David", "date": "1791", "credit": "Château de Versailles", "licence": "Domaine public", "alt": "Dessin : Bailly, debout sur une table, lit le serment ; les députés tendent le bras vers lui dans une salle haute.", "pos": "50% 50%"}, {"q": "h6", "src": "galerie/h6-de-gouges.webp", "titre": "Portrait présumé d’Olympe de Gouges (identification discutée)", "auteur": "Attribué à Alexandre Kucharski", "date": "fin du XVIIIe siècle", "credit": "Wikimedia Commons", "licence": "Domaine public", "alt": "Pastel : une femme en buste, cheveux poudrés noués d’un ruban, regarde le spectateur.", "pos": "50% 30%"}, {"q": "h6", "src": "galerie/h6-toussaint.webp", "titre": "Toussaint Louverture, chef des Noirs insurgés de Saint-Domingue", "auteur": "Gravure anonyme, Paris, chez Jean", "date": "vers 1800", "credit": "John Carter Brown Library", "licence": "Domaine public", "alt": "Gravure coloriée : Toussaint Louverture à cheval, en uniforme de général, sabre levé.", "pos": "50% 35%"}, {"q": "h6", "src": "galerie/h6-declaration.webp", "titre": "Déclaration des droits de l’homme et du citoyen", "auteur": "Jean-Jacques-François Le Barbier", "date": "vers 1789", "credit": "Paris Musées, musée Carnavalet", "licence": "Domaine public", "alt": "Les dix-sept articles inscrits sur deux tables, surmontées de la France brisant ses chaînes et d’un génie ailé.", "pos": "50% 30%"}, {"q": "h7", "src": "galerie/h7-liberte.webp", "titre": "La Liberté guidant le peuple (28 juillet 1830)", "auteur": "Eugène Delacroix", "date": "1830", "credit": "Musée du Louvre", "licence": "Domaine public", "alt": "Une femme au bonnet phrygien brandit le drapeau tricolore sur une barricade, suivie d’insurgés en armes.", "pos": "50% 40%"}, {"q": "h7", "src": "galerie/h7-abolition.webp", "titre": "L’Abolition de l’esclavage dans les colonies françaises en 1848", "auteur": "François-Auguste Biard", "date": "1849", "credit": "Château de Versailles", "licence": "Domaine public", "alt": "Un commissaire de la République annonce l’abolition ; des esclaves libérés lèvent leurs chaînes brisées sous le drapeau tricolore.", "pos": "45% 50%"}, {"q": "h7", "src": "galerie/h7-sand.webp", "titre": "George Sand", "auteur": "Nadar", "date": "mars 1864", "credit": "Photographie de Nadar", "licence": "Domaine public", "alt": "Photographie : George Sand assise, enveloppée d’une ample pèlerine rayée, les cheveux en bandeaux.", "pos": "50% 25%"}, {"q": "h7", "src": "galerie/h7-louise-michel.webp", "titre": "Louise Michel", "auteur": "Ernest Appert", "date": "1871", "credit": "Paris Musées, musée Carnavalet", "licence": "CC0", "alt": "Photographie au format carte de visite : Louise Michel assise, les bras croisés.", "pos": "50% 25%"}, {"q": "h7", "src": "galerie/h7-creusot.webp", "titre": "La Grève au Creusot", "auteur": "Jules Adler", "date": "1899", "credit": "Musée des Beaux-Arts de Pau", "licence": "Domaine public", "alt": "Un cortège d’ouvriers et d’ouvrières avance derrière des drapeaux, devant les usines.", "pos": "50% 45%"}, {"q": "h7", "src": "galerie/h7-jaccuse.webp", "titre": "« J’accuse… ! », une de L’Aurore", "auteur": "Émile Zola", "date": "13 janvier 1898", "credit": "Bibliothèque nationale de France, Gallica", "licence": "Domaine public", "alt": "Une du journal L’Aurore : le titre « J’accuse… ! » en capitales au-dessus de six colonnes de texte.", "pos": "50% 12%"}, {"q": "h8", "src": "galerie/h8-tirailleurs.webp", "titre": "Camp des tirailleurs sénégalais à Fréjus", "auteur": "Agence Rol", "date": "9 décembre 1915", "credit": "Bibliothèque nationale de France, Gallica", "licence": "Domaine public", "alt": "Photographie : des tirailleurs en capote et chéchia autour des marmites, dans un camp de baraquements.", "pos": "50% 50%"}, {"q": "h8", "src": "galerie/h8-de-gaulle.webp", "titre": "Le général de Gaulle", "auteur": "Office of War Information", "date": "vers 1942", "credit": "Library of Congress", "licence": "Domaine public", "alt": "Portrait photographique du général de Gaulle en uniforme et képi, les bras croisés.", "pos": "50% 25%"}, {"q": "h8", "src": "galerie/h8-yalta.webp", "titre": "Churchill, Roosevelt et Staline à la conférence de Yalta", "auteur": "U.S. Army Signal Corps", "date": "février 1945", "credit": "U.S. Army Signal Corps", "licence": "Domaine public", "alt": "Les trois dirigeants assis côte à côte dans une cour, leurs conseillers debout derrière eux.", "pos": "50% 45%"}, {"q": "h8", "src": "galerie/h8-rosa-parks.webp", "titre": "Rosa Parks, relevé d’empreintes pendant le boycott des bus de Montgomery", "auteur": "Gene Herrick, Associated Press", "date": "22 février 1956", "credit": "Associated Press", "licence": "Domaine public", "alt": "Photographie : un policier relève les empreintes digitales de Rosa Parks, en tailleur et lunettes.", "pos": "50% 40%"}, {"q": "h8", "src": "galerie/h8-mur-berlin.webp", "titre": "La chute du mur de Berlin, devant la porte de Brandebourg", "auteur": "Photographe inconnu", "date": "1989", "credit": "Reproduction Lear 21", "licence": "CC BY-SA 3.0", "alt": "Une foule debout sur le mur de Berlin, devant les colonnes de la porte de Brandebourg.", "pos": "50% 50%"}, {"q": "h8", "src": "galerie/h8-oslo.webp", "titre": "Poignée de main entre Yitzhak Rabin et Yasser Arafat, devant Bill Clinton", "auteur": "Vince Musi, Maison-Blanche", "date": "13 septembre 1993", "credit": "The White House", "licence": "Domaine public", "alt": "Rabin et Arafat se serrent la main ; entre eux, Clinton ouvre les bras.", "pos": "50% 40%"}, {"q": "g1", "src": "galerie/g1-terre-nuit.webp", "titre": "La Terre la nuit (Black Marble)", "auteur": "NASA Earth Observatory", "date": "2012", "credit": "NASA Goddard Space Flight Center", "licence": "Domaine public", "alt": "Le globe vu de nuit : les lumières des villes dessinent les foyers de peuplement.", "pos": "50% 50%"}, {"q": "g1", "src": "galerie/g1-shibuya.webp", "titre": "Le carrefour de Shibuya", "auteur": "Benh Lieu Song", "date": "9 octobre 2018", "credit": "Photo Benh Lieu Song", "licence": "CC BY-SA 2.0", "alt": "Des centaines de piétons traversent en tous sens un carrefour bordé d’écrans publicitaires.", "pos": "50% 60%"}, {"q": "g1", "src": "galerie/g1-dharavi.webp", "titre": "Le bidonville de Dharavi", "auteur": "Mark Hillary", "date": "août 2009", "credit": "Photo Mark Hillary", "licence": "CC BY 2.0", "alt": "Vue plongeante sur une rue de Dharavi : étals, piétons et toits de fortune de part et d’autre de la chaussée.", "pos": "50% 50%"}, {"q": "g1", "src": "galerie/g1-lagos.webp", "titre": "Le marché Balogun", "auteur": "Yellowcrunchy", "date": "octobre 2017", "credit": "Photo Yellowcrunchy", "licence": "CC BY-SA 4.0", "alt": "Une rue de marché noire de monde, sous des parasols colorés, entre des immeubles.", "pos": "50% 50%"}, {"q": "g2", "src": "galerie/g2-porte-conteneurs.webp", "titre": "Le porte-conteneurs CMA CGM Theodore Roosevelt", "auteur": "U.S. Army Corps of Engineers", "date": "7 septembre 2017", "credit": "Photo USACE New York District", "licence": "CC BY 2.0", "alt": "Un porte-conteneurs géant chargé de boîtes passe devant un quai où des spectateurs le regardent.", "pos": "50% 50%"}, {"q": "g2", "src": "galerie/g2-yangshan.webp", "titre": "Le port en eau profonde de Yangshan", "auteur": "Gmbsfd", "date": "23 septembre 2017", "credit": "Photo Gmbsfd", "licence": "CC BY-SA 4.0", "alt": "Du haut d’une colline, les portiques rouges et les piles de conteneurs du terminal, face à la mer.", "pos": "50% 50%"}, {"q": "g2", "src": "galerie/g2-rotterdam.webp", "titre": "Le port de Rotterdam", "auteur": "Olivier Cleynen", "date": "12 mars 2017", "credit": "Photo Olivier Cleynen", "licence": "CC BY 4.0", "alt": "Vue aérienne : bassins, quais, navires et réservoirs d’hydrocarbures.", "pos": "50% 50%"}, {"q": "g2", "src": "galerie/g2-panama.webp", "titre": "Un porte-conteneurs dans les écluses de Miraflores", "auteur": "Adam Jones", "date": "18 décembre 2013", "credit": "Photo Adam Jones", "licence": "CC BY-SA 2.0", "alt": "Un porte-conteneurs avance dans une écluse ; au premier plan flotte le drapeau du Panama.", "pos": "50% 50%"}, {"q": "g2", "src": "galerie/g2-pudong.webp", "titre": "Le quartier d’affaires de Pudong", "auteur": "King of Hearts", "date": "20 novembre 2017", "credit": "Photo King of Hearts", "licence": "CC BY-SA 4.0", "alt": "Les tours de Lujiazui, dont la Shanghai Tower et la tour de la Perle de l’Orient, au bord du Huangpu.", "pos": "50% 50%"}, {"q": "g3", "src": "galerie/g3-aral.webp", "titre": "L’assèchement de la mer d’Aral", "auteur": "NASA", "date": "1989 et 2014", "credit": "NASA, montage Producercunningham", "licence": "Domaine public", "alt": "Deux images satellitaires côte à côte : la mer d’Aral en 1989, puis réduite à quelques lacs en 2014.", "pos": "50% 50%"}, {"q": "g3", "src": "galerie/g3-rondonia.webp", "titre": "La déforestation en Rondônia", "auteur": "Images Landsat 8, USGS", "date": "25 juillet 2016", "credit": "Daily Overview, données Landsat 8 (USGS)", "licence": "CC BY 2.0", "alt": "Image satellitaire : des défrichements en arêtes de poisson entaillent la forêt amazonienne le long des routes.", "pos": "50% 50%"}, {"q": "g3", "src": "galerie/g3-mer-de-glace.webp", "titre": "La mer de Glace depuis le Montenvers", "auteur": "Yoann Sallaz-Damaz", "date": "9 mai 2013", "credit": "Photo Yoann Sallaz-Damaz", "licence": "CC BY-SA 3.0", "alt": "La langue du glacier, couverte de débris rocheux, au fond d’une vallée aux versants raides.", "pos": "50% 55%"}, {"q": "g3", "src": "galerie/g3-xynthia.webp", "titre": "Maison sinistrée par la tempête Xynthia, vouée à la démolition", "auteur": "Llann Wé²", "date": "11 mars 2012", "credit": "Photo Llann Wé²", "licence": "CC BY-SA 3.0", "alt": "Un pavillon de plain-pied abandonné derrière une clôture de chantier, deux ans après la submersion.", "pos": "50% 50%"}, {"q": "g3", "src": "galerie/g3-jakarta.webp", "titre": "Inondation à Jakarta", "auteur": "VOA Indonesian Service", "date": "17 janvier 2013", "credit": "Voice of America", "licence": "Domaine public", "alt": "Des habitants marchent dans une avenue inondée, de l’eau jusqu’aux genoux.", "pos": "50% 55%"}, {"q": "g4", "src": "galerie/g4-mont-saint-michel.webp", "titre": "Le Mont-Saint-Michel", "auteur": "Amaustan", "date": "9 septembre 2018", "credit": "Photo Amaustan", "licence": "CC BY-SA 4.0", "alt": "Vue aérienne : l’abbaye au sommet de son rocher, entourée par la baie au lever du soleil.", "pos": "50% 50%"}, {"q": "g4", "src": "galerie/g4-millau.webp", "titre": "Le viaduc de Millau, au-dessus de Creissels", "auteur": "Stefan Krause", "date": "15 août 2009", "credit": "Photo Stefan Krause", "licence": "CC BY-SA 3.0", "alt": "Le viaduc à haubans franchit la vallée du Tarn très au-dessus d’un village.", "pos": "50% 45%"}, {"q": "g4", "src": "galerie/g4-defense.webp", "titre": "Le quartier d’affaires de La Défense", "auteur": "Dimitri Destugues", "date": "16 février 2011", "credit": "Photo Dimitri Destugues", "licence": "CC BY-SA 3.0", "alt": "Les tours de bureaux de La Défense illuminées, de nuit.", "pos": "50% 50%"}, {"q": "g4", "src": "galerie/g4-champagne.webp", "titre": "Vignoble de Champagne dans la vallée de la Marne", "auteur": "Pline", "date": "9 juin 2012", "credit": "Photo Pline", "licence": "CC BY-SA 3.0", "alt": "Des coteaux couverts de rangs de vigne descendent vers la vallée et ses villages.", "pos": "50% 55%"}, {"q": "g4", "src": "galerie/g4-confluence.webp", "titre": "Le quartier de la Confluence", "auteur": "Erclairbair", "date": "30 octobre 2018", "credit": "Photo Erclairbair", "licence": "CC BY-SA 4.0", "alt": "Vue d’avion : la pointe de la presqu’île lyonnaise entre Rhône et Saône, avec ses immeubles récents.", "pos": "50% 50%"}, {"q": "g4", "src": "galerie/g4-mamoudzou.webp", "titre": "Mamoudzou, chef-lieu de Mayotte", "auteur": "David Stanley", "date": "15 septembre 2013", "credit": "Photo David Stanley", "licence": "CC BY 2.0", "alt": "Le port de plaisance et la ville, au pied de collines boisées.", "pos": "50% 50%"}, {"q": "g5", "src": "galerie/g5-parlement.webp", "titre": "Le Parlement européen, bâtiment Louise-Weiss", "auteur": "Syced", "date": "8 décembre 2007", "credit": "Photo Syced", "licence": "CC0", "alt": "Les drapeaux des États membres claquent au vent, vus d’en bas, devant le bâtiment du Parlement.", "pos": "50% 50%"}, {"q": "g5", "src": "galerie/g5-berlaymont.webp", "titre": "Le Berlaymont, siège de la Commission européenne", "auteur": "EmDee", "date": "14 septembre 2019", "credit": "Photo EmDee", "licence": "CC BY-SA 4.0", "alt": "La façade courbe de verre et de métal du Berlaymont, qui porte l’emblème de la Commission européenne.", "pos": "50% 50%"}, {"q": "g5", "src": "galerie/g5-oresund.webp", "titre": "Le pont de l’Øresund, entre Danemark et Suède", "auteur": "Nick-D", "date": "28 septembre 2015", "credit": "Photo Nick-D", "licence": "CC BY-SA 4.0", "alt": "Vue d’avion : le pont à haubans traverse le détroit jusqu’à une île artificielle.", "pos": "50% 50%"}, {"q": "g5", "src": "galerie/g5-anvers.webp", "titre": "Portiques du terminal MPET, port d’Anvers", "auteur": "Benoit Brummer", "date": "4 février 2018", "credit": "Photo Trougnouf (Benoit Brummer)", "licence": "CC BY 4.0", "alt": "Une rangée de portiques à conteneurs éclairés, au crépuscule.", "pos": "50% 50%"}, {"q": "g5", "src": "galerie/g5-schengen.webp", "titre": "Panneau d’entrée en Lettonie, à une frontière intérieure de l’espace Schengen", "auteur": "Tohaomg", "date": "30 avril 2019", "credit": "Photo Tohaomg", "licence": "CC BY-SA 4.0", "alt": "Un panneau bleu aux étoiles européennes portant le nom de la Lettonie, au bord d’une route sans poste de contrôle.", "pos": "50% 50%"}, {"q": "g6", "src": "galerie/g6-onu.webp", "titre": "Le siège des Nations unies", "auteur": "Jakub Hałun", "date": "5 octobre 2023", "credit": "Photo Jakub Hałun", "licence": "CC BY 4.0", "alt": "La tour vitrée du Secrétariat de l’ONU au bord de l’East River.", "pos": "25% 50%"}, {"q": "g6", "src": "galerie/g6-frontiere.webp", "titre": "La barrière frontalière entre les États-Unis et le Mexique", "auteur": "Tony Webster", "date": "14 décembre 2014", "credit": "Photo Tony Webster", "licence": "CC BY 2.0", "alt": "Une haute clôture de barreaux d’acier longe la plage ; derrière elle, le phare de Tijuana.", "pos": "50% 50%"}, {"q": "g6", "src": "galerie/g6-ormuz.webp", "titre": "Le détroit d’Ormuz", "auteur": "NASA, capteur MODIS", "date": "décembre 2020", "credit": "NASA, MODIS Land Rapid Response Team", "licence": "Domaine public", "alt": "Image satellitaire : un étroit bras de mer sépare la côte iranienne, au nord, de la pointe de la péninsule Arabique.", "pos": "50% 50%"}, {"q": "g6", "src": "galerie/g6-jerusalem.webp", "titre": "La vieille ville de Jérusalem et l’esplanade des Mosquées", "auteur": "Andrew Shiva", "date": "15 novembre 2013", "credit": "Photo Andrew Shiva", "licence": "CC BY-SA 4.0", "alt": "Vue aérienne : l’esplanade, le Dôme du Rocher et la mosquée al-Aqsa au-dessus des toits de la vieille ville.", "pos": "50% 50%"}, {"q": "g6", "src": "galerie/g6-panmunjom.webp", "titre": "Drapeau nord-coréen vu depuis la zone commune de sécurité de Panmunjom", "auteur": "Clay Gilliland", "date": "2 octobre 2013", "credit": "Photo Clay Gilliland", "licence": "CC BY-SA 2.0", "alt": "Au loin, un très haut mât porte le drapeau nord-coréen, au-dessus de champs et de collines boisées.", "pos": "50% 50%"}, {"q": "g7", "src": "galerie/g7-manhattan.webp", "titre": "Le sud de Manhattan", "auteur": "Don Ramey Logan", "date": "avril 2022", "credit": "Photo Don Ramey Logan", "licence": "CC BY-SA 4.0", "alt": "Vue aérienne de Manhattan vers le sud, au coucher du soleil : les gratte-ciel de la pointe de l’île entre deux bras d’eau.", "pos": "50% 50%"}, {"q": "g7", "src": "galerie/g7-rocinha.webp", "titre": "La favela de Rocinha et la zone sud de Rio", "auteur": "matteo0702", "date": "2 décembre 2010", "credit": "Photo matteo0702", "licence": "CC BY 2.0", "alt": "Des milliers de maisons serrées couvrent un versant, au-dessus des immeubles du littoral.", "pos": "50% 50%"}, {"q": "g7", "src": "galerie/g7-dubai.webp", "titre": "Les tours de Dubai Marina", "auteur": "Khanshahab06", "date": "19 février 2019", "credit": "Photo Khanshahab06", "licence": "CC BY-SA 4.0", "alt": "De nuit, un front serré de tours illuminées au bord de l’eau, devant des yachts.", "pos": "50% 50%"}, {"q": "g7", "src": "galerie/g7-tokyo.webp", "titre": "Tokyo de nuit, depuis la tour de Tokyo", "auteur": "Nalilord", "date": "2011", "credit": "Photo Nalilord", "licence": "CC BY-SA 3.0", "alt": "La ville illuminée jusqu’à l’horizon, traversée par des avenues et des voies rapides.", "pos": "50% 50%"}, {"q": "g8", "src": "galerie/g8-banaue.webp", "titre": "Les rizières en terrasses de Banaue", "auteur": "Uwe Aranas", "date": "8 novembre 2008", "credit": "Photo Uwe Aranas (CEphoto)", "licence": "CC BY-SA 3.0", "alt": "Des gradins de rizières épousent les versants d’une vallée de montagne.", "pos": "50% 50%"}, {"q": "g8", "src": "galerie/g8-bocage.webp", "titre": "Le bocage normand", "auteur": "Goéland", "date": "15 mai 2018", "credit": "Photo Goéland", "licence": "CC BY-SA 4.0", "alt": "Une prairie au premier plan, puis des parcelles encloses de haies et d’arbres jusqu’à l’horizon.", "pos": "50% 50%"}, {"q": "g8", "src": "galerie/g8-beauce.webp", "titre": "L’openfield de Beauce", "auteur": "Urban", "date": "18 juin 2006", "credit": "Photo Urban", "licence": "Domaine public", "alt": "Un champ d’orge s’étend sans haie ni clôture jusqu’à l’horizon.", "pos": "50% 50%"}, {"q": "g8", "src": "galerie/g8-kansas.webp", "titre": "Les pivots d’irrigation du Kansas", "auteur": "NASA, capteur ASTER", "date": "24 juin 2001", "credit": "NASA", "licence": "Domaine public", "alt": "Image satellitaire : des centaines de champs circulaires, verts ou bruns, dans un damier de parcelles.", "pos": "50% 50%"}, {"q": "g8", "src": "galerie/g8-gordes.webp", "titre": "Gordes, village perché du Luberon", "auteur": "Einaz80", "date": "3 janvier 2007", "credit": "Photo Einaz80", "licence": "CC BY-SA 4.0", "alt": "Un village de pierre étagé sur un éperon rocheux, dominé par son château.", "pos": "50% 50%"}, {"q": "g8", "src": "galerie/g8-dogon.webp", "titre": "Village dogon au pied de la falaise de Bandiagara", "auteur": "David Sessoms", "date": "24 septembre 2006", "credit": "Photo David Sessoms", "licence": "CC BY-SA 2.0", "alt": "Toits de terre en terrasse et greniers à toit de paille conique d’un village sahélien.", "pos": "50% 50%"}];
+for (var i = G.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), s = G[i]; G[i] = G[j]; G[j] = s; }
+var box = document.getElementById("diapo"), imgs = [], cur = -1, timer = null, pause = matchMedia("(prefers-reduced-motion: reduce)").matches, survol = false;
+var TH = {}; T.forEach(function (x) { TH[x[0] + x[1]] = x[2]; });
+function img(i) {  /* chargement à la demande : l'image courante et la suivante seulement */
+  if (!imgs[i]) { var im = new Image(); im.src = G[i].src; im.alt = G[i].alt; im.style.objectPosition = G[i].pos; box.insertBefore(im, box.firstChild); imgs[i] = im; }
+  return imgs[i];
+}
+function show(i) {
+  if (cur >= 0) img(cur).classList.remove("on");
+  cur = (i + G.length) % G.length; img(cur).classList.add("on"); img((cur + 1) % G.length);
+  var x = G[cur];
+  document.getElementById("dp-k").textContent = nom[x.q[0]] + " " + x.q[1];
+  document.getElementById("dp-t").textContent = x.titre;
+  document.getElementById("dp-c").textContent = [x.auteur, x.date].filter(Boolean).join(", ").replace(/\.$/, "") + ". " + x.credit + ", " + x.licence + ".";
+  document.getElementById("dp-lien").title = TH[x.q] || "";
+}
+function tick() { clearTimeout(timer); if (!pause && !survol) timer = setTimeout(function () { show(cur + 1); tick(); }, 6500); }
+var pb = document.getElementById("dp-pause");
+function majPause() { pb.setAttribute("aria-label", pause ? "Relancer le diaporama" : "Mettre le diaporama en pause"); pb.innerHTML = pause ? '<svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M3 2l9 5-9 5z"/></svg>' : '<svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="3" height="10"/><rect x="8" y="2" width="3" height="10"/></svg>'; }
+pb.onclick = function () { pause = !pause; majPause(); tick(); };
+document.getElementById("dp-suiv").onclick = function () { show(cur + 1); tick(); };
+box.addEventListener("mouseenter", function () { survol = true; tick(); }); box.addEventListener("mouseleave", function () { survol = false; tick(); });
+box.addEventListener("focusin", function () { survol = true; tick(); }); box.addEventListener("focusout", function () { survol = false; tick(); });
+show(0); majPause(); tick();
+
+/* Choix du fond, mémorisé sur l'appareil */
+function lireTheme() { try { return localStorage.getItem("hepsy3-theme") || "auto"; } catch (e) { return "auto"; } }
+function appliquer(t) {
+  if (t === "auto") delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = t;
+  try { if (t === "auto") localStorage.removeItem("hepsy3-theme"); else localStorage.setItem("hepsy3-theme", t); } catch (e) {}
+  document.querySelectorAll(".fond-choix button").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.t === t); });
+}
+document.querySelectorAll(".fond-choix button").forEach(function (b) { b.onclick = function () { appliquer(b.dataset.t); }; });
+document.getElementById("tb-m").onclick = function () { var sombre = getComputedStyle(document.documentElement).colorScheme === "dark"; appliquer(sombre ? "clair" : "sombre"); };
+appliquer(lireTheme());
+
+/* Question du fond, posée une fois (après l’introduction si elle est jouée) */
+(function () {
+  var q = document.getElementById("fond-q"), deja = false;
+  try { deja = !!localStorage.getItem("hepsy3-theme-choisi"); } catch (e) {}
+  function montrer() { if (!deja) { q.hidden = false; q.querySelector("button").focus(); } }
+  q.querySelectorAll("button").forEach(function (b) { b.onclick = function () { appliquer(b.dataset.t); try { localStorage.setItem("hepsy3-theme-choisi", "1"); } catch (e) {} q.hidden = true; }; });
+  document.querySelectorAll(".fond-choix button, .mtete .tb").forEach(function (b) { b.addEventListener("click", function () { try { localStorage.setItem("hepsy3-theme-choisi", "1"); } catch (e) {} q.hidden = true; }); });
+  window.addEventListener("load", function () { if (document.getElementById("splash")) document.addEventListener("hepsy-intro-fin", montrer, { once: true }); else setTimeout(montrer, 600); });
+})();
+/* Maquette : basculer entre l’accueil d’un premier passage et celui d’un retour */
+(function () {
+  var b = document.getElementById("maq-etat");
+  function maj() { var n = document.body.classList.contains("nouveau"); b.textContent = n ? "Voir l’accueil d’un retour (progression en cours)" : "Voir l’accueil d’un premier passage"; }
+  if (location.hash === "#nouveau") document.body.classList.add("nouveau");
+  b.onclick = function () { document.body.classList.toggle("nouveau"); maj(); }; maj();
+  document.getElementById("maq-intro").onclick = function () { try { localStorage.removeItem("hepsy3-intro"); } catch (e) {} location.hash = "intro"; location.reload(); };
+})();
+</script>
+<script src="b3-intro.js"></script>
+<a class="retour-avis" href="./">Donner mon avis</a>
+<script src="b3-recherche.js"></script>
+</body>
+</html>

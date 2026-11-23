@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hepsy · Proposition B3 · Le métier de professeur</title>
+<script>var t="auto";try{t=localStorage.getItem("hepsy3-theme")||"auto";}catch(e){}if(t==="clair"||t==="sombre")document.documentElement.dataset.theme=t;</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="b3-commun.css">
+<style>
+.ss-nav { display: flex; gap: 2px; padding: 3px; border-radius: 8px; background: var(--fond-2); border: 1px solid var(--trait); margin-bottom: var(--s6); overflow-x: auto; width: max-content; max-width: 100%; }
+.ss-nav a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 var(--s4); border-radius: 6px; font-size: 14px; font-weight: 500; color: var(--texte-2); text-decoration: none; white-space: nowrap; }
+.ss-nav a[aria-current] { background: var(--fond); color: var(--texte); box-shadow: 0 0 0 1px var(--trait); font-weight: 600; }
+.tete-p .sur { color: var(--metier); font-weight: 600; }
+.intro { font-family: var(--lecture); font-size: 19px; line-height: 1.6; color: var(--lecture-c) !important; max-width: 60ch !important; }
+
+/* Les cinq temps : la méthode est une vraie séquence, d'où la numérotation */
+.temps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); counter-reset: t; border-top: 2px solid var(--metier); }
+.temps li { list-style: none; padding: var(--s4) var(--s4) var(--s4) 0; counter-increment: t; }
+.temps li + li { padding-left: var(--s4); border-left: 1px solid var(--trait); }
+.temps li::before { content: counter(t); display: block; font-size: 28px; font-weight: 700; color: var(--metier); letter-spacing: -.03em; line-height: 1; margin-bottom: var(--s2); }
+.temps b { display: block; font-size: 16px; margin-bottom: 2px; }
+.temps span { font-size: 14px; color: var(--texte-2); }
+ol.temps { margin: 0; padding: 0; }
+
+.chap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s3); }
+.ch { display: flex; flex-direction: column; gap: var(--s2); padding: var(--s4); border: 1px solid var(--trait); border-radius: 10px; text-decoration: none; background: var(--fond); min-height: 150px; }
+.ch:hover { border-color: var(--texte-3); }
+.ch .n { font-size: 13px; font-weight: 600; color: var(--metier); }
+.ch b { font-size: 16px; line-height: 1.3; }
+.ch span { font-size: 13px; color: var(--texte-3); margin-top: auto; }
+.ch .jg { height: 4px; border-radius: 2px; background: var(--fond-3); overflow: hidden; }
+.ch .jg i { display: block; height: 100%; background: var(--metier); }
+
+/* Étude de cas */
+.cas { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: var(--s6); align-items: start; }
+.cas-t { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); margin-bottom: var(--s3); }
+.niv { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; }
+.niv i { display: inline-flex; gap: 2px; } .niv i b { width: 6px; height: 12px; border-radius: 2px; background: var(--fond-3); } .niv i b.on { background: var(--or); }
+.cas h3 { font-size: 24px; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; }
+.situation { margin: var(--s4) 0; padding: var(--s4) var(--s5); border-radius: 10px; background: var(--fond-2); font-family: var(--lecture); font-size: 18px; line-height: 1.6; color: var(--lecture-c); }
+.situation q { font-style: italic; }
+.reveler { margin-top: var(--s3); }
+.conduite { margin-top: var(--s5); }
+.conduite[hidden] { display: none; }
+.conduite ol { margin: 0; padding: 0; list-style: none; counter-reset: c; }
+.conduite li { display: grid; grid-template-columns: 32px 120px minmax(0, 1fr); gap: var(--s3); padding: var(--s3) 0; border-bottom: 1px solid var(--trait); counter-increment: c; align-items: baseline; }
+.conduite li::before { content: counter(c); font-weight: 700; color: var(--metier); }
+.conduite li b { font-size: 15px; }
+.conduite li span { color: var(--texte-2); font-size: 15px; }
+.jury { margin-top: var(--s5); padding: var(--s4) var(--s5); border-left: 3px solid var(--metier); background: var(--metier-clair); border-radius: 0 10px 10px 0; }
+.jury b { display: block; font-size: 13px; margin-bottom: var(--s1); }
+.jury p { font-family: var(--lecture); font-size: 18px; line-height: 1.55; font-style: italic; color: var(--lecture-c); }
+.pieges { margin-top: var(--s5); }
+.pieges b { font-size: 14px; }
+.pieges ul { margin: var(--s2) 0 0; padding: 0; list-style: none; }
+.pieges li { position: relative; padding: 6px 0 6px 22px; font-size: 15px; color: var(--texte-2); }
+.pieges li::before { content: ""; position: absolute; left: 2px; top: 14px; width: 10px; height: 2px; background: var(--ko); }
+.marge-c { display: flex; flex-direction: column; gap: var(--s4); position: sticky; top: var(--s5); }
+.marge-c .carte h4 { font-size: 13px; font-weight: 600; color: var(--texte-3); margin: 0 0 var(--s2); }
+.notions { display: flex; flex-wrap: wrap; gap: 6px; }
+.chrono { display: flex; align-items: baseline; gap: var(--s2); }
+.chrono b { font-size: 28px; font-weight: 700; letter-spacing: -.03em; }
+.chrono span { color: var(--texte-3); font-size: 14px; }
+
+@media (max-width: 1100px) { .chap { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cas { grid-template-columns: minmax(0, 1fr); } .marge-c { position: static; } .temps { grid-template-columns: repeat(2, minmax(0, 1fr)); } .temps li { border-left: 0 !important; padding-left: 0 !important; border-bottom: 1px solid var(--trait); } }
+@media (max-width: 760px) {
+  .chap { grid-template-columns: minmax(0, 1fr); }
+  .ch { min-height: 0; }
+  .temps { grid-template-columns: minmax(0, 1fr); }
+  .temps li { display: grid; grid-template-columns: 36px minmax(0, 1fr); }
+  .temps li::before { grid-row: span 2; margin: 0; font-size: 22px; }
+  .conduite li { grid-template-columns: 24px minmax(0, 1fr); }
+  .conduite li span { grid-column: 2; }
+  .intro { font-size: 17px; }
+}
+</style>
+</head>
+<body data-page="metier">
+<div class="app">
+  <div>
+    <main class="main">
+      <nav class="ss-nav" aria-label="Le métier de professeur"><a href="#" aria-current="page">Présentation</a><a href="#">Cours</a><a href="#">Études de cas</a><a href="#">S’entraîner</a><a href="#">Glossaire et repères</a></nav>
+      <header class="tete-p">
+        <p class="sur">Agir en fonctionnaire de l’État</p>
+        <h1>Le métier de professeur</h1>
+        <p class="intro">Un professeur d’histoire-géographie n’enseigne pas seulement sa discipline : il est fonctionnaire de l’État, il agit dans un cadre juridique précis et il incarne les valeurs de la République devant les élèves. Cette partie donne les notions, les textes et les réflexes pour le comprendre et le dire à l’oral.</p>
+      </header>
+
+      <section class="sec">
+        <div class="sec-h"><h2>La méthode en cinq temps</h2><p>Pour chaque situation, dans cet ordre</p></div>
+        <ol class="temps">
+          <li><b>Protéger</b><span>L’élève d’abord, et toute personne exposée.</span></li>
+          <li><b>Rester discret</b><span>Traiter à part, jamais devant la classe.</span></li>
+          <li><b>En référer</b><span>À la hiérarchie, qui tranche.</span></li>
+          <li><b>Trace écrite</b><span>Consigner les faits et la décision.</span></li>
+          <li><b>Éduquer</b><span>Revenir au sens, avec la classe.</span></li>
+        </ol>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><h2>Les huit chapitres</h2><p>Notions, textes, exemples et phrases prêtes à dire devant le jury</p></div>
+        <div class="chap" id="chap"></div>
+      </section>
+
+      <section class="sec" aria-labelledby="t-cas">
+        <div class="sec-h"><h2 id="t-cas">Une étude de cas</h2><p>34 situations, de la vie de classe aux cas brûlants</p></div>
+        <div class="cas">
+          <article>
+            <div class="cas-t"><span class="etiq">Cas 9</span><span class="niv"><i aria-hidden="true"><b class="on"></b><b class="on"></b><b></b></i>Difficulté moyenne</span></div>
+            <h3>La mère accompagnatrice et le voile</h3>
+            <p class="situation">Une sortie au musée est prévue pour une classe de 6<sup>e</sup>. Madame B., qui porte un foulard, propose d’accompagner. Le parent d’un autre élève proteste : «&nbsp;<i>Elle ne peut pas venir voilée, la laïcité l’interdit.</i>&nbsp;»</p>
+            <p style="color:var(--texte-2)">Que fais-tu ? Prends huit minutes pour construire ta réponse avant de voir la conduite attendue.</p>
+            <button class="btn plein reveler" type="button" id="rev" aria-expanded="false" aria-controls="conduite">Voir la conduite attendue</button>
+            <div class="conduite" id="conduite" hidden>
+              <ol>
+                <li><b>Protéger</b><span>Protéger l’élève et la mère de toute humiliation.</span></li>
+                <li><b>Rester discret</b><span>Discuter à part, en privé.</span></li>
+                <li><b>En référer</b><span>Le chef d’établissement tranche et informe le parent qui proteste.</span></li>
+                <li><b>Trace écrite</b><span>Consigner la décision.</span></li>
+                <li><b>Éduquer</b><span>Rappeler à la classe, sans nommer, que la laïcité garantit à tous la liberté de croire ou de ne pas croire.</span></li>
+              </ol>
+              <div class="jury"><b>La phrase pour le jury</b><p>« Un parent accompagnateur est un usager, pas un agent : je ne lui applique pas ma neutralité, et je laisse le chef d’établissement trancher en cas de difficulté. »</p></div>
+              <div class="pieges"><b>Les pièges</b><ul>
+                <li>Refuser sur la seule base du foulard : cela ne repose pas, en soi, sur la loi.</li>
+                <li>Exiger de la mère qu’elle retire son foulard sans base légale.</li>
+                <li>Appliquer à ce parent la neutralité qui vaut pour les agents publics.</li>
+                <li>Trancher seul, dans le couloir.</li>
+              </ul></div>
+            </div>
+          </article>
+          <aside class="marge-c">
+            <div class="carte"><h4>Temps de préparation</h4><div class="chrono"><b id="ch">8:00</b><span>minutes</span></div><button class="btn" type="button" id="chb" style="margin-top:var(--s3);width:100%">Lancer le chronomètre</button></div>
+            <div class="carte"><h4>Notions mobilisées</h4><div class="notions"><span class="etiq">neutralité des agents</span><span class="etiq">statut d’usager</span><span class="etiq">parents accompagnateurs</span><span class="etiq">bon fonctionnement du service</span></div></div>
+            <div class="carte"><h4>Chapitres liés</h4><p style="font-size:14px;color:var(--texte-2)">2. Les valeurs de la République<br>5. Les études de cas fréquentes<br>7. Les textes de référence</p></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="b3-commun.js"></script>
+<script src="b3-recherche.js"></script>
+<script>
+var CH = [["L’environnement juridique", 6], ["Les valeurs de la République", 7], ["Le système éducatif", 5], ["Les droits de l’enfant", 4], ["Les études de cas fréquentes", 6], ["Les cas brûlants en histoire-géographie-EMC", 6], ["Les textes de référence", 5], ["L’entretien : le fond, mais aussi la manière de le dire", 4]];
+var VU = [100, 40, 0, 0, 0, 0, 0, 0];
+document.getElementById("chap").innerHTML = CH.map(function (c, i) { return '<a class="ch" href="#"><span class="n">Chapitre ' + (i + 1) + '</span><b>' + c[0] + '</b><span>' + (VU[i] ? (VU[i] === 100 ? "Lu" : "Commencé") : "Non commencé") + '</span><span class="jg" aria-hidden="true"><i style="width:' + VU[i] + '%"></i></span></a>'; }).join("");
+var rev = document.getElementById("rev"), cd = document.getElementById("conduite");
+rev.onclick = function () { var o = cd.hidden; cd.hidden = !o; rev.setAttribute("aria-expanded", o); rev.textContent = o ? "Masquer la conduite attendue" : "Voir la conduite attendue"; };
+var reste = 480, tm = null, chb = document.getElementById("chb");
+chb.onclick = function () {
+  if (tm) { clearInterval(tm); tm = null; chb.textContent = "Reprendre"; return; }
+  chb.textContent = "Mettre en pause";
+  tm = setInterval(function () { reste--; document.getElementById("ch").textContent = Math.floor(reste / 60) + ":" + String(reste % 60).padStart(2, "0"); if (reste <= 0) { clearInterval(tm); tm = null; chb.textContent = "Temps écoulé"; } }, 1000);
+};
+</script>
+</body>
+</html>

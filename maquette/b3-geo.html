@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hepsy · Proposition B3 · Diapositive de géographie</title>
+<script>var t="auto";try{t=localStorage.getItem("hepsy3-theme")||"auto";}catch(e){}if(t==="clair"||t==="sombre")document.documentElement.dataset.theme=t;</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --fond: #FFFFFF; --fond-2: #F3F4F6; --fond-3: #E7E9ED; --trait: #D5D9E0;
+  --texte: #16181D; --texte-2: #474C56; --texte-3: #6A707B;
+  --hist: #0C6170; --hist-clair: #E3F0F1;
+  --surligneur: #FFE45C; --sur-texte: #16181D; --surl-fond: #FFE45C; --surl-texte: #16181D; --or: #FFE45C; --lecture-c: #16181D; --img-filtre: none; --plein: #16181D; --plein-texte: #FFFFFF; --plein-bord: transparent;
+  --bulle: #16181D; --bulle-texte: #FFFFFF;
+  --ui: "Instrument Sans", "Segoe UI", system-ui, sans-serif; --lecture: "Literata", Georgia, serif;
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --r: 6px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="clair"]) {
+  color-scheme: dark;
+  --fond: #0C0A09; --fond-2: #181512; --fond-3: #2C261F; --trait: #2C261F;
+  --texte: #F5EFE4; --texte-2: #D8D0C3; --texte-3: #A89E90; --lecture-c: #E9E1D3;
+  --hist: #A9C98F; --hist-clair: #1A2216; --geo: #A9C98F; --geo-clair: #1A2216; --metier: #E6C79C; --metier-clair: #241D14;
+  --ok: #9CC08A; --ok-clair: #18200F; --ko: #EF8A7D; --ko-clair: #2A1512;
+  --or: #F2B04A; --surl-fond: rgba(242, 176, 74, .24); --surl-texte: #FCE9BD;
+  --plein: #241A0E; --plein-texte: #F6C76B; --plein-bord: rgba(242, 176, 74, .6); --ombre: none; --img-filtre: saturate(.92) brightness(.93);
+  --bulle: #181512; --bulle-texte: #F5EFE4;
+} }
+:root[data-theme="sombre"] {
+  color-scheme: dark;
+  --fond: #0C0A09; --fond-2: #181512; --fond-3: #2C261F; --trait: #2C261F;
+  --texte: #F5EFE4; --texte-2: #D8D0C3; --texte-3: #A89E90; --lecture-c: #E9E1D3;
+  --hist: #A9C98F; --hist-clair: #1A2216; --geo: #A9C98F; --geo-clair: #1A2216; --metier: #E6C79C; --metier-clair: #241D14;
+  --ok: #9CC08A; --ok-clair: #18200F; --ko: #EF8A7D; --ko-clair: #2A1512;
+  --or: #F2B04A; --surl-fond: rgba(242, 176, 74, .24); --surl-texte: #FCE9BD;
+  --plein: #241A0E; --plein-texte: #F6C76B; --plein-bord: rgba(242, 176, 74, .6); --ombre: none; --img-filtre: saturate(.92) brightness(.93);
+  --bulle: #181512; --bulle-texte: #F5EFE4;
+}
+* { box-sizing: border-box; }
+img { filter: var(--img-filtre); }
+html { background: var(--fond); }
+body { margin: 0; background: var(--fond); color: var(--texte); font-family: var(--ui); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+:focus-visible { outline: 3px solid var(--texte); outline-offset: 2px; border-radius: 2px; }
+h1, h2, h3 { margin: 0; line-height: 1.1; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+
+.barre { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--fond) 94%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--trait); }
+.barre-in { display: flex; align-items: center; gap: var(--s4); padding: var(--s3) var(--s5); }
+.ico { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: var(--r); border: 1px solid var(--trait); background: none; color: var(--texte); text-decoration: none; flex: none; cursor: pointer; }
+.ico:hover { background: var(--fond-2); }
+.tt { min-width: 0; }
+.tt .disc { font-size: 13px; font-weight: 600; color: var(--hist); }
+.tt b { display: block; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.niveaux { margin-left: auto; display: grid; grid-template-columns: repeat(5, minmax(56px, 1fr)); gap: var(--s1); width: min(520px, 42vw); flex: none; }
+.niveaux a { display: flex; flex-direction: column; gap: 6px; text-decoration: none; font-size: 12px; color: var(--texte-3); min-height: 44px; justify-content: center; }
+.niveaux a i { height: 5px; border-radius: 3px; background: var(--fond-3); overflow: hidden; position: relative; }
+.niveaux a i b { position: absolute; inset: 0 auto 0 0; background: var(--hist); border-radius: 3px; }
+.niveaux a[aria-current] { color: var(--texte); font-weight: 700; }
+
+.page { display: grid; grid-template-columns: 248px minmax(0, 1fr); gap: var(--s7); max-width: 1380px; margin: 0 auto; padding: var(--s6) var(--s5) 120px; }
+.plan { position: sticky; top: 92px; align-self: start; }
+.plan h2 { font-size: 13px; font-weight: 600; color: var(--texte-3); margin-bottom: var(--s2); }
+.plan ol { list-style: none; margin: 0; padding: 0; counter-reset: d; }
+.plan li a { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: var(--s2); padding: var(--s2); border-radius: var(--r); text-decoration: none; font-size: 14px; line-height: 1.35; color: var(--texte-2); }
+.plan li a::before { counter-increment: d; content: counter(d); color: var(--texte-3); font-size: 13px; }
+.plan li a:hover { background: var(--fond-2); }
+.plan li a[aria-current] { background: var(--hist-clair); color: var(--hist); font-weight: 600; }
+.plan li a[aria-current]::before { color: var(--hist); }
+
+/* Colonne de lecture et sa marge de notes (repris de A) */
+.lect { display: grid; grid-template-columns: minmax(0, 660px) 230px; gap: 0 var(--s6); align-content: start; }
+.lect > * { grid-column: 1; }
+.lect .niv { font-size: 14px; font-weight: 600; color: var(--hist); }
+.lect h1 { font-size: clamp(32px, 3.8vw, 46px); font-weight: 700; letter-spacing: -.035em; margin: var(--s2) 0 var(--s4); line-height: 1.04; }
+.chapo { font-family: var(--lecture); font-size: 20px; line-height: 1.6; color: var(--texte-2); }
+.notion { margin-top: var(--s6); padding-top: var(--s5); border-top: 1px solid var(--trait); }
+/* Nom de la notion en petites capitales de Literata (repris de A) */
+.notion h2 { font-family: var(--lecture); font-variant-caps: small-caps; font-weight: 600; font-size: 23px; letter-spacing: .015em; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s1) var(--s3); }
+.notion h2 small { font-family: var(--ui); font-variant-caps: normal; letter-spacing: 0; font-size: 14px; font-weight: 500; color: var(--texte-3); }
+.notion p { font-family: var(--lecture); font-size: 18px; line-height: 1.7; margin-top: var(--s3); color: var(--lecture-c); }
+.marge { grid-column: 2; margin-top: calc(var(--s6) + var(--s5)); font-size: 14px; line-height: 1.45; color: var(--texte-2); border-left: 2px solid var(--hist); padding-left: var(--s3); align-self: start; }
+.marge b { display: block; font-size: 13px; color: var(--texte); margin-bottom: 2px; }
+.terme { font: inherit; border: 0; padding: 0 .1em; margin: 0 -.1em; color: inherit; cursor: pointer; background: linear-gradient(transparent 60%, var(--surl-fond) 60%, var(--surl-fond) 94%, transparent 94%); }
+.terme:hover, .terme[aria-expanded="true"] { background: linear-gradient(transparent 8%, var(--surl-fond) 8%, var(--surl-fond) 94%, transparent 94%); color: var(--surl-texte); }
+
+/* Frise en échelle graphique de carte (repris de A) */
+.echelle { margin-top: var(--s7); padding-top: var(--s4); border-top: 1px solid var(--texte); }
+.echelle h2 { font-size: 15px; font-weight: 600; margin-bottom: var(--s4); }
+.echelle svg { display: block; width: 100%; height: auto; color: var(--texte); }
+.echelle .seg-p { fill: currentColor; } .echelle .seg-v { fill: var(--fond); }
+.echelle .lbl { fill: var(--texte-3); font: 12px var(--ui); }
+.echelle .ev { fill: var(--hist); font: 600 13px var(--ui); }
+
+.fin { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s4); align-items: center; margin-top: var(--s6); padding: var(--s4) var(--s5); border-radius: 10px; background: var(--fond-2); }
+.fin b { display: block; font-size: 13px; margin-bottom: 2px; }
+.fin p { font-size: 15px; }
+.fin a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s5); border-radius: var(--r); background: var(--plein); color: var(--plein-texte); font-weight: 600; text-decoration: none; white-space: nowrap; }
+
+/* Tiroir de définition : il glisse depuis la droite, comme sur le site actuel ; le texte reste visible à gauche */
+.voile { position: fixed; inset: 0; z-index: 30; background: rgba(10, 11, 14, .32); opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+.voile.on { opacity: 1; pointer-events: auto; }
+.tiroir { position: fixed; top: 0; right: 0; bottom: 0; z-index: 31; width: min(460px, 100vw); background: var(--fond); border-left: 1px solid var(--trait); box-shadow: -12px 0 32px rgba(0, 0, 0, .14); transform: translateX(100%); visibility: hidden; transition: transform .26s cubic-bezier(.2, .8, .2, 1), visibility 0s linear .26s; display: flex; flex-direction: column; }
+.tiroir.on { transform: none; visibility: visible; transition: transform .26s cubic-bezier(.2, .8, .2, 1), visibility 0s; }
+.tiroir-h { display: flex; align-items: center; gap: var(--s3); padding: var(--s3) var(--s4) var(--s3) var(--s5); border-bottom: 1px solid var(--trait); }
+.tiroir-h .disc { font-size: 13px; font-weight: 600; color: var(--hist); }
+.tiroir-h .ico { margin-left: auto; }
+.tiroir-c { padding: var(--s5); overflow-y: auto; display: flex; flex-direction: column; gap: var(--s4); }
+.tiroir-c h2 { font-family: var(--lecture); font-variant-caps: small-caps; font-weight: 600; font-size: 30px; letter-spacing: .01em; line-height: 1.1; }
+.tiroir-c h2 + .sub { margin-top: calc(-1 * var(--s3)); font-size: 14px; color: var(--texte-3); }
+.tiroir-c .def { font-family: var(--lecture); font-size: 18px; line-height: 1.65; color: var(--lecture-c); }
+.tiroir-c .note { border-left: 2px solid var(--hist); padding: var(--s1) 0 var(--s1) var(--s3); font-size: 15px; color: var(--texte-2); }
+.tiroir-c .note b { display: block; font-size: 13px; color: var(--texte); margin-bottom: 2px; }
+.tiroir-c .voir { font-size: 14px; color: var(--texte-2); }
+.tiroir-c .voir button { font: inherit; border: 0; padding: 0 .1em; background: linear-gradient(transparent 60%, var(--surl-fond) 60%, var(--surl-fond) 94%, transparent 94%); color: inherit; cursor: pointer; }
+.tiroir-f { margin-top: auto; padding: var(--s4) var(--s5) calc(var(--s4) + env(safe-area-inset-bottom)); border-top: 1px solid var(--trait); display: flex; gap: var(--s3); }
+.tiroir-f button { min-height: 44px; padding: 0 var(--s4); border-radius: var(--r); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; border: 1px solid var(--trait); background: none; color: var(--texte); }
+.tiroir-f button.plein { background: var(--plein); color: var(--plein-texte); border-color: var(--plein); }
+
+.pager { position: fixed; inset: auto 0 0 0; z-index: 5; background: var(--fond); border-top: 1px solid var(--trait); }
+.pager-in { display: flex; align-items: center; gap: var(--s4); max-width: 1380px; margin: 0 auto; padding: var(--s3) var(--s5) calc(var(--s3) + env(safe-area-inset-bottom)); }
+.pager a { display: flex; align-items: center; gap: var(--s3); min-height: 48px; padding: 0 var(--s4); border-radius: var(--r); border: 1px solid var(--trait); text-decoration: none; min-width: 0; }
+.pager a:hover { background: var(--fond-2); }
+.pager a span { display: flex; flex-direction: column; min-width: 0; }
+.pager a small { font-size: 12px; color: var(--texte-3); }
+.pager a b { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 28ch; }
+.pager .suiv { margin-left: auto; background: var(--plein); color: var(--plein-texte); border-color: var(--plein); }
+.pager .suiv small { color: inherit; opacity: .7; }
+.pager .pos { font-size: 14px; color: var(--texte-3); white-space: nowrap; }
+
+.mprog { display: none; padding: 0 var(--s4) var(--s2); font-size: 12px; color: var(--texte-3); }
+.mprog .seg { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; margin-top: 4px; }
+.mprog .seg i { height: 4px; border-radius: 2px; background: var(--fond-3); }
+.mprog .seg i.f { background: var(--hist); }
+.mprog .seg i.p { background: linear-gradient(90deg, var(--hist) 30%, var(--fond-3) 30%); }
+
+/* La marge de notes ne tient qu'au-delà de 1 240 px ; en dessous, les notes reviennent sous leur notion */
+@media (max-width: 1240px) {
+  .lect { grid-template-columns: minmax(0, 680px); }
+  .marge { grid-column: 1; margin-top: var(--s4); border-left-width: 3px; background: var(--fond-2); padding: var(--s3) var(--s4); border-radius: 0 var(--r) var(--r) 0; }
+}
+@media (max-width: 860px) {
+  .page { grid-template-columns: minmax(0, 1fr); padding: var(--s5) var(--s4) 120px; gap: var(--s5); }
+  .plan, .niveaux { display: none; }
+  .barre-in { padding: var(--s2) var(--s4); gap: var(--s3); }
+  .mprog { display: block; }
+  .rch-btn { margin-left: auto; }
+  .chapo { font-size: 18px; }
+  .notion p { font-size: 17px; }
+  .fin { grid-template-columns: minmax(0, 1fr); }
+  .pager-in { padding: var(--s2) var(--s4) calc(var(--s2) + env(safe-area-inset-bottom)); gap: var(--s2); }
+  .pager a { padding: 0 var(--s3); }
+  .pager a b { max-width: 15ch; }
+  .pager .prec span, .pager .pos { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+/* contour miel des actions principales en sombre */
+.btn.plein, .reprise .go, .fin a, .pager .suiv, .menu a[aria-current], .tiroir-f button.plein { box-shadow: inset 0 0 0 1px var(--plein-bord); }
+
+/* Diapositive de géographie : carte, étude de cas, chiffres, auteurs */
+.prob { margin-top: var(--s4); padding: var(--s3) var(--s4); border-left: 3px solid var(--hist); background: var(--hist-clair); border-radius: 0 var(--r) var(--r) 0; font-family: var(--lecture); font-size: 17px; line-height: 1.55; color: var(--lecture-c); }
+.prob b { display: block; font-family: var(--ui); font-size: 13px; color: var(--hist); margin-bottom: 2px; }
+.carte-f { margin: var(--s6) 0 0; }
+.carte-b { position: relative; display: block; width: 100%; padding: 0; border: 1px solid var(--trait); border-radius: 10px; overflow: hidden; background: #FBF8F2; cursor: zoom-in; }
+.carte-b img { display: block; width: 100%; height: auto; filter: none; }
+.carte-b .agr { position: absolute; right: var(--s3); bottom: var(--s3); display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 var(--s3); border-radius: var(--r); background: rgba(22, 24, 29, .78); color: #fff; font-size: 13px; font-weight: 600; }
+.carte-f figcaption { margin-top: var(--s2); font-size: 13px; color: var(--texte-3); }
+.carte-f figcaption b { display: block; font-size: 14px; color: var(--texte); font-weight: 600; }
+.cas { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: var(--s4); margin-top: var(--s4); padding: var(--s3); border: 1px solid var(--trait); border-radius: 10px; }
+.cas img { width: 100%; height: 100%; min-height: 120px; object-fit: cover; border-radius: 6px; }
+.cas .k { font-size: 12px; font-weight: 600; color: var(--hist); }
+.cas b { display: block; font-size: 16px; margin: 2px 0 4px; }
+.cas p { font-family: var(--ui); font-size: 14px; line-height: 1.5; margin: 0; color: var(--texte-2); }
+.cas small { display: block; margin-top: 6px; font-size: 12px; color: var(--texte-3); }
+.chiffres, .auteurs { margin-top: var(--s6); padding-top: var(--s4); border-top: 1px solid var(--trait); }
+.chiffres h2, .auteurs h2 { font-size: 15px; font-weight: 600; margin-bottom: var(--s3); }
+.chiffres dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s3); margin: 0; }
+.chiffres dl div { padding: var(--s3); border-radius: 8px; background: var(--fond-2); }
+.chiffres dt { font-size: 32px; font-weight: 700; letter-spacing: -.03em; color: var(--hist); line-height: 1.1; }
+.chiffres dd { margin: 2px 0 0; font-size: 13px; color: var(--texte-2); }
+.chiffres .src { font-size: 12px; color: var(--texte-3); margin-top: var(--s2); }
+.auteurs ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s3); }
+.auteurs li b { font-family: var(--lecture); font-variant-caps: small-caps; font-size: 18px; margin-right: var(--s2); }
+.auteurs li span { font-size: 13px; color: var(--texte-3); }
+.auteurs li p { font-family: var(--lecture); font-size: 16px; line-height: 1.55; margin-top: 2px; color: var(--lecture-c); }
+.visio { position: fixed; inset: 0; z-index: 50; background: rgba(10, 11, 14, .86); display: flex; flex-direction: column; }
+.visio[hidden] { display: none; }
+.visio-h { display: flex; align-items: center; gap: var(--s3); padding: var(--s3) var(--s4); color: #fff; }
+.visio-h b { font-size: 15px; }
+.visio-h .ico { margin-left: auto; color: #fff; border-color: rgba(255, 255, 255, .3); }
+.visio-c { flex: 1; overflow: auto; display: flex; align-items: flex-start; justify-content: center; padding: 0 var(--s4) var(--s4); }
+.visio-c img { width: min(100%, 980px); height: auto; background: #FBF8F2; border-radius: 8px; filter: none; }
+@media (max-width: 760px) {
+  .cas { grid-template-columns: minmax(0, 1fr); }
+  .cas img { height: 150px; }
+  .chiffres dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .visio-c { padding: 0; } .visio-c img { width: 180%; max-width: none; border-radius: 0; }
+}
+
+/* lien vers le questionnaire (version publiée pour les collègues) */
+.retour-avis { position: fixed; z-index: 30; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(88px + env(safe-area-inset-bottom, 0px)); display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 99px; background: var(--plein); color: var(--plein-texte); font: 600 14px var(--ui); text-decoration: none; box-shadow: inset 0 0 0 1px var(--plein-bord, transparent), 0 8px 24px rgba(0,0,0,.25); }
+@media (max-width: 760px) { .retour-avis { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); } }
+</style>
+</head>
+<body>
+<header class="barre">
+  <div class="barre-in">
+    <a class="ico" href="b3-accueil.html" aria-label="Retour aux thèmes"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M11 3L5 9l6 6"/></svg></a>
+    <div class="tt"><span class="disc">Géographie 5</span><b>Géographie de l’Union européenne</b></div>
+    <nav class="niveaux" aria-label="Niveaux du thème">
+      <a href="#"><i><b style="width:100%"></b></i>1 Cadrage</a>
+      <a href="#" aria-current="step"><i><b style="width:20%"></b></i>2 Notions</a>
+      <a href="#"><i></i>3 Espace</a>
+      <a href="#"><i></i>4 Documents</a>
+      <a href="#"><i></i>5 Composer</a>
+    </nav>
+    <button class="ico rch-btn" type="button" aria-label="Rechercher"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg></button>
+    <button class="ico" type="button" id="tb" aria-label="Changer de fond"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5a5.8 5.8 0 1 0 7.1 7.1z"/></svg></button>
+  </div>
+  <div class="mprog">Niveau 2 sur 5 : notions et modèles<div class="seg" aria-hidden="true"><i class="f"></i><i class="p"></i><i></i><i></i><i></i></div></div>
+</header>
+
+<div class="page">
+  <nav class="plan" aria-label="Diapositives du niveau 2">
+    <h2>Niveau 2 : notions et modèles</h2>
+    <ol>
+      <li><a href="#" aria-current="page">Délimiter et intégrer</a></li>
+      <li><a href="#">Mesurer et différencier</a></li>
+      <li><a href="#">Aménager et gouverner</a></li>
+      <li><a href="#">Marges, interfaces et monde</a></li>
+      <li><a href="#">Modèles et schémas : ce qu’ils expliquent, leurs limites</a></li>
+      <li><a href="#">Débats et points épistémologiques</a></li>
+    </ol>
+  </nav>
+
+  <article class="lect">
+    <span class="niv">Notions et modèles, 1 sur 6</span>
+    <h1>Délimiter et intégrer</h1>
+    <p class="chapo">L’Union européenne n’est ni un continent ni un État : c’est un territoire de traités, élargi par étapes, dont les règles communes ne s’appliquent pas partout avec la même intensité. Avant d’analyser cet espace, il faut savoir de quel périmètre on parle.</p>
+    <p class="prob"><b>Problématique</b>Comment l’intégration européenne a-t-elle produit un territoire aux limites mouvantes et aux périmètres emboîtés ?</p>
+
+    <figure class="carte-f">
+      <button class="carte-b" type="button" id="carte-ouvrir" aria-label="Agrandir la carte : des périmètres qui ne se superposent pas">
+        <img src="geo/carte-perimetres.svg" alt="Carte de l’Europe : États de l’UE dans et hors de la zone euro, Irlande et Chypre hachurées hors Schengen, États associés à Schengen en vert, pays candidats en orange.">
+        <span class="agr"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 2h4v4M6 14H2v-4M14 2 9 7M2 14l5-5"/></svg>Agrandir</span>
+      </button>
+      <figcaption><b>UE, zone euro, Schengen, candidats : des périmètres qui ne se superposent pas (octobre 2026)</b>Carte originale Hepsy. Statuts : Conseil de l’UE, Commission européenne, BCE ; fond Natural Earth, projection LAEA Europe.</figcaption>
+    </figure>
+    <aside class="marge"><b>Lire la carte</b>Repérer d’abord ce qui est dans l’Union mais hors de l’euro ou de Schengen, puis ce qui est hors de l’Union mais dans Schengen : c’est là que se joue la question des limites.</aside>
+
+    <section class="notion">
+      <h2>Intégration régionale</h2>
+      <p>Processus par lequel des territoires contigus multiplient et approfondissent leurs interactions jusqu’à former un ensemble où les échanges internes l’emportent sur les échanges avec l’extérieur.</p>
+    </section>
+    <aside class="marge"><b>Exemple</b>Le marché intérieur reste la première destination du commerce de marchandises des États membres, avec de forts écarts entre pays (Eurostat, 2023).</aside>
+
+    <section class="notion">
+      <h2>Intégration formelle et fonctionnelle</h2>
+      <p>Distinction entre l’intégration construite « par le haut » par des institutions et des règles, et celle qui résulte « par le bas » des pratiques des acteurs : entreprises, travailleurs, collectivités.</p>
+      <div class="cas">
+        <img src="geo/photo-oresund.webp" alt="Vue aérienne du pont de l’Øresund et de l’île artificielle de Peberholm, vers la côte suédoise." loading="lazy">
+        <div><span class="k">Étude de cas</span><b>Le pont de l’Øresund, entre Copenhague et Malmö</b><p>Une forte intégration fonctionnelle par le pont, mais peu d’institutions communes ; les contrôles rétablis en 2016 l’ont freinée.</p><small>Photo Nick-D, 2015, CC BY-SA 4.0.</small></div>
+      </div>
+    </section>
+    <aside class="marge"><b>Échelles</b>Locale (le détroit), nationale (deux États), européenne (Schengen) : le même pont se lit à trois échelles.</aside>
+
+    <section class="notion">
+      <h2>Élargissement et approfondissement</h2>
+      <p>L’<button class="terme" type="button" aria-expanded="false" data-t="Élargissement">élargissement</button> fait entrer de nouveaux États après négociation et ratification d’un traité d’adhésion ; l’<button class="terme" type="button" aria-expanded="false" data-t="Approfondissement">approfondissement</button> renforce les compétences communes et les institutions entre États déjà membres.</p>
+    </section>
+    <aside class="marge"><b>Repères</b>Sept vagues de 1973 à 2013, de 6 à 28 membres, puis sortie du Royaume-Uni en 2020 : 27 États. Acte unique (1986), Maastricht (1992), Lisbonne (2007, en vigueur en 2009).</aside>
+
+    <section class="chiffres">
+      <h2>Chiffres à retenir</h2>
+      <dl>
+        <div><dt>27</dt><dd>États membres depuis le 1<sup>er</sup> février 2020</dd></div>
+        <div><dt>21</dt><dd>États de la zone euro</dd></div>
+        <div><dt>29</dt><dd>pays de l’espace Schengen</dd></div>
+        <div><dt>9</dt><dd>pays candidats</dd></div>
+      </dl>
+      <p class="src">Statuts au 27 octobre 2026.</p>
+    </section>
+
+    <section class="auteurs">
+      <h2>Auteurs à citer</h2>
+      <ul>
+        <li><b>Michel Foucher</b><span><i>Fragments d’Europe</i>, 1993 ; <i>L’Obsession des frontières</i>, 2007.</span><p>Les frontières européennes sont des constructions politiques ; l’Union invente une frontière extérieure commune.</p></li>
+        <li><b>Jacques Lévy</b><span><i>Europe, une géographie</i>, Hachette, 1997.</span><p>L’Europe comme espace de sociétés en voie d’intégration, à lire par les échelles et les réseaux.</p></li>
+      </ul>
+    </section>
+
+    <div class="fin">
+      <div><b>Pièges</b><p>Raconter la construction européenne au lieu d’analyser l’espace ; confondre Union, zone euro et espace Schengen.</p></div>
+      <a href="b3-entrainement.html">S’entraîner sur ces notions</a>
+    </div>
+  </article>
+</div>
+
+<div class="visio" id="visio" role="dialog" aria-modal="true" aria-label="Carte agrandie" hidden>
+  <div class="visio-h"><b>UE, zone euro, Schengen, candidats (octobre 2026)</b><button class="ico" type="button" id="visio-x" aria-label="Fermer la carte"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+  <div class="visio-c"><img src="geo/carte-perimetres.svg" alt="Carte de l’Europe : UE, zone euro, Schengen et pays candidats."></div>
+</div>
+
+<nav class="pager" aria-label="Diapositives">
+  <div class="pager-in">
+    <a class="prec" href="#" aria-label="Diapositive précédente : Épreuves et attentes du jury"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg><span><small>Précédente</small><b>Épreuves et attentes du jury</b></span></a>
+    <span class="pos">Diapositive 7 sur 31</span>
+    <a class="suiv" href="#" aria-label="Diapositive suivante : Mesurer et différencier"><span><small>Suivante</small><b>Mesurer et différencier</b></span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a>
+  </div>
+</nav>
+
+<div class="voile" id="voile"></div>
+<aside class="tiroir" id="tiroir" role="dialog" aria-modal="true" aria-labelledby="tr-t" aria-hidden="true">
+  <div class="tiroir-h"><span class="disc">Géographie 5, notion</span><button class="ico" type="button" id="tr-x" aria-label="Fermer la définition"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+  <div class="tiroir-c" id="tr-c"></div>
+  <div class="tiroir-f"><button type="button" class="plein">Ajouter aux cartes à revoir</button><button type="button" id="tr-f">Fermer</button></div>
+</aside>
+<script>
+/* Contenu réel de la fiche H4 : définition (d), nuance (x) et notions liées */
+var D = {
+  "Élargissement": { sub: "Délimiter et intégrer", d: "Entrée de nouveaux États dans l’Union après négociation et ratification d’un traité d’adhésion.", x: "Sept vagues de 1973 à 2013 (de 6 à 28 membres), puis sortie du Royaume-Uni en 2020 : 27 États.", voir: ["Approfondissement"] },
+  "Approfondissement": { sub: "Délimiter et intégrer", d: "Renforcement des compétences communes et des institutions entre États déjà membres (marché unique, monnaie, coopération policière).", x: "Acte unique (1986), traité de Maastricht (1992), traité de Lisbonne (2007, en vigueur en 2009).", voir: ["Élargissement"] }
+};
+var tr = document.getElementById("tiroir"), voile = document.getElementById("voile"), cur = null;
+function remplir(nomT) {
+  var n = D[nomT];
+  document.getElementById("tr-c").innerHTML = '<h2 id="tr-t">' + nomT + '</h2><p class="sub">' + n.sub + '</p><p class="def">' + n.d + '</p>' +
+    '<div class="note"><b>Nuance</b>' + n.x + '</div>' +
+    '<p class="voir">Voir aussi : ' + n.voir.map(function (v) { return '<button type="button" data-v="' + v + '">' + v.toLowerCase() + '</button>'; }).join(", ") + '</p>';
+  document.querySelectorAll("#tr-c [data-v]").forEach(function (v) { v.onclick = function () { remplir(v.dataset.v); }; });
+}
+function ouvrir(t) {
+  if (cur && cur !== t) cur.setAttribute("aria-expanded", "false");
+  cur = t; t.setAttribute("aria-expanded", "true"); remplir(t.dataset.t);
+  tr.classList.add("on"); voile.classList.add("on"); tr.setAttribute("aria-hidden", "false");
+  document.getElementById("tr-x").focus();
+}
+function fermer() {
+  tr.classList.remove("on"); voile.classList.remove("on"); tr.setAttribute("aria-hidden", "true");
+  if (cur) { cur.setAttribute("aria-expanded", "false"); cur.focus(); cur = null; }
+}
+document.querySelectorAll(".terme").forEach(function (t) { t.addEventListener("click", function () { ouvrir(t); }); });
+document.getElementById("tr-x").onclick = fermer; document.getElementById("tr-f").onclick = fermer; voile.onclick = fermer;
+document.addEventListener("keydown", function (e) {
+  if (!tr.classList.contains("on")) return;
+  if (e.key === "Escape") { fermer(); return; }
+  if (e.key === "Tab") {  /* le focus reste dans le tiroir tant qu'il est ouvert */
+    var f = tr.querySelectorAll("button"), a = f[0], z = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
+    else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+  }
+});
+/* même choix de fond que l'accueil, mémorisé sur l'appareil */
+document.getElementById("tb").onclick = function () {
+  var t = getComputedStyle(document.documentElement).colorScheme === "dark" ? "clair" : "sombre";
+  document.documentElement.dataset.theme = t; try { localStorage.setItem("hepsy3-theme", t); localStorage.setItem("hepsy3-theme-choisi", "1"); } catch (e) {}
+};
+/* Visionneuse : la carte s'ouvre en grand, se fait défiler au doigt sur téléphone, Échap la ferme */
+(function () {
+  var v = document.getElementById("visio"), o = document.getElementById("carte-ouvrir");
+  function fermer() { v.hidden = true; o.focus(); }
+  o.onclick = function () { v.hidden = false; document.getElementById("visio-x").focus(); };
+  document.getElementById("visio-x").onclick = fermer;
+  v.addEventListener("click", function (e) { if (e.target === v || e.target.classList.contains("visio-c")) fermer(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !v.hidden) fermer(); });
+})();
+</script>
+<a class="retour-avis" href="./">Donner mon avis</a>
+<script src="b3-recherche.js"></script>
+</body>
+</html>

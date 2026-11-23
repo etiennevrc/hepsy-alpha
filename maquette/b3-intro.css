@@ -1,0 +1,51 @@
+/* Écran d'accueil animé, repris du site actuel (src/site_template.html, styles .splash) et adapté aux jetons de B3 */
+.splash { --cw: clamp(170px, 38vw, 520px); position: fixed; inset: 0; z-index: 200; background: var(--fond); overflow: hidden; transition: opacity .8s ease, filter .8s ease, visibility .8s; }
+.splash::before { content: ""; position: absolute; inset: 0; background: radial-gradient(55% 45% at 50% 50%, rgba(227,182,91,.13), transparent 72%); opacity: 0; animation: glow 2.6s .1s ease-out forwards; }
+.splash.out { opacity: 0; visibility: hidden; filter: blur(10px); }
+.splash-skip { position: absolute; z-index: 3; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); min-height: 44px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--trait); background: var(--fond-2); color: var(--texte); font: inherit; font-size: 15px; cursor: pointer; }
+.splash-skip:hover { border-color: var(--or); }
+.splash .stagebox { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 16px; animation: grp-out .6s 5.2s cubic-bezier(.6,0,.4,1) forwards; }
+.splash .row { display: flex; align-items: center; justify-content: center; }
+.splash .word { position: relative; z-index: 2; font-family: var(--ui); font-weight: 600; font-size: clamp(38px, 11.5vw, 168px); line-height: 1; color: var(--texte); white-space: nowrap; padding: .06em .02em; clip-path: inset(-10% 50% -10% 50%); opacity: 0;
+  animation: reveal 1.45s .2s cubic-bezier(.16,1,.3,1) forwards, stretch 2.1s .2s cubic-bezier(.16,1,.3,1) forwards; }
+.splash .word i { font-style: normal; color: var(--or); display: inline-block; transform-origin: 50% 92%; animation: yhop 1.15s 1.6s both; }
+.splash .who { position: relative; z-index: 1; width: 0; flex: none; animation: who-in 1.1s 2.55s cubic-bezier(.22,1,.36,1) forwards; }
+.splash svg.isa, .splash canvas.c3 { width: var(--cw); height: auto; display: block; flex: none; overflow: visible; opacity: 0; transform-origin: 50% 90%; animation: cat-in 1.1s 2.55s cubic-bezier(.34,1.25,.64,1) forwards; filter: drop-shadow(0 10px 24px rgba(0,0,0,.45)); }
+
+.splash .welcome { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(10px, 2vw, 20px); padding: 24px; text-align: center; opacity: 0; animation: wel-in .9s 5.8s cubic-bezier(.2,.8,.2,1) forwards; }
+.splash .welcome .w1 { font-family: var(--ui); font-weight: 500; font-size: clamp(34px, 7.5vw, 84px); line-height: 1.05; color: var(--texte); }
+.splash .welcome .w1 em { font-style: italic; color: var(--texte-3); font-weight: 500; }
+.splash .welcome .w1 b { font-weight: 600; letter-spacing: .05em; } .splash .welcome .w1 b i { font-style: normal; color: var(--or); }
+.splash .welcome .w2 { max-width: 34em; color: var(--texte-2); font-size: clamp(15px, 2vw, 19px); line-height: 1.55; opacity: 0; animation: wel-in .8s 6.2s cubic-bezier(.2,.8,.2,1) forwards; }
+.splash .welcome .rule { width: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--or), transparent); animation: rule 1s 6.0s cubic-bezier(.2,.8,.2,1) forwards; }
+@keyframes glow { to { opacity: 1; } }
+@keyframes reveal { 0% { clip-path: inset(-10% 50% -10% 50%); opacity: 0; } 25% { opacity: 1; } 100% { clip-path: inset(-10% -6% -10% -6%); opacity: 1; } }
+@keyframes stretch { from { letter-spacing: -.05em; transform: scaleX(.8); } to { letter-spacing: .07em; transform: none; } }
+@keyframes who-in { to { width: var(--cw); margin-left: clamp(8px, 2vw, 26px); } }
+@keyframes cat-in { 0% { opacity: 0; transform: translate(calc(var(--cw) * -.78), 4%) scale(.5); } 35% { opacity: 1; } 100% { opacity: 1; transform: none; } }
+@keyframes grp-out { to { opacity: 0; transform: translateY(-16px) scale(.985); filter: blur(7px); } }
+@keyframes wel-in { from { opacity: 0; transform: translateY(16px); filter: blur(5px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes rule { to { width: min(260px, 50vw); } }
+.isa .arm { transform-box: view-box; transform-origin: 198px 216px; animation: arm 1s 3.5s cubic-bezier(.45,.05,.35,1) both; }
+.isa .paw { transform-box: view-box; transform-origin: 266px 160px; animation: paw 1s 3.6s cubic-bezier(.45,.05,.35,1) both; }
+.isa .head { transform-box: view-box; transform-origin: 160px 250px; animation: tilt 4.2s 3.6s ease-in-out infinite alternate; }
+.isa .torso { transform-box: view-box; transform-origin: 160px 300px; animation: breathe 3.2s ease-in-out infinite; }
+.isa .tail { transform-box: view-box; transform-origin: 214px 276px; animation: tail 2.6s ease-in-out infinite alternate; }
+.isa .eyes { transform-box: view-box; transform-origin: 160px 142px; animation: blink 4.4s 2.2s infinite; }
+.isa .earL { transform-box: view-box; transform-origin: 104px 104px; animation: twitch 5.2s 2.8s infinite; }
+.isa .heart { transform-box: fill-box; transform-origin: center; opacity: 0; animation: heart 1.8s 4.6s ease-out 2; }
+.isa .spark { transform-box: fill-box; transform-origin: center; animation: twinkle 1.6s ease-in-out infinite alternate; }
+@keyframes arm { 0% { transform: rotate(64deg); } 30% { transform: rotate(-12deg); } 55% { transform: rotate(4deg); } 80% { transform: rotate(-4deg); } 100% { transform: rotate(0deg); } }
+@keyframes paw { 0% { transform: rotate(20deg); } 25% { transform: rotate(-8deg); } 45% { transform: rotate(26deg); } 65% { transform: rotate(-20deg); } 85% { transform: rotate(12deg); } 100% { transform: rotate(0deg); } }
+@keyframes yhop { 0% { transform: none; } 10% { transform: scale(1.12,.84); } 28% { transform: translateY(-.34em) scale(.9,1.14); } 46% { transform: translateY(0) scale(1.14,.82); } 58% { transform: scale(.98,1.04); } 70% { transform: translateY(-.16em) scale(.94,1.08); } 86% { transform: translateY(0) scale(1.06,.93); } 100% { transform: none; } }
+@keyframes tilt { from { transform: rotate(-1.6deg); } to { transform: rotate(1.9deg) translateY(-1px); } }
+@keyframes breathe { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.02); } }
+@keyframes tail { from { transform: rotate(-6deg); } to { transform: rotate(8deg); } }
+@keyframes blink { 0%, 91%, 100% { transform: scaleY(1); } 94% { transform: scaleY(.07); } }
+@keyframes twitch { 0%, 90%, 100% { transform: rotate(0); } 93% { transform: rotate(-6deg); } 96% { transform: rotate(2deg); } }
+@keyframes heart { 0% { opacity: 0; transform: translateY(10px) scale(.5); } 25% { opacity: 1; } 100% { opacity: 0; transform: translateY(-36px) scale(1.05); } }
+@keyframes twinkle { from { opacity: .3; transform: scale(.8); } to { opacity: 1; transform: scale(1.1); } }
+@media (prefers-reduced-motion: reduce) { .splash { display: none; } }
+.splash .word { font-weight: 700; letter-spacing: -.02em; }
+/* L'introduction reste noir et miel, comme sur le site actuel, quel que soit le fond choisi ensuite */
+.splash { color-scheme: dark; --fond: #0C0A09; --fond-2: #181512; --texte: #F5EFE4; --texte-2: #D8D0C3; --texte-3: #A89E90; --trait: #2C261F; --or: #F2B04A; color: var(--texte); }

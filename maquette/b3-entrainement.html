@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hepsy · Proposition B3 · S’entraîner</title>
+<script>var t="auto";try{t=localStorage.getItem("hepsy3-theme")||"auto";}catch(e){}if(t==="clair"||t==="sombre")document.documentElement.dataset.theme=t;</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="b3-commun.css">
+<style>
+.reglage { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: var(--s4) var(--s5); align-items: start; padding: var(--s4) 0; border-top: 1px solid var(--trait); }
+.reglage > span { font-size: 14px; font-weight: 600; padding-top: 8px; }
+.reglage > span small { display: block; font-weight: 400; color: var(--texte-3); font-size: 13px; }
+.choix { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.choix button { display: inline-flex; align-items: center; gap: var(--s2); min-height: 40px; padding: 0 var(--s3); border-radius: var(--r); border: 1px solid var(--trait); background: var(--fond); font-size: 14px; cursor: pointer; color: var(--texte-2); }
+.choix button:hover { border-color: var(--texte-3); }
+.choix button[aria-pressed="true"] { border-color: var(--texte); color: var(--texte); font-weight: 600; box-shadow: inset 0 0 0 1px var(--texte); }
+.choix button small { color: var(--texte-3); font-weight: 400; font-size: 12px; }
+.choix button .pt { width: 8px; height: 8px; border-radius: 2px; }
+.choix .h .pt { background: var(--hist); } .choix .g .pt { background: var(--geo); }
+.modes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s3); }
+.mode { display: flex; flex-direction: column; gap: var(--s1); text-align: left; padding: var(--s4); border-radius: 10px; border: 1px solid var(--trait); background: var(--fond); cursor: pointer; min-height: 112px; }
+.mode b { font-size: 16px; }
+.mode span { font-size: 13px; color: var(--texte-3); line-height: 1.4; }
+.mode[aria-pressed="true"] { border-color: var(--texte); box-shadow: inset 0 0 0 1px var(--texte); }
+.lancer { display: flex; align-items: center; gap: var(--s4); margin-top: var(--s5); flex-wrap: wrap; }
+.lancer p { color: var(--texte-3); font-size: 14px; }
+
+/* Séance */
+.seance[hidden], .reglages[hidden], .fin[hidden] { display: none; }
+.seance { max-width: 760px; }
+.s-haut { display: flex; align-items: center; gap: var(--s4); margin-bottom: var(--s5); }
+.s-haut .prog { flex: 1; height: 6px; border-radius: 3px; background: var(--fond-3); overflow: hidden; }
+.s-haut .prog b { display: block; height: 100%; background: var(--hist); border-radius: 3px; transition: width .3s ease; }
+.s-haut span { font-size: 14px; color: var(--texte-3); white-space: nowrap; }
+.carte-f { position: relative; min-height: 340px; perspective: 1600px; }
+.face { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--s3); padding: var(--s6) var(--s7); border: 1px solid var(--trait); border-radius: 14px; background: var(--fond); box-shadow: var(--ombre); backface-visibility: hidden; transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
+.face.verso { transform: rotateY(180deg); background: var(--fond-2); }
+.carte-f.tournee .recto { transform: rotateY(-180deg); }
+.carte-f.tournee .verso { transform: rotateY(0); }
+.face .grp { font-size: 13px; color: var(--texte-3); }
+.face .terme { font-family: var(--lecture); font-variant-caps: small-caps; font-weight: 600; font-size: clamp(30px, 4.4vw, 44px); line-height: 1.1; letter-spacing: .01em; }
+.face .consigne { font-size: 14px; color: var(--texte-3); margin-top: var(--s3); }
+.face .def { font-family: var(--lecture); font-size: 19px; line-height: 1.6; color: var(--lecture-c); }
+.face .terme-v { font-family: var(--lecture); font-variant-caps: small-caps; font-weight: 600; font-size: 20px; }
+.s-act { display: flex; gap: var(--s3); margin-top: var(--s5); justify-content: center; flex-wrap: wrap; }
+.s-act[hidden] { display: none; }
+.s-act .btn { min-width: 180px; }
+.btn.ko { border-color: var(--ko); color: var(--ko); background: var(--ko-clair); }
+.btn.ok { border-color: var(--ok); color: var(--ok); background: var(--ok-clair); }
+kbd { font-family: var(--ui); font-size: 11px; border: 1px solid currentColor; border-radius: 4px; padding: 0 4px; opacity: .6; margin-left: 4px; }
+.s-note { text-align: center; margin-top: var(--s4); font-size: 13px; color: var(--texte-3); }
+
+.fin { max-width: 760px; }
+.score { font-size: clamp(64px, 10vw, 104px); font-weight: 700; letter-spacing: -.05em; line-height: 1; }
+.score small { font-size: .35em; letter-spacing: -.01em; color: var(--texte-3); font-weight: 500; }
+.fin h2 { font-size: 24px; font-weight: 700; margin: var(--s3) 0 var(--s2); }
+.fin > p { color: var(--texte-2); max-width: 56ch; }
+.revoir { list-style: none; padding: 0; margin: var(--s5) 0; border-top: 1px solid var(--trait); }
+.revoir li { padding: var(--s3) 0; border-bottom: 1px solid var(--trait); display: flex; justify-content: space-between; gap: var(--s3); font-size: 15px; }
+.revoir li span { color: var(--texte-3); font-size: 13px; }
+.fin .act { display: flex; gap: var(--s3); flex-wrap: wrap; }
+
+@media (max-width: 900px) { .modes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) {
+  .reglage { grid-template-columns: minmax(0, 1fr); gap: var(--s2); }
+  .face { padding: var(--s5); }
+  .carte-f { min-height: 380px; }
+  .s-act .btn { flex: 1; min-width: 0; }
+  kbd { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .face { transition: none; } }
+</style>
+</head>
+<body data-page="train">
+<div class="app">
+  <div>
+    <main class="main">
+      <section class="reglages" id="reglages">
+        <header class="tete-p">
+          <p class="sur">Mode entraînement</p>
+          <h1>S’entraîner</h1>
+          <p>Une bonne réponse fait monter la carte d’un cran ; une erreur la ramène au début, elle reviendra plus souvent.</p>
+        </header>
+        <div class="reglage"><span>Thème</span><div class="choix" id="c-th"></div></div>
+        <div class="reglage"><span>Exercice</span>
+          <div class="modes" id="c-mode">
+            <button class="mode" type="button" data-m="flash" aria-pressed="true"><b>Flashcards</b><span>Tu te poses la question, tu retournes la carte, tu dis si tu savais.</span></button>
+            <button class="mode" type="button" data-m="qcm" aria-pressed="false"><b>QCM</b><span>Quatre propositions, une seule juste.</span></button>
+            <button class="mode" type="button" data-m="frise" aria-pressed="false"><b>Frise</b><span>Remettre cinq événements dans l’ordre.</span></button>
+            <button class="mode" type="button" data-m="def" aria-pressed="false"><b>Définitions</b><span>Rédiger la définition, puis la comparer.</span></button>
+          </div>
+        </div>
+        <div class="reglage"><span>Cartes<small>plusieurs choix possibles</small></span><div class="choix" id="c-types"></div></div>
+        <div class="lancer"><button class="btn plein" type="button" id="go">Lancer une série de 8 cartes</button><p id="go-note">Flashcards sur l’Occident médiéval, cartes de notions.</p></div>
+      </section>
+
+      <section class="seance" id="seance" hidden aria-live="polite">
+        <div class="s-haut"><button class="btn" type="button" id="quitter">Arrêter</button><div class="prog"><b id="prog" style="width:0"></b></div><span id="pos"></span></div>
+        <div class="carte-f" id="carte">
+          <div class="face recto"><span class="grp" id="r-g"></span><p class="terme" id="r-t"></p><p class="consigne">Formule la définition dans ta tête, puis retourne la carte.</p></div>
+          <div class="face verso" aria-hidden="true"><span class="grp" id="v-g"></span><p class="terme-v" id="v-t"></p><p class="def" id="v-d"></p></div>
+        </div>
+        <div class="s-act" id="act-r"><button class="btn plein" type="button" id="tourner">Retourner la carte<kbd>Espace</kbd></button></div>
+        <div class="s-act" id="act-v" hidden><button class="btn ko" type="button" id="non">À revoir<kbd>1</kbd></button><button class="btn ok" type="button" id="oui">Je savais<kbd>2</kbd></button></div>
+        <p class="s-note">Flashcards auto-évaluées : sois honnête avec toi-même, c’est ton suivi qui en dépend.</p>
+      </section>
+
+      <section class="fin" id="fin" hidden aria-live="polite">
+        <p class="score" id="score"></p>
+        <h2 id="fin-t"></h2>
+        <p id="fin-p"></p>
+        <ul class="revoir" id="revoir"></ul>
+        <div class="act"><button class="btn plein" type="button" id="encore">Revoir les cartes manquées</button><button class="btn" type="button" id="retour">Changer de réglages</button><a class="btn" href="b3-suivi.html">Voir mon suivi</a></div>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="b3-commun.js"></script>
+<script src="b3-recherche.js"></script>
+<script>
+var THEMES = [["tous", "Tous les thèmes", ""],
+  ["h1", "Histoire 1 : La Grèce classique", "h"], ["h2", "Histoire 2 : Rome, République et Empire", "h"], ["h3", "Histoire 3 : Contacts et conflits en Méditerranée", "h"], ["h4", "Histoire 4 : Société, Église et pouvoir politique dans l’Occident médiéval", "h"],
+  ["h5", "Histoire 5 : Première mondialisation, Renaissance, humanisme et réformes", "h"], ["h6", "Histoire 6 : L’Europe du XVIII<sup>e</sup> siècle, Révolution française et Empire", "h"], ["h7", "Histoire 7 : Le XIX<sup>e</sup> siècle français", "h"], ["h8", "Histoire 8 : Le XX<sup>e</sup> siècle", "h"],
+  ["g1", "Géographie 1 : Géographie de la population", "g"], ["g2", "Géographie 2 : Géographie de la mondialisation", "g"], ["g3", "Géographie 3 : Géographie de l’environnement", "g"], ["g4", "Géographie 4 : Géographie de la France", "g"],
+  ["g5", "Géographie 5 : Géographie de l’Union européenne", "g"], ["g6", "Géographie 6 : Géopolitique", "g"], ["g7", "Géographie 7 : Géographie urbaine", "g"], ["g8", "Géographie 8 : Géographie rurale", "g"]];
+var TYPES = [["notion", "Notions", 124], ["date", "Dates", 99], ["perso", "Personnages", 41], ["auteur", "Auteurs et sources", 18], ["chiffre", "Chiffres", 22], ["histo", "Historiographie", 30]];
+/* Huit cartes tirées de la fiche H4 (content/h4_notions.json) */
+var CARTES = [
+  ["Cadrer la question", "Occident médiéval", "L’espace de la chrétienté latine, qui obéit au pape de Rome et utilise le latin comme langue de l’Église et du savoir, par opposition à la chrétienté grecque (Byzance) et au monde musulman. Il s’élargit aux XI<sup>e</sup>-XIII<sup>e</sup> siècles vers le nord, l’est et le sud (Reconquista)."],
+  ["Seigneurie, féodalité et noblesse", "Seigneurie foncière", "Domaine dont le seigneur (<i>dominus</i>) possède la terre : une réserve qu’il exploite directement et des tenures confiées aux paysans contre redevances et services."],
+  ["Seigneurie, féodalité et noblesse", "Seigneurie banale", "Pouvoir d’ordonner, contraindre et punir (le ban), d’origine publique, exercé par le seigneur sur tous les habitants d’un territoire, propriétaires ou non. Il donne justice, taxes, péages et monopoles."],
+  ["Réforme de l’Église", "Réforme grégorienne", "Mouvement (milieu XI<sup>e</sup>-début XII<sup>e</sup> siècle) nommé d’après Grégoire VII, qui vise à libérer l’Église de l’emprise des laïcs (<i>libertas Ecclesiae</i>) et à purifier le clergé. Il sépare nettement clercs et laïcs et place le pape au sommet."],
+  ["Réforme de l’Église", "Simonie", "Achat ou vente de biens spirituels : sacrements, charges ecclésiastiques (évêchés, cures). Le nom vient de Simon le Magicien, qui voulut acheter aux apôtres le pouvoir de l’Esprit (Actes 8)."],
+  ["Encadrer les fidèles", "Paroisse", "Circonscription religieuse de base, avec son église, son curé et son cimetière, où le fidèle reçoit les sacrements et paie la dîme. Le maillage paroissial s’achève aux XII<sup>e</sup>-XIII<sup>e</sup> siècles et sert aussi à contrôler les individus."],
+  ["Encadrer les fidèles", "Septénaire sacramentel", "Les sept sacrements sont fixés aux XII<sup>e</sup>-XIII<sup>e</sup> siècles (Pierre Lombard) : baptême, confirmation, eucharistie, pénitence, extrême-onction, ordre, mariage. Seul le prêtre peut les administrer, sauf le baptême en cas d’urgence."],
+  ["Hérésies et minorités", "Hérésie", "Choix d’une opinion contraire à la doctrine de l’Église, défendue avec obstination. En 1199, la bulle <i>Vergentis in senium</i> d’Innocent III assimile l’hérésie à un crime de lèse-majesté divine."]
+];
+var cfg = { th: "h4", mode: "flash", types: ["notion"] };
+function majChoix() {
+  document.getElementById("c-th").innerHTML = THEMES.map(function (t) { return '<button type="button" class="' + t[2] + '" data-th="' + t[0] + '" aria-pressed="' + (cfg.th === t[0]) + '">' + (t[2] ? '<span class="pt"></span>' : '') + '<span>' + t[1] + '</span></button>'; }).join("");
+  document.getElementById("c-types").innerHTML = TYPES.map(function (t) { return '<button type="button" data-ty="' + t[0] + '" aria-pressed="' + (cfg.types.indexOf(t[0]) >= 0) + '">' + t[1] + ' <small>' + t[2] + '</small></button>'; }).join("");
+  document.querySelectorAll("#c-th button").forEach(function (b) { b.onclick = function () { cfg.th = b.dataset.th; majChoix(); }; });
+  document.querySelectorAll("#c-types button").forEach(function (b) { b.onclick = function () { var i = cfg.types.indexOf(b.dataset.ty); if (i >= 0 && cfg.types.length > 1) cfg.types.splice(i, 1); else if (i < 0) cfg.types.push(b.dataset.ty); majChoix(); }; });
+  var nomT = THEMES.filter(function (t) { return t[0] === cfg.th; })[0][1], nomM = { flash: "Flashcards", qcm: "QCM", frise: "Frise", def: "Définitions" }[cfg.mode];
+  document.getElementById("go-note").innerHTML = nomM + (cfg.th === "tous" ? " sur tous les thèmes" : " sur « " + nomT.replace(/^[^:]+ : /, "") + " »") + ". Dans la maquette, la série jouée est toujours celle des flashcards de l’Occident médiéval.";
+}
+document.querySelectorAll("#c-mode .mode").forEach(function (b) { b.onclick = function () { cfg.mode = b.dataset.m; document.querySelectorAll("#c-mode .mode").forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); majChoix(); }; });
+majChoix();
+
+var serie = [], i = 0, rate = [], $ = function (id) { return document.getElementById(id); };
+function montrer() {
+  var c = serie[i], carte = $("carte");
+  carte.classList.remove("tournee"); carte.querySelector(".verso").setAttribute("aria-hidden", "true"); carte.querySelector(".recto").removeAttribute("aria-hidden");
+  $("r-g").textContent = c[0]; $("r-t").innerHTML = c[1]; $("v-g").textContent = c[0]; $("v-t").innerHTML = c[1]; $("v-d").innerHTML = c[2];
+  $("pos").textContent = "Carte " + (i + 1) + " sur " + serie.length; $("prog").style.width = (100 * i / serie.length) + "%";
+  $("act-r").hidden = false; $("act-v").hidden = true; $("tourner").focus();
+}
+function tourner() { var carte = $("carte"); carte.classList.add("tournee"); carte.querySelector(".verso").removeAttribute("aria-hidden"); carte.querySelector(".recto").setAttribute("aria-hidden", "true"); $("act-r").hidden = true; $("act-v").hidden = false; $("oui").focus(); }
+function repondre(ok) { if (!ok) rate.push(serie[i]); i++; if (i < serie.length) montrer(); else finir(); }
+function finir() {
+  $("prog").style.width = "100%"; $("seance").hidden = true; $("fin").hidden = false;
+  var n = serie.length, bon = n - rate.length;
+  $("score").innerHTML = bon + '<small> / ' + n + '</small>';
+  $("fin-t").textContent = rate.length === 0 ? "Série parfaite." : rate.length <= 2 ? "Belle série." : "Série enregistrée.";
+  $("fin-p").textContent = rate.length ? "Les cartes manquées reviendront plus souvent dans tes prochaines séries. Tu peux aussi les revoir tout de suite." : "Chaque carte monte d’un cran : elles reviendront plus espacées.";
+  $("revoir").innerHTML = rate.map(function (c) { return '<li>' + c[1] + '<span>' + c[0] + '</span></li>'; }).join("");
+  $("encore").hidden = !rate.length; (rate.length ? $("encore") : $("retour")).focus();
+}
+function lancer(cartes) { serie = cartes.slice(); i = 0; rate = []; $("reglages").hidden = true; $("fin").hidden = true; $("seance").hidden = false; montrer(); }
+$("go").onclick = function () { lancer(CARTES); };
+$("tourner").onclick = tourner; $("oui").onclick = function () { repondre(true); }; $("non").onclick = function () { repondre(false); };
+$("encore").onclick = function () { lancer(rate); };
+$("retour").onclick = $("quitter").onclick = function () { $("seance").hidden = true; $("fin").hidden = true; $("reglages").hidden = false; };
+document.addEventListener("keydown", function (e) {
+  if ($("seance").hidden || e.target.tagName === "INPUT") return;
+  if (e.key === " " && !$("act-r").hidden) { e.preventDefault(); tourner(); }
+  else if (!$("act-v").hidden && (e.key === "1" || e.key === "2")) repondre(e.key === "2");
+});
+</script>
+</body>
+</html>

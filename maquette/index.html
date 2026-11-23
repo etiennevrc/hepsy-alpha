@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Avis sur Hepsy B3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,500&display=swap" rel="stylesheet">
+<style>
+/* Page d'accueil des collègues : présenter la maquette, la faire essayer, recueillir l'avis. Colonne de lecture unique, jetons de B3. */
+:root {
+  --fond: #FFFFFF; --fond-2: #F4F2EE; --trait: #DAD5CC; --texte: #16181D; --texte-2: #474C56; --texte-3: #6A707B;
+  --miel: #A86A12; --miel-fond: #FDF1DC; --ok: #2F7A45; --ko: #B3362B;
+  --plein: #16181D; --plein-texte: #FFFFFF;
+  --ui: "Instrument Sans", "Segoe UI", system-ui, sans-serif; --lecture: "Literata", Georgia, serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --fond: #0C0A09; --fond-2: #181512; --trait: #2C261F; --texte: #F5EFE4; --texte-2: #D8D0C3; --texte-3: #A89E90;
+  --miel: #F2B04A; --miel-fond: #241A0E; --ok: #9CC08A; --ko: #EF8A7D; --plein: #241A0E; --plein-texte: #F6C76B; color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --fond: #0C0A09; --fond-2: #181512; --trait: #2C261F; --texte: #F5EFE4; --texte-2: #D8D0C3; --texte-3: #A89E90;
+  --miel: #F2B04A; --miel-fond: #241A0E; --ok: #9CC08A; --ko: #EF8A7D; --plein: #241A0E; --plein-texte: #F6C76B; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--fond); color: var(--texte); font: 16px/1.55 var(--ui); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 40px 64px; }
+main { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+h1, h2 { margin: 0; line-height: 1.15; text-wrap: balance; }
+h1 { font-size: clamp(30px, 6vw, 42px); font-weight: 700; letter-spacing: -.03em; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--miel); outline-offset: 2px; border-radius: 3px; }
+.tete { display: flex; flex-direction: column; gap: 12px; }
+.tete .sur { color: var(--miel); font-weight: 600; font-size: 14px; }
+.tete p { font-family: var(--lecture); font-size: 18px; line-height: 1.6; color: var(--texte-2); }
+.liens { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 8px; border: 1px solid var(--trait); background: var(--fond); color: var(--texte); font: 600 15px var(--ui); text-decoration: none; cursor: pointer; }
+.btn.plein { background: var(--plein); color: var(--plein-texte); border-color: var(--miel); }
+.note { font-size: 14px; color: var(--texte-3); }
+form { display: flex; flex-direction: column; gap: 28px; }
+fieldset { margin: 0; padding: 20px 0 0; border: 0; border-top: 1px solid var(--trait); display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+legend { padding: 0; font-size: 18px; font-weight: 700; }
+legend small { display: block; font-size: 14px; font-weight: 400; color: var(--texte-3); margin-top: 2px; }
+label { font-size: 15px; }
+textarea, input[type="text"] { width: 100%; min-height: 48px; padding: 10px 12px; border: 1px solid var(--trait); border-radius: 8px; background: var(--fond-2); color: var(--texte); font: 16px/1.5 var(--ui); resize: vertical; }
+textarea { min-height: 88px; }
+.tache { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--trait); }
+.tache:last-child { border-bottom: 0; }
+.tache p { font-size: 15px; }
+.choix { display: flex; flex-wrap: wrap; gap: 8px; }
+.choix label { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 12px; border: 1px solid var(--trait); border-radius: 99px; cursor: pointer; font-size: 14px; }
+.choix input { accent-color: var(--miel); }
+.choix label:has(input:checked) { border-color: var(--miel); background: var(--miel-fond); font-weight: 600; }
+.etat { padding: 14px 16px; border-radius: 8px; background: var(--fond-2); font-size: 15px; }
+.etat[hidden] { display: none; }
+.etat.ok { border-left: 3px solid var(--ok); } .etat.ko { border-left: 3px solid var(--ko); }
+.envoi { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+#copie { width: 100%; min-height: 160px; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<main>
+  <header class="tete">
+    <span class="sur">Hepsy, révision du CAPES d’histoire-géographie</span>
+    <h1>Ton avis sur la nouvelle apparence de Hepsy</h1>
+    <p>Voici une maquette de la future apparence de Hepsy. Le contenu vient des vraies fiches, mais tout n’est pas cliquable, et les chiffres de « Mon suivi » sont un exemple inventé. Compte une dizaine de minutes.</p>
+    <div class="liens">
+      <a class="btn plein" href="b3-accueil.html">Ouvrir la maquette</a>
+      <a class="btn" href="https://etiennevrc.github.io/hepsy-alpha/" target="_blank" rel="noopener">Ouvrir le site actuel, pour comparer</a>
+    </div>
+    <p class="note">Dans la maquette, le bouton « Donner mon avis », en bas à droite, ramène ici.</p>
+  </header>
+
+  <form id="f" novalidate>
+    <fieldset>
+      <legend>1. Première impression<small>Ouvre la maquette et regarde l’accueil quelques secondes, sans cliquer.</small></legend>
+      <label for="q1">À ton avis, à quoi sert ce site, et à qui s’adresse-t-il ?</label>
+      <textarea id="q1" name="q1"></textarea>
+    </fieldset>
+
+    <fieldset id="taches">
+      <legend>2. Cinq petites tâches<small>Pour chacune, dis si c’était facile, hésitant, ou si tu n’as pas trouvé.</small></legend>
+    </fieldset>
+
+    <fieldset>
+      <legend>3. Le fond</legend>
+      <div class="choix" role="radiogroup" aria-label="Fond choisi">
+        <label><input type="radio" name="fond" value="sombre"> Sombre</label>
+        <label><input type="radio" name="fond" value="clair"> Clair</label>
+        <label><input type="radio" name="fond" value="appareil"> Comme mon appareil</label>
+      </div>
+      <div class="choix" role="radiogroup" aria-label="Appareil de révision">
+        <label><input type="radio" name="appareil" value="ordinateur"> Je révise surtout sur ordinateur</label>
+        <label><input type="radio" name="appareil" value="telephone"> Surtout sur téléphone</label>
+        <label><input type="radio" name="appareil" value="les deux"> Les deux</label>
+      </div>
+      <label for="q3">Pourquoi ce fond ?</label>
+      <textarea id="q3" name="q3"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>4. La lecture</legend>
+      <label for="q4">Sur une diapositive, le texte est-il agréable à lire longtemps ? Quelque chose te gêne-t-il (taille, couleurs, densité) ?</label>
+      <textarea id="q4" name="q4"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>5. La comparaison</legend>
+      <div class="choix" role="radiogroup" aria-label="Préférence">
+        <label><input type="radio" name="pref" value="maquette"> La maquette</label>
+        <label><input type="radio" name="pref" value="actuel"> Le site actuel</label>
+        <label><input type="radio" name="pref" value="sans avis"> Sans préférence</label>
+      </div>
+      <label for="q5">Lequel te donnerait le plus envie de revenir réviser chaque jour ? Pourquoi ?</label>
+      <textarea id="q5" name="q5"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>6. Une chose à garder, une chose à changer</legend>
+      <label for="q6a">À garder</label>
+      <input type="text" id="q6a" name="q6a">
+      <label for="q6b">À changer</label>
+      <input type="text" id="q6b" name="q6b">
+    </fieldset>
+
+    <fieldset>
+      <legend>Ton profil (facultatif)</legend>
+      <label for="q7">Par exemple : M1 MEEF, candidat libre, contractuel, enseignant formateur…</label>
+      <input type="text" id="q7" name="q7">
+    </fieldset>
+
+    <div class="envoi">
+      <button class="btn plein" type="submit" id="envoyer">Envoyer mon avis par mail</button>
+      <button class="btn" type="button" id="copier">Copier mes réponses</button>
+    </div>
+    <p class="etat" id="etat" role="status" hidden></p>
+    <textarea id="copie" aria-label="Tes réponses, à copier" readonly hidden></textarea>
+  </form>
+</main>
+
+<script>
+var TACHES = [
+  ["t1", "Reprendre la fiche en cours et ouvrir la définition de « simonie »."],
+  ["t2", "Trouver la carte de l’Union européenne et l’agrandir."],
+  ["t3", "Chercher « Schengen »."],
+  ["t4", "Faire une série de flashcards jusqu’au bout."],
+  ["t5", "Trouver ton prochain objectif dans « Mon suivi »."]
+];
+var NIV = [["facile", "Facile"], ["hesitant", "Hésitant"], ["pas trouve", "Pas trouvé"]];
+document.getElementById("taches").insertAdjacentHTML("beforeend", TACHES.map(function (t) {
+  return '<div class="tache"><p>' + t[1] + '</p><div class="choix" role="radiogroup" aria-label="' + t[1].replace(/"/g, "") + '">' +
+    NIV.map(function (n) { return '<label><input type="radio" name="' + t[0] + '" value="' + n[0] + '"> ' + n[1] + '</label>'; }).join("") + '</div></div>';
+}).join(""));
+
+var f = document.getElementById("f"), etat = document.getElementById("etat"), copie = document.getElementById("copie");
+var BROUILLON = "hepsy-avis-brouillon";
+function valeurs() { var o = {}; new FormData(f).forEach(function (v, k) { o[k] = String(v).trim(); }); return o; }
+function remplir(o) { Object.keys(o || {}).forEach(function (k) { var els = f.elements[k]; if (!els) return; if (els.length && els[0] && els[0].type === "radio") { [].forEach.call(els, function (r) { r.checked = r.value === o[k]; }); } else if (els.value !== undefined) els.value = o[k]; }); }
+try { remplir(JSON.parse(localStorage.getItem(BROUILLON) || "{}")); } catch (e) {}
+f.addEventListener("input", function () { try { localStorage.setItem(BROUILLON, JSON.stringify(valeurs())); } catch (e) {} });
+function dire(msg, ok) { etat.hidden = false; etat.className = "etat " + (ok ? "ok" : "ko"); etat.textContent = msg; }
+function texte(o) {
+  var L = ["Avis sur la maquette Hepsy B3", "", "1. Première impression : " + (o.q1 || "—"), "", "2. Tâches :"];
+  TACHES.forEach(function (t) { L.push("- " + t[1] + " " + (o[t[0]] || "—")); });
+  L.push("", "3. Fond : " + (o.fond || "—") + " ; appareil : " + (o.appareil || "—") + ". " + (o.q3 || ""), "", "4. Lecture : " + (o.q4 || "—"), "", "5. Préférence : " + (o.pref || "—") + ". " + (o.q5 || ""), "", "6. À garder : " + (o.q6a || "—") + " ; à changer : " + (o.q6b || "—"), "", "Profil : " + (o.q7 || "—"));
+  return L.join("\n");
+}
+function vide(o) { return !Object.keys(o).some(function (k) { return o[k]; }); }
+function montrerCopie() { copie.hidden = false; copie.value = texte(valeurs()); copie.focus(); copie.select(); }
+
+document.getElementById("copier").addEventListener("click", function () {
+  var t = texte(valeurs());
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(t).then(function () { dire("Réponses copiées. Colle-les dans un message à la personne qui t’a envoyé ce lien.", true); }, function () { montrerCopie(); dire("Sélectionne le texte ci-dessous et copie-le, puis colle-le dans un message.", true); });
+  } else { montrerCopie(); dire("Sélectionne le texte ci-dessous et copie-le, puis colle-le dans un message.", true); }
+});
+
+/* Envoi : ouvre la messagerie avec les réponses déjà rédigées ; l'adresse est à saisir par la personne */
+f.addEventListener("submit", function (e) {
+  e.preventDefault();
+  var o = valeurs();
+  if (vide(o)) { dire("Réponds au moins à une question avant d’envoyer.", false); return; }
+  var corps = texte(o);
+  window.location.href = "mailto:?subject=" + encodeURIComponent("Mon avis sur la maquette Hepsy") + "&body=" + encodeURIComponent(corps);
+  montrerCopie();
+  dire("Ta messagerie s’ouvre avec tes réponses : ajoute l’adresse de la personne qui t’a envoyé ce lien, puis envoie. Si rien ne s’ouvre, copie le texte ci-dessous et colle-le dans un mail.", true);
+});
+</script>
+</body>
+</html>
