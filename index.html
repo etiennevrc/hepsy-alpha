@@ -558,6 +558,10 @@ svg.map { display: block; width: 100%; min-width: 760px; height: auto; }
 .splash.out { opacity: 0; visibility: hidden; filter: blur(10px); }
 .splash-skip { position: absolute; z-index: 3; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); min-height: 44px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg2); color: var(--ink); font: inherit; font-size: 15px; cursor: pointer; }
 .splash-skip:hover { border-color: var(--accent); }
+/* chargement : la page pèse ~15 Mo ; tant que le script principal n’a pas tourné, l’intro ne peut pas se fermer, on le dit */
+.splash-load { position: absolute; z-index: 3; left: 50%; bottom: max(84px, calc(env(safe-area-inset-bottom) + 72px)); transform: translateX(-50%); width: min(34em, calc(100vw - 32px)); margin: 0; text-align: center; color: var(--muted); font-size: 14px; line-height: 1.5; opacity: 0; animation: wel-in .6s 7s forwards; }
+.splash.attente .splash-load { animation: none; opacity: 1; color: var(--ink2); }
+.splash.pret .splash-load { display: none; }
 .skip { position: fixed; left: 12px; top: 8px; z-index: 300; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--accent); background: var(--bg2); color: var(--ink); font: inherit; transform: translateY(-150%); }
 .skip:focus { transform: none; }
 #stage[tabindex="-1"]:focus, #view[tabindex="-1"]:focus { outline: none; }
@@ -1768,7 +1772,7 @@ select option { font-family: var(--font-body); font-size: 14.5px; color: var(--i
 }
 </style>
 
-<div class="splash" id="splash" aria-label="Présentation de Diodore"><button type="button" class="splash-skip">Passer l’introduction</button><div class="stagebox"><div class="row"><div class="word">DIODOR<i>E</i></div><div class="who"><span id="catslot"></span></div></div></div><div class="welcome"><div class="w1"><em>Bienvenue sur</em> <b>DIODOR<i>E</i></b></div><div class="rule"></div><div class="w2">Ton compagnon de révision pour le CAPES d’Histoire-Géographie : des fiches claires, des notions à portée de clic, des repères en couleur et de quoi t’entraîner.</div></div></div>
+<div class="splash" id="splash" aria-label="Présentation de Diodore"><button type="button" class="splash-skip">Passer l’introduction</button><p class="splash-load" id="splashload" role="status">Chargement du site…</p><div class="stagebox"><div class="row"><div class="word">DIODOR<i>E</i></div><div class="who"><span id="catslot"></span></div></div></div><div class="welcome"><div class="w1"><em>Bienvenue sur</em> <b>DIODOR<i>E</i></b></div><div class="rule"></div><div class="w2">Ton compagnon de révision pour le CAPES d’Histoire-Géographie : des fiches claires, des notions à portée de clic, des repères en couleur et de quoi t’entraîner.</div></div></div><script>(function () { var s = document.getElementById("splash"); if (!s) return; function early(ev) { if (s.classList.contains("pret")) return; if (ev.type === "keydown" && ev.key !== "Escape" && ev.key !== "Enter" && ev.key !== " ") return; if (ev.preventDefault) ev.preventDefault(); s.classList.add("attente"); var m = document.getElementById("splashload"); if (m) m.textContent = "Diodore finit de se charger : à la première visite, cela peut prendre une à deux minutes selon la connexion. L’introduction se fermera d’elle-même."; } s.addEventListener("click", early); document.addEventListener("keydown", early, true); })();</script>
 <button type="button" class="skip" id="skiplink">Aller au contenu</button>
 <div id="app" data-dom="h">
   <p class="alpha-bar"><b>Version alpha</b> Diodore est en cours de test : le contenu évolue et des erreurs peuvent subsister.</p>
@@ -6549,8 +6553,10 @@ var CATFACE = '<svg class="catface" viewBox="30 18 200 170" aria-hidden="true"><
   });
 
   var SPLASH_HTML = document.getElementById("splash") ? document.getElementById("splash").outerHTML : "";
-  function runIntro(s) {
+  function runIntro(s, replay) {
     if (!s) return;
+    var hurry = !replay && (s.classList.contains("attente") || (window.performance && performance.now() > 8000));
+    s.classList.remove("attente"); s.classList.add("pret");
     $("#catslot", s).innerHTML = CATFULL;
     var gone = false, back = document.activeElement;
     function onKey(ev) {
@@ -6567,13 +6573,13 @@ var CATFACE = '<svg class="catface" viewBox="30 18 200 170" aria-hidden="true"><
     var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
     var sk = $(".splash-skip", s); if (sk && !reduce) sk.focus({ preventScroll: true });
     lsSet("capes-intro", 1);
-    setTimeout(end, reduce ? 0 : 9000);
+    setTimeout(end, reduce ? 0 : (hurry ? 400 : 9000));
   }
   function playIntro() {
     if (!SPLASH_HTML) return;
     var old = document.getElementById("splash"); if (old && old.parentNode) old.parentNode.removeChild(old);
     var wrap = document.createElement("div"); wrap.innerHTML = SPLASH_HTML;
-    var s = wrap.firstElementChild; document.body.appendChild(s); runIntro(s);
+    var s = wrap.firstElementChild; document.body.appendChild(s); runIntro(s, true);
   }
   /* l'animation d'accueil n'est jouée qu'à la première visite ; « Revoir la présentation » la rejoue */
   (function () {
