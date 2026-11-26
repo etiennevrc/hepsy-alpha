@@ -1772,7 +1772,7 @@ select option { font-family: var(--font-body); font-size: 14.5px; color: var(--i
 }
 </style>
 
-<div class="splash" id="splash" aria-label="Présentation de Diodore"><button type="button" class="splash-skip">Passer l’introduction</button><p class="splash-load" id="splashload" role="status">Chargement du site…</p><div class="stagebox"><div class="row"><div class="word">DIODOR<i>E</i></div><div class="who"><span id="catslot"></span></div></div></div><div class="welcome"><div class="w1"><em>Bienvenue sur</em> <b>DIODOR<i>E</i></b></div><div class="rule"></div><div class="w2">Ton compagnon de révision pour le CAPES d’Histoire-Géographie : des fiches claires, des notions à portée de clic, des repères en couleur et de quoi t’entraîner.</div></div></div><script>(function () { var s = document.getElementById("splash"); if (!s) return; function early(ev) { if (s.classList.contains("pret")) return; if (ev.type === "keydown" && ev.key !== "Escape" && ev.key !== "Enter" && ev.key !== " ") return; if (ev.preventDefault) ev.preventDefault(); s.classList.add("attente"); var m = document.getElementById("splashload"); if (m) m.textContent = "Diodore finit de se charger : à la première visite, cela peut prendre une à deux minutes selon la connexion. L’introduction se fermera d’elle-même."; } s.addEventListener("click", early); document.addEventListener("keydown", early, true); })();</script>
+<div class="splash" id="splash" aria-label="Présentation de Diodore"><button type="button" class="splash-skip">Passer l’introduction</button><p class="splash-load" id="splashload" role="status">Chargement du site…</p><div class="stagebox"><div class="row"><div class="word">DIODOR<i>E</i></div><div class="who"><span id="catslot"></span></div></div></div><div class="welcome"><div class="w1"><em>Bienvenue sur</em> <b>DIODOR<i>E</i></b></div><div class="rule"></div><div class="w2">Ton compagnon de révision pour le CAPES d’Histoire-Géographie : des fiches claires, des notions à portée de clic, des repères en couleur et de quoi t’entraîner.</div></div></div><script>(function () { var s = document.getElementById("splash"); if (!s) return; function early(ev) { if (s.classList.contains("pret") || !s.isConnected) { document.removeEventListener("keydown", early, true); return; } if (ev.type === "keydown" && ev.key !== "Escape" && ev.key !== "Enter" && ev.key !== " ") return; if (ev.preventDefault) ev.preventDefault(); s.classList.add("attente"); var m = document.getElementById("splashload"); if (m) m.textContent = "Diodore finit de se charger : à la première visite, cela peut prendre une à deux minutes selon la connexion. L’introduction se fermera d’elle-même."; } s.addEventListener("click", early); document.addEventListener("keydown", early, true); })();</script>
 <button type="button" class="skip" id="skiplink">Aller au contenu</button>
 <div id="app" data-dom="h">
   <p class="alpha-bar"><b>Version alpha</b> Diodore est en cours de test : le contenu évolue et des erreurs peuvent subsister.</p>
@@ -6584,7 +6584,7 @@ var CATFACE = '<svg class="catface" viewBox="30 18 200 170" aria-hidden="true"><
   /* l'animation d'accueil n'est jouée qu'à la première visite ; « Revoir la présentation » la rejoue */
   (function () {
     var s = document.getElementById("splash"); if (!s) return;
-    if (lsGet("capes-intro", 0)) s.parentNode.removeChild(s); else runIntro(s);
+    if (lsGet("capes-intro", 0)) { s.classList.add("pret"); s.parentNode.removeChild(s); } else runIntro(s);
   })();
 
   route();
